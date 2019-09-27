@@ -2,8 +2,7 @@
   <div>
     <instagram-embed
       :url="`https://www.instagram.com/p/${randomPic}/`"
-      max-width="100"
-      hide-caption="false"/>
+      :max-width="100"/>
   </div>
 </template>
 

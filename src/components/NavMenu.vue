@@ -70,6 +70,7 @@ export default {
 
     .v-select {
       flex: none;
+      height: 100% !important;
       padding-top: 1% !important;
 
       input {
