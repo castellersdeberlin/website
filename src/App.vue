@@ -15,3 +15,9 @@ export default {
   components: { NavMenu },
 };
 </script>
+
+<style>
+.v-parallax img {
+  box-shadow: inset 0 0 10px 8px rgba(0, 0, 0, 0.5);
+}
+</style>

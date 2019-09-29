@@ -1,30 +1,16 @@
 <template>
   <div class="orga">
-    <v-row no-gutters>
-      <v-col>
-        <v-card
-          class="pa-2"
-          outlined
-          tile
-        >
-          {{ $i18n.locale }}
-        </v-card>
-      </v-col>
-    </v-row>
     <div class="column">
       <div class="department">{{ $t('tecnica') }}</div>
       <ul>
         <li><div class="team">{{ $t('capcolla') }}</div> Xarli S.</li>
-        <li><div class="team">{{ $t('sotscapcolla') }}</div> Eloi M.</li>
         <li>
           <div class="team">{{ $t('canalla') }}</div>
-          <div class="head">{{ $t('head') }}: Meri O., Íngrid S.</div>
-          Míriam P., Berta C.
+          Berta C., Míriam P.
         </li>
         <li>
           <div class="team">{{ $t('troncs') }}</div>
-          <div class="head">{{ $t('head') }}: Eloi M.</div>
-          Laura B., Sílvia M.
+          Sílvia M.
         </li>
         <li>
           <div class="team">{{ $t('pinya') }}</div>

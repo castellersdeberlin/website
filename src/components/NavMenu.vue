@@ -29,19 +29,19 @@
       </v-btn>
     </v-toolbar-items>
     <div class="flex-grow-1"></div>
-    <template>
-      <v-select v-model="$root.$i18n.locale"
-                :items="languages"
-                rounded
-                single-line
-                flat
-                dense
-                dark
-                hide-selected
-                prepend-icon="language"
-                class="toolbar-language">
-      </v-select>
-    </template>
+    <v-sheet color="transparent">
+      <v-row>
+        <v-select v-model="$root.$i18n.locale"
+                  :items="languages"
+                  dark
+                  full-width
+                  dense
+                  hide-selected
+                  prepend-inner-icon="language"
+                  class="toolbar-language">
+        </v-select>
+      </v-row>
+    </v-sheet>
   </v-app-bar>
 </template>
 
@@ -63,21 +63,14 @@ export default {
       background-image: url('../assets/mocador.jpg');
       background-repeat: repeat;
       background-size: auto 50px;
-      background-image: linear-gradient(to right, transparent, #F03838 30%),
-      url('../assets/mocador.jpg');
+      background-image: linear-gradient(90deg, transparent 0%,
+        rgba(240,56,56, 0.85) 35%, rgba(240,56,56, 0.85) 100%), url('../assets/mocador.jpg');
       padding-top: 0;
     }
 
     .v-select {
-      flex: none;
-      height: 100% !important;
-      padding-top: 1% !important;
-
-      input {
-        display: none;
-      }
-      .v-input__slot {
-        padding: 0 !important;
+      .v-select__slot {
+        display: none
       }
     }
   }

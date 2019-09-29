@@ -3,7 +3,6 @@ import Router from 'vue-router';
 import Home from './views/Home.vue';
 import Calendar from './views/Calendar.vue';
 import About from './views/About.vue';
-import Banner from './views/Banner.vue';
 
 Vue.use(Router);
 
@@ -14,15 +13,7 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      components: {
-        default: Home,
-        banner: Banner,
-      },
-      props: {
-        banner: {
-          url: '/img/banners/pd3.jpeg',
-        },
-      },
+      component: Home,
     },
     {
       path: '/calendar',
