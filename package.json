@@ -17,6 +17,7 @@
     "vue-instagram-embed": "^1.0.0",
     "vue-router": "^3.0.3",
     "vue-tweet-embed": "^2.3.0",
+    "vue-youtube-embed": "^2.2.2",
     "vuetify": "^2.0.0",
     "vuex": "^3.0.1"
   },

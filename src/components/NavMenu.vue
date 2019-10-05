@@ -22,6 +22,12 @@
         </router-link>
       </v-btn>
       <v-btn text>
+        <router-link :to="{ name: 'media' }"
+                     class="font-weight-black white--text">
+          {{ $t('media') }}
+        </router-link>
+      </v-btn>
+      <v-btn text>
         <router-link :to="{ name: 'calendar' }"
                      class="font-weight-black white--text">
           {{ $t('calendar') }}
@@ -80,13 +86,16 @@ export default {
 en:
   home: "Home"
   about: "About us"
+  media: "Media"
   calendar: "Calendar"
 de:
   home: "Home"
   about: "Über uns"
+  media: "Media"
   calendar: "Kalendar"
 ca:
   home: "Home"
   about: "Qui som"
+  media: "Media"
   calendar: "Calendari"
 </i18n>
