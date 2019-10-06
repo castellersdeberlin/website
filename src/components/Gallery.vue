@@ -9,10 +9,8 @@
       :key="i"
       cols="4"
       class="col-12 col-md-4 col-lg-4"
-      >
-      <v-card
-          height="100%"
-      >
+    >
+      <v-card height="100%">
         <v-img
           :src="image.src"
           :key="i"
@@ -22,12 +20,10 @@
         >
         </v-img>
         <v-card-title>
-        {{ image.title }}
+          {{ image.title }}
         </v-card-title>
-        <v-card-text
-          class="title font-weight-light"
-        >
-        {{ image.content }}
+        <v-card-text class="title font-weight-light">
+          {{ image.content }}
         </v-card-text>
       </v-card>
     </v-col>
