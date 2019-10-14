@@ -7,21 +7,22 @@
     <v-col
       v-for="(video, i) in videos"
       :key="i"
-      cols="6"
-      class="col-12 col-md-3 col-lg-4"
+      cols="3"
+      class="col-3 col-md-3 col-lg-4"
       >
       <v-card
+        outlined=true
       >
         <youtube
           class="video-container"
-          :video-id="video"
+          :video-id="video.url"
           :key="i"
           player-width="100%"
         ></youtube>
         <v-card-title
           class="p-2"
         >
-        Title
+        {{ video.text }}
         </v-card-title>
       </v-card>
     </v-col>
@@ -39,8 +40,8 @@ export default {
   data() {
     return {
       videos: [
-        'MtzhaRs6Xzs',
-        'LVL7WHGnGqU',
+        { url: 'MtzhaRs6Xzs', text: 'RBB Probe' },
+        { url: 'LVL7WHGnGqU', text: 'Probe am 6.11.2018' },
       ],
     };
   },
@@ -58,8 +59,9 @@ export default {
 .video-container {
   height: 0;
   overflow: hidden;
-  padding-bottom: 56.25%;
+  padding-bottom: 100.25%;
   position: relative;
+  padding-top: 30px;
 }
 .video-container iframe {
     position: absolute;
@@ -67,6 +69,5 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
-opacity: .2;
 }
 </style>

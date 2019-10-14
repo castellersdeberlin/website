@@ -1,0 +1,123 @@
+<template>
+<v-container>
+  <h2 class="py-5">
+    Gallery
+  </h2>
+  <v-row>
+      <v-col
+        v-for="(image, index) in singleGallery"
+        :key="index"
+        cols="4"
+        class="col-3 col-md-3 col-lg-2"
+      >
+        <v-card height="100%"
+            @click="openGallery(index)"
+            :key="index"
+        >
+          <v-img
+            :src="`/img/media/galleries/${image.thumb}`"
+            :key="index"
+            class="mx-auto"
+            width="300"
+            height="150"
+          >
+          </v-img>
+          <v-card-title class="g-title">
+            {{ image.caption }}
+          </v-card-title>
+          <v-card-text class="g-text">
+            {{ image.date }}
+          </v-card-text>
+        </v-card>
+      </v-col>
+  <LightBox
+    :images="this.images2"
+    :key="index"
+    ref="lightbox"
+    :show-caption="true"
+    :show-light-box="true"
+  >
+  </LightBox>
+  <VuePureLightBox
+    thumbnail='/img/media/galleries/190911_diada/059-thumb.webp'
+    :images3="[
+      { link: '/img/media/galleries/190911_diada/055.webp' , alt: 'Cat 1' },
+      { link: '/img/media/galleries/190911_diada/059.webp' , alt: 'Cat 1' },
+    ]"
+
+  >
+<div v-slot:loader>Loading…</div>
+<div v-slot:content="{ url: { link, alt } }">
+    <img :src="link" :alt="alt">
+  </div>
+  </VuePureLightBox>
+  </v-row>
+</v-container>
+</template>
+
+
+<script>
+import VuePureLightBox from 'vue-pure-lightbox';
+import LightBox from 'vue-image-lightbox';
+
+import images from './lightbox_list';
+import images2 from './test_list';
+import siteLoading from './siteloading.gif';
+
+export default {
+  components: {
+    VuePureLightBox,
+    LightBox,
+  },
+
+  data() {
+    return {
+      images,
+      images2,
+    images3="[
+      { link: '/img/media/galleries/190911_diada/055.webp' , alt: 'Cat 1' },
+      { link: '/img/media/galleries/190911_diada/059.webp' , alt: 'Cat 1' },
+    ]",
+      siteLoading,
+    };
+  },
+
+  methods: {
+    openGallery(index) {
+      // console.log(this.imagesN(index)[0]);
+      this.$refs.lightbox.showImage();
+      this.imagesN(index);
+    },
+    imagesN(index) {
+      let gallery = [];
+      // console.log(this.images[0][0]);
+      gallery = this.images[index];
+      console.log('gallery', gallery);
+      return gallery;
+    },
+  },
+
+  computed: {
+    singleGallery() {
+      // return this.images.map(grup => primers.push(grup[0]));
+      // return this.images.map(grup => return grup[0]; );
+      // primers.push(grup[0]));
+
+      const primers = [];
+      this.images.map(grup => primers.push(grup[0]));
+      return primers;
+    },
+  },
+};
+</script>
+
+<style lang="scss">
+  .g-title {
+    font-size: .875rem;
+    font-weight: 700;
+    line-height: .9;
+  }
+  .g-text {
+    font-wize: .5rem;
+  }
+</style>

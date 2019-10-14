@@ -4,85 +4,364 @@
     Gallery
   </h2>
   <v-row>
-    <v-col
-      v-for="(image, i) in images"
-      :key="i"
-      cols="4"
-      class="col-12 col-md-4 col-lg-4"
-    >
-      <v-card height="100%">
-        <v-img
-          :src="image.src"
-          :key="i"
-          class="mx-auto"
-          width="600"
-          height="300"
+      <v-col
+        v-for="(image, index) in singleGallery"
+        :key="index"
+        cols=4
+        class="col-12 col-md-3 col-lg-3"
+      >
+        <v-card
+            height="100%"
+            outlined=true
+            @click="openGallery(index)"
+            :key="index"
         >
-        </v-img>
-        <v-card-title>
-          {{ image.title }}
-        </v-card-title>
-        <v-card-text class="title font-weight-light">
-          {{ image.content }}
-        </v-card-text>
-      </v-card>
-    </v-col>
+          <v-img
+            :src="image.thumb"
+            :key="index"
+            class="mx-auto"
+            width="300"
+            height="260"
+          >
+          </v-img>
+          <v-card-title class="g-title">
+            {{ image.caption }}
+          </v-card-title>
+          <v-card-text class="g-text">
+            {{ image.date }}
+          </v-card-text>
+        </v-card>
+      </v-col>
+  <LightBox
+    :images="imagesN"
+    :key="index"
+    ref="lightbox"
+    :show-caption="true"
+    :show-light-box="false"
+  >
+  </LightBox>
   </v-row>
 </v-container>
 </template>
 
 
 <script>
+import LightBox from 'vue-image-lightbox';
+
+import images from './lightbox_list';
+import images2 from './test_list';
+import siteLoading from './siteloading.gif';
+
 export default {
+  components: {
+    LightBox,
+  },
+
   data() {
     return {
-      images: [
-        {
-          src: 'https://picsum.photos/id/33/400/300?grayscale',
-          title: 'Spargel Fest Aufführung',
-          content: 'Some description',
-        },
-        {
-          src: 'https://picsum.photos/id/53/400/300?grayscale',
-          title: 'Diada de Catalunya',
-          content: 'Vam tenir l\'oportunitat d\'actuar a la Diada de Catalunya',
-        },
-        {
-          src: 'https://picsum.photos/id/83/400/300?grayscale',
-          title: 'Kürbis Fest',
-          content: 'Some description',
-        },
-        {
-          src: 'https://picsum.photos/id/63/400/300?grayscale',
-          title: 'Some Title',
-          content: 'Some description',
-        },
-        {
-          src: 'https://picsum.photos/id/13/400/300?grayscale',
-          title: 'Some Title',
-          content: 'Some description',
-        },
-        {
-          src: 'https://picsum.photos/id/23/400/300?grayscale',
-          title: 'Some Title',
-          content: 'Some description',
-        },
-        {
-          src: 'https://picsum.photos/id/28/400/300?grayscale',
-          title: 'Some Title',
-          content: 'Some description',
-        },
-        {
-          src: 'https://picsum.photos/id/183/400/300?grayscale',
-          title: 'Some Title',
-          content: 'Some description',
-        },
-      ],
+      path: '/img/media/galleries/',
+      images,
+      images2,
+      siteLoading,
     };
+  },
+
+  methods: {
+    openGallery(index) {
+      this.$refs.lightbox.showImage(index);
+    },
+    imagesN(index) {
+      let gallery = [];
+      gallery = this.images[index];
+      console.log('gallery', gallery);
+      return gallery;
+    },
+  },
+
+  computed: {
+    singleGallery() {
+      // return this.images.map(grup => primers.push(grup[0]));
+      // return this.images.map(grup => return grup[0]; );
+      // primers.push(grup[0]));
+
+      const primers = [];
+      this.images.map(grup => primers.push(grup[0]));
+      return primers;
+    },
   },
 };
 </script>
 
-<style scoped>
+<style lang="scss">
+  .g-title {
+    font-size: .875rem;
+    font-weight: 700;
+    line-height: .9;
+  }
+  .g-text {
+    font-wize: .5rem;
+  }
 
+.vue-lb-box {
+  width: 100%;
+}
+
+.vue-lb-container {
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  box-sizing: border-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  left: 0px;
+  padding: 10px;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 2000;
+  -webkit-align-items: center;
+  -moz-box-sizing: border-box;
+  -webkit-justify-content: center;
+  -ms-flex-align: center;
+  -webkit-box-align: center;
+  -ms-flex-pack: center;
+  -webkit-box-pack: center;
+}
+
+.vue-lb-content {
+  margin-bottom: 60px;
+  max-width: 1024px;
+  position: relative;
+}
+
+.vue-lb-header {
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  -webkit-box-pack: justify;
+}
+
+.vue-lb-button-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  top: 0px;
+  vertical-align: bottom;
+  height: 40px;
+  margin-right: -10px;
+  padding: 10px;
+  width: 40px;
+}
+
+.vue-lb-figure {
+  margin: 0px;
+  display: block;
+  position: relative;
+}
+
+img.vue-lb-modal-image {
+  cursor: pointer;
+  max-height: calc(100vh - 140px);
+  cursor: pointer;
+  display: block;
+  height: auto;
+  margin: 0 auto;
+  max-width: 100%;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.vue-lb-info {
+  visibility: initial;
+  position: absolute;
+  bottom: 25px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 40px;
+  width: 100%;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-align: center;
+}
+
+
+.vue-lb-footer {
+  box-sizing: border-box;
+  color: white;
+  cursor: auto;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-between;
+  left: 0px;
+  line-height: 1.3;
+  padding-bottom: 5px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 5px;
+  -moz-box-sizing: border-box;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  -webkit-box-pack: justify;
+}
+
+.vue-lb-footer-info {
+  display: block;
+  flex: 1 1 0;
+  -webkit-flex: 1 1 0;
+  -ms-flex: 1 1 0;
+}
+
+.vue-lb-footer-count {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.85em;
+  padding-left: 1em;
+}
+
+.vue-lb-thumbnail {
+  bottom: 10px;
+  height: 50px;
+  padding: 0 50px;
+  text-align: center;
+  white-space: nowrap;
+  display: inline-block;
+  position: relative;
+}
+
+.vue-lb-modal-thumbnail {
+  background-position: center;
+  background-size: cover;
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1px hsla(0,0%,100%,.2);
+  cursor: pointer;
+  display: inline-block;
+  height: 50px;
+  margin: 2px;
+  overflow: hidden;
+  width: 50px;
+}
+
+.vue-lb-modal-thumbnail-active {
+  background-position: center;
+  background-size: cover;
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 2px white;
+  cursor: pointer;
+  display: inline-block;
+  height: 50px;
+  margin: 2px;
+  overflow: hidden;
+  width: 50px;
+}
+
+.vue-lb-thumbnail-arrow {
+  height: 54px;
+  width: 40px;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  -webkit-touch-callout: none;
+  user-select: none;
+  height: 50px;
+  margin-top: -25px;
+  width: 30px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.vue-lb-thumbnail-left {
+  left: 10px;
+}
+
+.vue-lb-thumbnail-right {
+  right: 10px;
+}
+
+.vue-lb-arrow {
+  background: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  -webkit-touch-callout: none;
+  user-select: none;
+  height: 120px;
+  margin-top: -60px;
+  width: 40px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.vue-lb-left {
+  left: 10px;
+}
+
+.vue-lb-right {
+  right: 10px;
+}
+
+.vue-lb-open {
+  overflow: hidden;
+}
+
+.vue-lb-thumbnail-wrapper {
+  bottom: 10px;
+  height: 50px;
+  left: 0;
+  margin: 0 auto;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: auto;
+}
+
+@media (min-width: 500px) {
+  .vue-lb-thumbnail-arrow {
+    width: 40px;
+  }
+}
+
+@media (min-width: 768px) {
+  .vue-lb-arrow {
+      width: 70px;
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .2s ease;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+.no-scroll {
+  overflow-y: hidden;
+}
 </style>
