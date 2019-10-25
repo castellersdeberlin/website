@@ -1,7 +1,7 @@
 <template>
 <v-container>
   <h2 class="py-5">
-    Videos
+    {{ $t('seccio') }}
   </h2>
   <v-row>
     <v-col
@@ -11,7 +11,6 @@
       class="col-3 col-md-3 col-lg-4"
       >
       <v-card
-        outlined=true
       >
         <youtube
           class="video-container"
@@ -20,10 +19,15 @@
           player-width="100%"
         ></youtube>
         <v-card-title
-          class="p-2"
+          class="v-title"
         >
         {{ video.text }}
         </v-card-title>
+        <v-card-text
+          class="v-text"
+        >
+        {{ video.text }}
+        </v-card-text>
       </v-card>
     </v-col>
   </v-row>
@@ -63,6 +67,7 @@ export default {
   position: relative;
   padding-top: 30px;
 }
+
 .video-container iframe {
     position: absolute;
     top: 0;
@@ -70,4 +75,24 @@ export default {
     width: 100%;
     height: 100%;
 }
+
+.v-title {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: .9;
+}
+
+.v-text {
+  font-size: .875rem;
+}
+
 </style>
+
+<i18n>
+en:
+  seccio: "Videos"
+de:
+  seccio: "Videos"
+ca:
+  seccio: "Videos"
+</i18n>

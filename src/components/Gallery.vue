@@ -1,27 +1,26 @@
 <template>
 <v-container>
   <h2 class="py-5">
-    Gallery
+    {{ $t('seccio2') }}
   </h2>
   <v-row>
       <v-col
-        v-for="(image, index) in singleGallery"
-        :key="index"
+        v-for="(image, i) in galleryHead"
+        :key="i"
         cols=4
         class="col-12 col-md-3 col-lg-3"
       >
         <v-card
             height="100%"
-            outlined=true
-            @click="openGallery(index)"
+            @click="imagesN(index), openGallery(index)"
             :key="index"
         >
           <v-img
             :src="image.thumb"
             :key="index"
             class="mx-auto"
-            width="300"
-            height="260"
+            width="480"
+            height="360"
           >
           </v-img>
           <v-card-title class="g-title">
@@ -32,15 +31,16 @@
           </v-card-text>
         </v-card>
       </v-col>
+  </v-row>
   <LightBox
-    :images="imagesN"
+    :images="imagesN(index)"
     :key="index"
     ref="lightbox"
     :show-caption="true"
-    :show-light-box="false"
+    :show-light-box="true"
   >
   </LightBox>
-  </v-row>
+
 </v-container>
 </template>
 
@@ -67,41 +67,60 @@ export default {
   },
 
   methods: {
-    openGallery(index) {
+    openGallery(index, e) {
+      // this.imagesN(index);
+      console.log(this.imagesN(index));
       this.$refs.lightbox.showImage(index);
+      this.log(e);
     },
     imagesN(index) {
-      let gallery = [];
-      gallery = this.images[index];
-      console.log('gallery', gallery);
+      // let gallery = [];
+      const gallery = this.images[index];
+      console.log('gallery: ', gallery);
       return gallery;
+
+      // console.log('images N: ', this.images[index]);
+      // return this.images[index];
+    },
+    log(e) {
+      console.log(e.currentTarget);
+      console.log(e);
     },
   },
 
   computed: {
-    singleGallery() {
-      // return this.images.map(grup => primers.push(grup[0]));
-      // return this.images.map(grup => return grup[0]; );
-      // primers.push(grup[0]));
 
+    galleryHead() {
       const primers = [];
       this.images.map(grup => primers.push(grup[0]));
       return primers;
     },
+
   },
 };
 </script>
 
 <style lang="scss">
-  .g-title {
-    font-size: .875rem;
-    font-weight: 700;
-    line-height: .9;
-  }
-  .g-text {
-    font-wize: .5rem;
-  }
 
+.g-title {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.g-text {
+  font-size: .875rem;
+}
+
+::selection {
+  background-color: yellow;
+}
+
+.v-image__image {
+  filter: grayscale(20%);
+}
+
+/* lightbox */
 .vue-lb-box {
   width: 100%;
 }
@@ -365,3 +384,15 @@ img.vue-lb-modal-image {
   overflow-y: hidden;
 }
 </style>
+
+<i18n>
+en:
+  seccio2: "Gallery"
+de:
+  seccio2: "Galerie"
+ca:
+  seccio2: "Galeria"
+</i18n>
+
+/* vm.imagesN(1); */
+/* vm.console.log(imagesN); */
