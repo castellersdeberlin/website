@@ -8,18 +8,18 @@
         v-for="(image, i) in galleryHead"
         :key="i"
         cols=4
-        class="col-12 col-md-3 col-lg-3"
+        class="col-12 col-md-4 col-lg-4"
       >
         <v-card
             height="100%"
-            @click="imagesN(index), openGallery(index)"
+            @click="openGallery(i)"
             :key="index"
         >
           <v-img
             :src="image.thumb"
             :key="index"
             class="mx-auto"
-            width="480"
+            width="640"
             height="360"
           >
           </v-img>
