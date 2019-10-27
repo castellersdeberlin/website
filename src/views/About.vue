@@ -1,8 +1,6 @@
 <template>
   <div>
     <Timeline/>
-    <v-parallax src="../assets/banners/pd3.jpeg"
-                height="300"/>
     <Orga/>
   </div>
 </template>
