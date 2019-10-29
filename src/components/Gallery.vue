@@ -5,14 +5,14 @@
   </h2>
   <v-row>
       <v-col
-        v-for="(image, i) in galleryHead"
-        :key="i"
+        v-for="(image, index) in galleryHead"
+        :key="index"
         cols=4
         class="col-12 col-md-4 col-lg-4"
       >
         <v-card
             height="100%"
-            @click="openGallery(i)"
+            @click="openGallery(index)"
             :key="index"
         >
           <v-img
@@ -33,8 +33,7 @@
       </v-col>
   </v-row>
   <LightBox
-    :images="imagesN(index)"
-    :key="index"
+    :images="this.lbGallery[0]"
     ref="lightbox"
     :show-caption="true"
     :show-light-box="true"
@@ -44,10 +43,8 @@
 </v-container>
 </template>
 
-
 <script>
 import LightBox from 'vue-image-lightbox';
-
 import images from './lightbox_list';
 import images2 from './test_list';
 import siteLoading from './siteloading.gif';
@@ -56,31 +53,24 @@ export default {
   components: {
     LightBox,
   },
-
   data() {
     return {
       path: '/img/media/galleries/',
       images,
-      images2,
+      lbGallery: [],
       siteLoading,
     };
   },
-
   methods: {
-    openGallery(index, e) {
-      // this.imagesN(index);
-      console.log(this.imagesN(index));
-      this.$refs.lightbox.showImage(index);
-      this.log(e);
+    openGallery(index) {
+      this.imagesN(index);
+      this.$refs.lightbox.showImage(0);
     },
     imagesN(index) {
-      // let gallery = [];
-      const gallery = this.images[index];
-      console.log('gallery: ', gallery);
-      return gallery;
-
-      // console.log('images N: ', this.images[index]);
-      // return this.images[index];
+      this.$set(this.lbGallery, 0, this.images[index]);
+      console.log('test: ', images2.length, images2);
+      console.log('lbGallery', this.lbGallery.length, this.lbGallery);
+      return this.lbGallery;
     },
     log(e) {
       console.log(e.currentTarget);
@@ -106,18 +96,16 @@ export default {
   font-size: 1rem;
   font-weight: 700;
   line-height: 1;
+  background-color: #fcbf43;
 }
 
 .g-text {
   font-size: .875rem;
-}
-
-::selection {
-  background-color: yellow;
+  background-color: #fcbf43;
 }
 
 .v-image__image {
-  filter: grayscale(20%);
+  /* filter: grayscale(20%); */
 }
 
 /* lightbox */
@@ -393,6 +381,3 @@ de:
 ca:
   seccio2: "Galeria"
 </i18n>
-
-/* vm.imagesN(1); */
-/* vm.console.log(imagesN); */

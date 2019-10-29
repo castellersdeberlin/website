@@ -63,9 +63,9 @@ export default {
 .video-container {
   height: 0;
   overflow: hidden;
-  padding-bottom: 100.25%;
+  padding-bottom: 100%;
   position: relative;
-  padding-top: 30px;
+  background-color: #000;
 }
 
 .video-container iframe {
@@ -80,10 +80,12 @@ export default {
   font-size: 1rem;
   font-weight: 700;
   line-height: .9;
+  background-color: #fcbf43;
 }
 
 .v-text {
   font-size: .875rem;
+  background-color: #fcbf43;
 }
 
 </style>
