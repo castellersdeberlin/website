@@ -5,14 +5,17 @@
     <v-content>
       <router-view/>
     </v-content>
+
+    <Footer/>
   </v-app>
 </template>
 
 <script>
 import NavMenu from './components/NavMenu.vue';
+import Footer from './components/Footer.vue';
 
 export default {
-  components: { NavMenu },
+  components: { NavMenu, Footer },
 };
 </script>
 
