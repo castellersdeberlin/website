@@ -45,8 +45,7 @@
 
 <script>
 import LightBox from 'vue-image-lightbox';
-import images from './lightbox_list';
-import images2 from './test_list';
+import images from './gallery_list';
 import siteLoading from './siteloading.gif';
 
 export default {
@@ -68,8 +67,6 @@ export default {
     },
     imagesN(index) {
       this.$set(this.lbGallery, 0, this.images[index]);
-      console.log('test: ', images2.length, images2);
-      console.log('lbGallery', this.lbGallery.length, this.lbGallery);
       return this.lbGallery;
     },
     log(e) {
