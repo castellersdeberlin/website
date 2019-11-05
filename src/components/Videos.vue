@@ -8,7 +8,7 @@
       v-for="(video, i) in videos"
       :key="i"
       cols="3"
-      class="col-3 col-md-3 col-lg-4"
+      class="col-3 col-md-4 col-lg-3"
       >
       <v-card
       >
@@ -63,7 +63,7 @@ export default {
 .video-container {
   height: 0;
   overflow: hidden;
-  padding-bottom: 100%;
+  padding-bottom: 150%;
   position: relative;
   background-color: #000;
 }
@@ -74,6 +74,7 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
+    background: #000;
 }
 
 .v-title {

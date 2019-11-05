@@ -8,7 +8,7 @@
         v-for="(image, index) in galleryHead"
         :key="index"
         cols=4
-        class="col-12 col-md-4 col-lg-4"
+        class="col-12 col-md-4 col-lg-3"
       >
         <v-card
             height="100%"
@@ -19,8 +19,8 @@
             :src="image.thumb"
             :key="index"
             class="mx-auto"
-            width="640"
-            height="360"
+            width="360"
+            height="240"
           >
           </v-img>
           <v-card-title class="g-title">
