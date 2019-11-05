@@ -80,14 +80,16 @@ export default {
   font-size: 1rem;
   font-weight: 700;
   line-height: .9;
-  background-color: #fcbf43;
 }
 
 .v-text {
   font-size: .875rem;
-  background-color: #fcbf43;
 }
 
+.v-card {
+  border: 0;
+  box-shadow: none;
+}
 </style>
 
 <i18n>

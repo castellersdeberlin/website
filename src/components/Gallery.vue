@@ -96,16 +96,19 @@ export default {
   font-size: 1rem;
   font-weight: 700;
   line-height: 1;
-  background-color: #fcbf43;
 }
 
 .g-text {
   font-size: .875rem;
-  background-color: #fcbf43;
 }
 
 .v-image__image {
-  /* filter: grayscale(20%); */
+  filter: grayscale(20%);
+}
+
+.v-card {
+  border: 0;
+  box-shadow: none;
 }
 
 /* lightbox */
