@@ -30,8 +30,10 @@ export default {
 
   computed: {
     sortedLanguages() {
+      const current = this.$i18n.locale;
       return [...this.languages].sort((lang1, lang2) => {
-        if (lang2.value === this.$i18n.locale) return -1;
+        if (lang1.value === current) return -1;
+        if (lang2.value === current) return 1;
         return 0;
       });
     },
