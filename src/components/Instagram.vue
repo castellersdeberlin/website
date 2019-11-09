@@ -16,6 +16,8 @@ export default {
   data: () => ({
     svgPath: mdiInstagram,
     pics: [
+      'B4k5Q_lHDH4',
+      'B366yzdo9l4',
       'B2PjyhlItrJ',
       'B1J1qJ1oSQJ',
       'BzNoNYioiKM',
