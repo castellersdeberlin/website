@@ -59,7 +59,7 @@ export default {
     padding: 50px;
   }
   .banner-text {
-    text-shadow: -0.5px 0 grey, 0 0.5px grey, 0.5px 0 grey, 0 -0.5px grey;
+    text-shadow: -1px 0 grey, 0 1px grey, 1px 0 grey, 0 -1px grey;
   }
   .banner-author {
     position: absolute;

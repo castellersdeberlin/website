@@ -23,13 +23,13 @@
       <v-btn text
              exact
              :to="{ name: 'about' }"
-             class="font-weight-black theme--light v-subheader">
+             class="font-weight-black theme--light">
           {{ $t('about') }}
       </v-btn>
       <v-btn text
              exact
              :to="{ name: 'calendar' }"
-             class="font-weight-black theme--light v-subheader">
+             class="font-weight-black theme--light">
           {{ $t('calendar') }}
       </v-btn>
     </v-toolbar-items>
