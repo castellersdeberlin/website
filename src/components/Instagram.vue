@@ -1,20 +1,22 @@
 <template>
   <SocialMedia name="Instagram"
-               :icon="svgPath">
+               url="https://www.instagram.com/castellersdeberlin/"
+               icon="mdi-instagram">
     <instagram-embed :url="`https://www.instagram.com/p/${randomPic}/`"/>
   </SocialMedia>
 </template>
 
 <script>
 import InstagramEmbed from 'vue-instagram-embed';
-import { mdiInstagram } from '@mdi/js';
 import SocialMedia from './SocialMedia.vue';
 
 export default {
-  components: { SocialMedia, InstagramEmbed },
+  components: {
+    SocialMedia,
+    InstagramEmbed,
+  },
 
   data: () => ({
-    svgPath: mdiInstagram,
     pics: [
       'B4k5Q_lHDH4',
       'B366yzdo9l4',
