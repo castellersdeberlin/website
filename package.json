@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@mdi/js": "4.5.95",
-    "core-js": "3.3.6",
+    "core-js": "3.4.0",
     "register-service-worker": "1.6.2",
     "vue": "2.6.10",
     "vue-cli-plugin-yaml": "1.0.1",
