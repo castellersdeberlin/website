@@ -1,18 +1,23 @@
 <template>
-  <v-sheet class="social-media-item primary">
-    <v-subheader class="headline">
-      <v-icon>{{ icon }}</v-icon> {{ name }}
-    </v-subheader>
-    <v-lazy transition="fade-transition"
-            class="media">
-      <slot/>
-    </v-lazy>
-  </v-sheet>
+  <v-card min-height="250"
+          class="social-media-item">
+    <v-card-title class="title">
+      <v-btn :href="url" x-large width="100%" depressed>
+        <v-icon class="primary--text">{{ icon }}</v-icon> {{ name }}
+      </v-btn>
+    </v-card-title>
+    <v-card-text>
+      <v-lazy transition="fade-transition"
+              class="media">
+        <slot/>
+      </v-lazy>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script>
 export default {
-  props: ['icon', 'name'],
+  props: ['icon', 'name', 'url'],
 };
 </script>
 
@@ -22,6 +27,7 @@ export default {
 
   .v-icon {
     margin-right: 10px;
+    font-size: 30px;
   }
 
   .media {

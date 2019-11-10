@@ -2,60 +2,49 @@
   <v-app-bar app
              prominent
              dense
+             hide-on-scroll
              class="primary"
              id="app-bar">
-    <v-img :src="require('../assets/escut.svg')"
-           alt="Castellers de Berlin"
-           max-height="90"
-           max-width="90">
-    </v-img>
-    <div class="flex-grow-1"></div>
-    <v-toolbar-items id="menu-items">
-      <v-btn text>
-        <router-link :to="{ name: 'home' }"
-                     class="font-weight-black theme--light v-subheader">
-          {{ $t('home') }}
-        </router-link>
-      </v-btn>
-      <v-btn text>
-        <router-link :to="{ name: 'about' }"
-                     class="font-weight-black theme--light v-subheader">
-          {{ $t('about') }}
-        </router-link>
-      </v-btn>
-      <v-btn text>
-        <router-link :to="{ name: 'calendar' }"
-                     class="font-weight-black theme--light v-subheader">
-          {{ $t('calendar') }}
-        </router-link>
+    <v-toolbar-items>
+      <v-btn to="/"
+             exact
+             depressed
+             exact-active-class="logo-active"
+             class="v-btn--flat">
+        <v-img :src="require('../assets/escut.svg')"
+               alt="Castellers de Berlin"
+               max-height="90"
+               max-width="90">
+        </v-img>
       </v-btn>
     </v-toolbar-items>
-    <div class="flex-grow-1"></div>
-    <v-sheet color="transparent">
-      <v-row>
-        <v-select v-model="$root.$i18n.locale"
-                  :items="languages"
-                  light
-                  full-width
-                  dense
-                  hide-selected
-                  prepend-inner-icon="language"
-                  class="toolbar-language">
-        </v-select>
-      </v-row>
-    </v-sheet>
+    <v-spacer></v-spacer>
+    <v-toolbar-items>
+      <v-btn text
+             exact
+             :to="{ name: 'about' }"
+             class="font-weight-black theme--light">
+          {{ $t('about') }}
+      </v-btn>
+      <v-btn text
+             exact
+             :to="{ name: 'calendar' }"
+             class="font-weight-black theme--light">
+          {{ $t('calendar') }}
+      </v-btn>
+    </v-toolbar-items>
+    <v-spacer></v-spacer>
+    <v-toolbar-items>
+      <LanguageSelector/>
+    </v-toolbar-items>
   </v-app-bar>
 </template>
 
 <script>
+import LanguageSelector from './LanguageSelector.vue';
+
 export default {
-  data: () => ({
-    languages: [
-      { text: 'Deutsch', value: 'de' },
-      { text: 'English', value: 'en' },
-      { text: 'Català', value: 'ca' },
-    ],
-  }),
+  components: { LanguageSelector },
 };
 </script>
 
@@ -67,16 +56,12 @@ export default {
       padding-top: 0;
     }
 
-    .v-toolbar__items {
-      a {
-        text-decoration: none;
-      }
+    .v-toolbar__items a {
+      text-decoration: none;
     }
 
-    .v-select {
-      .v-select__slot {
-        display: none
-      }
+    .logo-active {
+      color: transparent;
     }
   }
 </style>

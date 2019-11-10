@@ -1,6 +1,7 @@
 <template>
   <SocialMedia name="Twitter"
-               :icon="svgPath">
+               url="https://twitter.com/CastellsBerlin"
+               icon="mdi-twitter">
     <Timeline :options="{ tweetLimit: '1' }"
               id="CastellsBerlin"
               sourceType="profile">
@@ -11,14 +12,9 @@
 
 <script>
 import { Timeline } from 'vue-tweet-embed';
-import { mdiTwitter } from '@mdi/js';
 import SocialMedia from './SocialMedia.vue';
 
 export default {
-  data: () => ({
-    svgPath: mdiTwitter,
-  }),
-
   components: {
     SocialMedia,
     Timeline,
