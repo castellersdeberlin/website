@@ -1,79 +1,36 @@
 <template>
-  <v-container fluid class="footer">
-    <v-container>
-      <v-row>
-      <v-col class="col-12 col-md-4 v-center">
-        <b-link href="" class="white--text">
-          <router-link :to="{ name: 'home' }">
-            {{ $t('impressum') }}
-          </router-link>
-        </b-link>
-      </v-col>
-
-      <v-col class="col-12 col-md-4 v-center">
-        <a href="https://facebook.com/castellersdeberlin"
-            target="_blank"
-            class="mx-5">
-              <v-icon>mdi-facebook</v-icon>
-        </a>
-        <a href="https://instagram.com/castellersdeberlin"
-            target="_blank"
-            class="mx-5">
-          <v-icon>mdi-instagram</v-icon>
-        </a>
-        <a href="https://twitter.com/CastellsBerlin"
-            target="_blank"
-            class="mx-5">
-          <v-icon>mdi-twitter</v-icon>
-        </a>
-      </v-col>
-
-      <v-col class="col-12 col-md-4 v-center">
-        <v-img :src="require('../assets/escut.svg')"
-              class="mx-3"
-               alt="Castellers de Berlin"
-               max-height="90"
-               max-width="90">
-        </v-img>
-
-        <v-img :src="require('../assets/adler-logo.png')"
-              class="mx-3 invert"
-               alt="Castellers de Berlin"
-               max-height="90"
-               max-width="90">
-        </v-img>
+  <v-footer padless class="black pt-5 pb-5">
+    <v-row no-gutters>
+      <v-col>
+        <v-row class="justify-center">
+          <v-btn v-for="link in links"
+                 :key="link.url"
+                 :href="link.url"
+                 class="mx-4 white--text"
+                 icon>
+            <v-icon size="24px">{{ link.icon }}</v-icon>
+          </v-btn>
+        </v-row>
+        <v-row class="justify-center">
+          <LegalNotice/>
+        </v-row>
       </v-col>
     </v-row>
-    </v-container>
-  </v-container>
+  </v-footer>
 </template>
 
-<style lang="scss">
-  .footer {
-    background: #000;
-  }
+<script>
+import LegalNotice from './LegalNotice.vue';
 
-  .v-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .theme--light.v-icon {
-    color: #fcbf43;
-  }
-
-  .invert {
-    filter: invert(100%);
-  }
-
-</style>
-
-<i18n>
-en:
-  impressum: "Legal notice"
-de:
-  impressum: "Impressum"
-ca:
-  impressum: "Avís Legal"
-</i18n>
+export default {
+  components: { LegalNotice },
+  data: () => ({
+    links: [
+      { icon: 'mdi-facebook', url: 'https://www.facebook.com/CastellersdeBerlin/' },
+      { icon: 'mdi-instagram', url: 'https://www.instagram.com/castellersdeberlin/' },
+      { icon: 'mdi-twitter', url: 'https://twitter.com/CastellsBerlin' },
+      { icon: 'mdi-meetup', url: 'https://www.meetup.com/Castellers-de-Berlin/' },
+    ],
+  }),
+};
+</script>

@@ -2,7 +2,7 @@
   <v-app-bar app
              prominent
              dense
-             hide-on-scroll
+             absolute
              class="primary"
              id="app-bar">
     <v-toolbar-items>
@@ -18,7 +18,7 @@
         </v-img>
       </v-btn>
     </v-toolbar-items>
-    <v-spacer></v-spacer>
+    <v-spacer/>
     <v-toolbar-items>
       <v-btn text
              exact
@@ -33,7 +33,7 @@
           {{ $t('calendar') }}
       </v-btn>
     </v-toolbar-items>
-    <v-spacer></v-spacer>
+    <v-spacer/>
     <v-toolbar-items>
       <LanguageSelector/>
     </v-toolbar-items>
@@ -61,7 +61,7 @@ export default {
     }
 
     .logo-active {
-      color: transparent;
+      color: transparent !important;
     }
   }
 </style>
