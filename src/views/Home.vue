@@ -44,6 +44,35 @@
         </v-row>
       </v-container>
     </div>
+    <div class="theme--light primary">
+      <v-container>
+        <v-row class="section-title">
+          <v-col>
+            <div class="black--text">
+              {{ $t('withSupport') }}
+            </div>
+            <v-divider class="black"/>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col class="text-center invert">
+            <v-btn v-for="sponsor in sponsors"
+                   :key="sponsor.url"
+                   :href="sponsor.url"
+                   text
+                   height="150"
+                   width="150"
+                   class="ml-5 mr-5">
+              <v-img :src="require(`../assets/${sponsor.icon}`)"
+                     :alt="sponsor.name"
+                     height="140"
+                     width="140">
+              </v-img>
+            </v-btn>
+          </v-col>
+        </v-row>
+      </v-container>
+    </div>
   </div>
 </template>
 
@@ -64,6 +93,21 @@ export default {
     Instagram,
     Facebook,
   },
+
+  data: () => ({
+    sponsors: [
+      {
+        icon: 'adler.png',
+        name: 'Vgg. Adler 1912',
+        url: 'https://www.adler1912.de/',
+      },
+      {
+        icon: 'kasal.png',
+        name: 'Katalanisches Salon',
+        url: 'https://www.katalanischer-salon.de/',
+      },
+    ],
+  }),
 };
 </script>
 
@@ -71,10 +115,13 @@ export default {
 en:
   joinUs: Join us
   followUs: Follow us
+  withSupport: With the support of
 de:
   joinUs: Begleiten Sie uns
   followUs: Folge uns
+  withSupport: Mit der Unterstützung von
 ca:
   joinUs: Uneix-te a nosaltres
   followUs: Segueix-nos
+  withSupport: Amb el suport de
 </i18n>
