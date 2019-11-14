@@ -9,7 +9,7 @@
           <p>DE BERLIN</p>
         </div>
         <div class="display-5 banner-author">
-          80 Carlos Collado
+          © Carlos Collado
         </div>
       </v-row>
     </v-parallax>
