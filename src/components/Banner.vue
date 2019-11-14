@@ -4,7 +4,7 @@
                 src="/img/banner/mobile.jpg"
                 height="400">
       <v-row class="white--text">
-        <div class="display-2 banner-text font-weight-bold text-uppercase">
+        <div class="display-1 banner-text font-weight-bold text-uppercase">
           <p>CASTELLERS</p>
           <p>DE BERLIN</p>
         </div>
