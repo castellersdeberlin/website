@@ -26,22 +26,22 @@ export default {
 
 .v-application {
   .container {
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding-top: 80px !important;
+    padding-bottom: 80px !important;
 
     .section-title {
       font-weight: 900 !important;
       color: rgba(0, 0, 0, 0.8) !important;
       letter-spacing: 0.14em !important;
       text-transform: uppercase !important;
-      line-height: 2rem;
+      line-height: 2rem !important;
       font-size: 1.5rem !important;
-      padding-bottom: 50px;
-      text-align: center;
+      padding-bottom: 50px !important;
+      text-align: center !important;
 
       .v-divider {
-        opacity: 40%;
-        margin-top: 10px;
+        opacity: 40% !important;
+        margin-top: 10px !important;
       }
     }
   }
