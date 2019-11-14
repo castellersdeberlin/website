@@ -10,7 +10,7 @@
             <v-divider class="black"/>
           </v-col>
         </v-row>
-        <v-row class="ml-12 mr-12 pl-12 pr-12">
+        <v-row class="pl-12 pr-12">
           <p>{{ $t('about1') }}</p>
           <p>{{ $t('about2') }}</p>
           <p>{{ $t('about3') }}</p>
