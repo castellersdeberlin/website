@@ -40,7 +40,6 @@ export default {
       text-align: center !important;
 
       .v-divider {
-        opacity: 40% !important;
         margin-top: 10px !important;
       }
     }

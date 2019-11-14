@@ -6,9 +6,11 @@
           <v-btn v-for="link in links"
                  :key="link.url"
                  :href="link.url"
-                 class="mx-4 white--text"
+                 class="mx-4"
                  icon>
-            <v-icon size="24px">{{ link.icon }}</v-icon>
+            <v-icon size="24px" class="white--text">
+              {{ link.icon }}
+            </v-icon>
           </v-btn>
         </v-row>
         <v-row class="justify-center">
