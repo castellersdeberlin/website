@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Carousel/>
+    <Banner/>
     <div>
       <v-container>
         <v-row class="section-title">
@@ -21,7 +21,7 @@
         </v-row>
       </v-container>
     </div>
-    <div class="theme--light secondary">
+    <div class="theme--light secondary hidden-xs-only">
       <v-container>
         <v-row class="section-title">
           <v-col>
@@ -77,7 +77,7 @@
 </template>
 
 <script>
-import Carousel from '../components/Carousel.vue';
+import Banner from '../components/Banner.vue';
 import Instagram from '../components/Instagram.vue';
 import Twitter from '../components/Twitter.vue';
 import Facebook from '../components/Facebook.vue';
@@ -88,7 +88,7 @@ export default {
   components: {
     RehearsalFridays,
     RehearsalTuesdays,
-    Carousel,
+    Banner,
     Twitter,
     Instagram,
     Facebook,
