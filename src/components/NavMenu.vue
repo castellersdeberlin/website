@@ -46,6 +46,14 @@
       class="hidden-sm-and-up">
       <v-list dense
               nav>
+        <v-list-item>
+          <v-btn to="/"
+                 text
+                 exact
+                 class="theme--light">
+            {{ $t('home') }}
+          </v-btn>
+        </v-list-item>
         <v-list-item v-for="link in links"
                             :key="link.name">
           <v-btn :to="{ name: link.path }"
