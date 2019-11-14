@@ -26,32 +26,32 @@ export default {
 
 .v-application {
   .container {
-    padding-top: 80px !important;
-    padding-bottom: 80px !important;
+    padding-top: 80px;
+    padding-bottom: 80px;
 
     .section-title {
-      font-weight: 900 !important;
-      color: rgba(0, 0, 0, 0.8) !important;
-      letter-spacing: 0.14em !important;
-      text-transform: uppercase !important;
-      line-height: 2rem !important;
-      font-size: 1.5rem !important;
-      padding-bottom: 50px !important;
-      text-align: center !important;
+      font-weight: 900;
+      color: rgba(0, 0, 0, 0.8);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      line-height: 2rem;
+      font-size: 1.5rem;
+      padding-bottom: 50px;
+      text-align: center;
 
       .v-divider {
-        margin-top: 10px !important;
+        margin-top: 10px;
       }
     }
   }
 
   .v-btn {
-    color: rgba(0, 0, 0, 0.8) !important;
-    letter-spacing: 0.192em !important;
+    color: rgba(0, 0, 0, 0.8);
+    letter-spacing: 0.192em;
   }
 
   .title {
-    color: rgba(0, 0, 0, 0.65) !important;
+    color: rgba(0, 0, 0, 0.65);
   }
 }
 </style>

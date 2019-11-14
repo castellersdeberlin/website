@@ -53,10 +53,6 @@ export default {
 };
 </script>
 
-<style scoped>
-
-</style>
-
 <i18n>
 en:
   howTo: How to find us

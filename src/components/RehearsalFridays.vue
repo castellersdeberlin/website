@@ -15,10 +15,6 @@ export default {
 };
 </script>
 
-<style scoped>
-
-</style>
-
 <i18n>
 en:
   title: Every Friday
