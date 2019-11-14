@@ -41,7 +41,7 @@
     </v-app-bar>
     <v-navigation-drawer
       v-model="drawer"
-      absolute
+      fixed
       temporary
       class="hidden-sm-and-up">
       <v-list dense
