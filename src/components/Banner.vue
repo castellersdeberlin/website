@@ -1,12 +1,8 @@
 <template>
-  <v-carousel id="main-banner"
-              height="700"
-              cycle
-              hide-delimiter-background
-              show-arrows-on-hover>
-    <v-carousel-item v-for="(slide, i) in slides"
-                     :key="i"
-                     :src="`/img/gallery/landscape/${slide.img}`">
+  <div id="main-banner">
+    <v-parallax v-if="$vuetify.breakpoint.xsOnly"
+                src="/img/banner/mobile.jpg"
+                height="400">
       <v-overlay absolute
                  opacity="0.25"
                  color="grey">
@@ -15,11 +11,32 @@
           <p>DE BERLIN</p>
         </div>
         <div class="display-5 banner-author">
-          {{ slide.author }}
+          © Carlos Collado
         </div>
       </v-overlay>
-    </v-carousel-item>
-  </v-carousel>
+    </v-parallax>
+    <v-carousel v-else
+                height="700"
+                cycle
+                hide-delimiter-background
+                show-arrows-on-hover>
+      <v-carousel-item v-for="(slide, i) in slides"
+                       :key="i"
+                       :src="`/img/banner/${slide.img}`">
+        <v-overlay absolute
+                   opacity="0.25"
+                   color="grey">
+          <div class="display-3 banner-text font-weight-bold text-uppercase">
+            <p>CASTELLERS</p>
+            <p>DE BERLIN</p>
+          </div>
+          <div class="display-5 banner-author">
+            {{ slide.author }}
+          </div>
+        </v-overlay>
+      </v-carousel-item>
+    </v-carousel>
+  </div>
 </template>
 
 <script>
@@ -59,7 +76,7 @@ export default {
     padding: 50px;
   }
   .banner-text {
-    text-shadow: -1px 0 grey, 0 1px grey, 1px 0 grey, 0 -1px grey;
+    text-shadow: -0.2px 0 grey, 0 0.2px grey, 0.2px 0 grey, 0 -0.2px grey;
   }
   .banner-author {
     position: absolute;

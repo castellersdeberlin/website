@@ -1,43 +1,66 @@
 <template>
-  <v-app-bar app
-             prominent
-             dense
-             absolute
-             class="primary"
-             id="app-bar">
-    <v-toolbar-items>
-      <v-btn to="/"
-             exact
-             depressed
-             exact-active-class="logo-active"
-             class="v-btn--flat">
-        <v-img :src="require('../assets/escut.svg')"
-               alt="Castellers de Berlin"
-               max-height="90"
-               max-width="90">
-        </v-img>
-      </v-btn>
-    </v-toolbar-items>
-    <v-spacer/>
-    <v-toolbar-items>
-      <v-btn text
-             exact
-             :to="{ name: 'about' }"
-             class="font-weight-black theme--light">
-          {{ $t('about') }}
-      </v-btn>
-      <v-btn text
-             exact
-             :to="{ name: 'calendar' }"
-             class="font-weight-black theme--light">
-          {{ $t('calendar') }}
-      </v-btn>
-    </v-toolbar-items>
-    <v-spacer/>
-    <v-toolbar-items>
-      <LanguageSelector/>
-    </v-toolbar-items>
-  </v-app-bar>
+  <div>
+    <v-app-bar app
+               :prominent="!reduced"
+               :short="reduced"
+               :absolute="!reduced"
+               dense
+               elevation="5"
+               class="primary"
+               id="app-bar">
+      <v-toolbar-items>
+        <v-btn to="/"
+               exact
+               depressed
+               exact-active-class="logo-active"
+               class="v-btn--flat">
+          <v-img :src="require('../assets/escut.svg')"
+                 alt="Castellers de Berlin"
+                 :max-height="logoSize"
+                 :max-width="logoSize">
+          </v-img>
+        </v-btn>
+      </v-toolbar-items>
+      <v-spacer/>
+      <v-toolbar-items class="hidden-xs-only">
+        <v-btn v-for="link in links"
+               :key="link.name"
+               :to="{ name: link.path }"
+               text
+               exact
+               class="font-weight-black theme--light">
+            {{ $t(link.name) }}
+        </v-btn>
+      </v-toolbar-items>
+      <v-spacer/>
+      <v-toolbar-items class="hidden-xs-only">
+        <LanguageSelector/>
+      </v-toolbar-items>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"
+                          class="hidden-sm-and-up"></v-app-bar-nav-icon>
+    </v-app-bar>
+    <v-navigation-drawer
+      v-model="drawer"
+      absolute
+      temporary
+      class="hidden-sm-and-up">
+      <v-list dense
+              nav>
+        <v-list-item v-for="link in links"
+                            :key="link.name">
+          <v-btn :to="{ name: link.path }"
+                 text
+                 exact
+                 class="theme--light">
+            {{ $t(link.name) }}
+          </v-btn>
+        </v-list-item>
+        <v-list-item-action>
+          <LanguageSelector/>
+        </v-list-item-action>
+      </v-list>
+    </v-navigation-drawer>
+  </div>
 </template>
 
 <script>
@@ -45,6 +68,24 @@ import LanguageSelector from './LanguageSelector.vue';
 
 export default {
   components: { LanguageSelector },
+
+  data: () => ({
+    drawer: false,
+    links: [
+      { path: 'about', name: 'about' },
+      { path: 'calendar', name: 'calendar' },
+    ],
+  }),
+
+  computed: {
+    logoSize() {
+      return this.reduced ? 50 : 90;
+    },
+
+    reduced() {
+      return this.$vuetify.breakpoint.xsOnly;
+    },
+  },
 };
 </script>
 
