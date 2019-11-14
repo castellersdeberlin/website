@@ -66,6 +66,9 @@ export default {
 
 <style lang="scss">
 #main-banner {
+  .v-icon {
+    color: white;
+  }
   .row {
     width: 100%;
     height: 100%;
