@@ -3,17 +3,15 @@
     <v-parallax v-if="$vuetify.breakpoint.xsOnly"
                 src="/img/banner/mobile.jpg"
                 height="400">
-      <v-overlay absolute
-                 opacity="0.25"
-                 color="grey">
-        <div class="display-3 banner-text font-weight-bold text-uppercase">
+      <v-row class="white--text">
+        <div class="display-2 banner-text font-weight-bold text-uppercase">
           <p>CASTELLERS</p>
           <p>DE BERLIN</p>
         </div>
         <div class="display-5 banner-author">
-          © Carlos Collado
+          80 Carlos Collado
         </div>
-      </v-overlay>
+      </v-row>
     </v-parallax>
     <v-carousel v-else
                 height="700"
@@ -23,9 +21,7 @@
       <v-carousel-item v-for="(slide, i) in slides"
                        :key="i"
                        :src="`/img/banner/${slide.img}`">
-        <v-overlay absolute
-                   opacity="0.25"
-                   color="grey">
+        <v-row class="white--text">
           <div class="display-3 banner-text font-weight-bold text-uppercase">
             <p>CASTELLERS</p>
             <p>DE BERLIN</p>
@@ -33,7 +29,7 @@
           <div class="display-5 banner-author">
             {{ slide.author }}
           </div>
-        </v-overlay>
+        </v-row>
       </v-carousel-item>
     </v-carousel>
   </div>
@@ -70,7 +66,7 @@ export default {
 
 <style lang="scss">
 #main-banner {
-  .v-overlay__content {
+  .row {
     width: 100%;
     height: 100%;
     padding: 50px;
