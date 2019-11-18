@@ -30,9 +30,8 @@ export default {
     items: [
       { role: 'presidenta', who: ['Anna M.'] },
       { role: 'vicepresidenta', who: ['Laura L.'] },
-      { role: 'vocal', who: ['Mercè A.'] },
+      { role: 'secretari', who: ['Mercè A.'] },
       { role: 'tresorer', who: ['Róman D.'] },
-      { role: 'secretari', who: ['Adrià M.'] },
       { role: 'socialmedia', who: ['Dennis B.', 'Míriam P.', 'Héctor B.'] },
     ],
   }),
@@ -62,6 +61,6 @@ ca:
   vicepresidenta: "Vicepresidenta"
   vocal: "Vocal"
   tresorer: "Tresorer"
-  secretari: "Secretari"
+  secretari: "Secretària"
   socialmedia: "Equip de Xarxes Socials"
 </i18n>

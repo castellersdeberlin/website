@@ -29,9 +29,10 @@ export default {
   data: () => ({
     items: [
       { role: 'capcolla', who: ['Xarli S.'] },
-      { role: 'canalla', who: ['Berta C.', 'Míriam P.'] },
-      { role: 'troncs', who: ['Sílvia M.'] },
-      { role: 'pinya', who: ['Andreu', 'Joachim'] },
+      { role: 'sotscapcolla', who: ['Sílvia M.'] },
+      { role: 'canalla', who: ['Berta C.', 'Marina M.', 'Míriam P.'] },
+      { role: 'troncs', who: ['Sílvia M.', 'Cristina M.', 'Laura B.'] },
+      { role: 'pinya', who: ['Andreu E.', 'Javi O.'] },
     ],
   }),
 };
@@ -49,16 +50,16 @@ en:
 de:
   head: "Head"
   tecnica: "Technical team"
-  capcolla: "Cap der Colla"
-  sotscapcolla: "Stellvertretender Cap der Colla"
-  canalla: "Team der Canalla"
-  troncs: "Team der Troncs"
-  pinya: "Team der Pinyes"
+  capcolla: "Anführer"
+  sotscapcolla: "Stellvertretender Anführer"
+  canalla: "Kinderteam (Canalla)"
+  troncs: "Stammteam (Troncs)"
+  pinya: "Zapfenteam (Pinyes)"
 ca:
   head: "Cap"
   tecnica: "Tècnica"
   capcolla: "Cap de Colla"
-  sotscapcolla: "Sotscap de Colla"
+  sotscapcolla: "Sots-Cap de Colla"
   canalla: "Equip de Canalla"
   troncs: "Equip de Troncs"
   pinya: "Equip de Pinyes"
