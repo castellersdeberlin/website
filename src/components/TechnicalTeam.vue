@@ -14,7 +14,8 @@
               </v-list-item-title>
               <div v-for="(person, index) in item.who"
                    :key="index">
-                {{ person }}
+                {{ person.name }}
+                <span v-if="person.label">({{ $t(person.label) }})</span>
               </div>
             </v-list-item-content>
           </v-list-item>
@@ -28,11 +29,31 @@
 export default {
   data: () => ({
     items: [
-      { role: 'capcolla', who: ['Xarli S.'] },
-      { role: 'sotscapcolla', who: ['Sílvia M.'] },
-      { role: 'canalla', who: ['Berta C.', 'Marina M.', 'Míriam P.'] },
-      { role: 'troncs', who: ['Sílvia M.', 'Cristina M.', 'Laura B.'] },
-      { role: 'pinya', who: ['Andreu E.', 'Javi O.'] },
+      { role: 'capcolla', who: [{ name: 'Xarli S.' }] },
+      { role: 'sotscapcolla', who: [{ name: 'Sílvia M.' }] },
+      {
+        role: 'canalla',
+        who: [
+          { name: 'Berta C.', label: 'headf' },
+          { name: 'Marina M.', label: 'headf' },
+          { name: 'Míriam P.', label: 'headf' },
+        ],
+      },
+      {
+        role: 'troncs',
+        who: [
+          { name: 'Sílvia M.', label: 'headf' },
+          { name: 'Cristina M.' },
+          { name: 'Laura B.' },
+        ],
+      },
+      {
+        role: 'pinya',
+        who: [
+          { name: 'Andreu E.', label: 'headm' },
+          { name: 'Javi O.' },
+        ],
+      },
     ],
   }),
 };
@@ -40,7 +61,8 @@ export default {
 
 <i18n>
 en:
-  head: "Head"
+  headf: "Head"
+  headm: "Head"
   tecnica: "Technical team"
   capcolla: "Cap of Colla"
   sotscapcolla: "Deputy Cap of Colla"
@@ -48,15 +70,17 @@ en:
   troncs: "Team of Troncs"
   pinya: "Team of Pinyes"
 de:
-  head: "Head"
+  headf: "Anführerin"
+  headm: "Anführer"
   tecnica: "Technical team"
   capcolla: "Anführer"
-  sotscapcolla: "Stellvertretender Anführer"
+  sotscapcolla: "Stellvertretender Anführerin"
   canalla: "Kinderteam (Canalla)"
   troncs: "Stammteam (Troncs)"
   pinya: "Zapfenteam (Pinyes)"
 ca:
-  head: "Cap"
+  headf: "Cap"
+  headm: "Cap"
   tecnica: "Tècnica"
   capcolla: "Cap de Colla"
   sotscapcolla: "Sots-Cap de Colla"
