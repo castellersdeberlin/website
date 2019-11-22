@@ -11,6 +11,7 @@
       <v-card-title class="headline">{{ $t('impressum') }}</v-card-title>
       <v-card-text>
         <div class="overline font-weight-black">{{ $t('responsible') }}</div>
+        <div>Laura Luiz Escoriza</div>
         <div>castellersdeberlin@gmail.com</div>
       </v-card-text>
       <v-card-text>
