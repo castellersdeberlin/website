@@ -48,12 +48,12 @@ en:
   secretari: "Secretary"
   socialmedia: "Social Media Team"
 de:
-  junta: "Board"
-  presidenta: "President"
-  vicepresidenta: "Vice-President"
+  junta: "Gremium"
+  presidenta: "Präsidentin"
+  vicepresidenta: "Vize-Präsidentin"
   vocal: "Vocal"
-  tresorer: "Treasury"
-  secretari: "Secretary"
+  tresorer: "Schatzmeister"
+  secretari: "Geschäftsführerin"
   socialmedia: "Social Media Team"
 ca:
   junta: "Junta"
