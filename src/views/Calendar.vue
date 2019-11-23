@@ -26,7 +26,7 @@
 en:
   calendar: Rehearsals and performances
 de:
-  calendar: Proben und Aufführungen
+  Kalender: Proben und Aufführungen
 ca:
-  calendar: Assajos i actuacions
+  calendari: Assajos i actuacions
 </i18n>
