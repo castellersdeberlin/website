@@ -62,7 +62,7 @@ export default {
       },
       {
         color: 'red',
-        date: '8th Apr 2019',
+        date: '8th Jun 2019',
         title: 'III International Human Tower Festival',
         event: 'We participated in Copenhagen and achieved 3d5 and 3d5a for the first time',
       },
