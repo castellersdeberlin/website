@@ -83,7 +83,7 @@ de:
   about2: "Die Gruppe ist eine unpolitische multikulturelle Organisation, in der Menschen aus der
     ganzen Welt willkommen sind. Das Ziel ist, die \"Castell\" Tradition in Berlin zu fördern: fürs
     Erste durch Proben und durch öffentliche Aufführungen."
-  about3: "Castellers de Berlin haben seit der Gründung regelmäßig trainiert, und haben einen
+  about3: "Die Castellers de Berlin haben seit der Gründung regelmäßig trainiert und haben einen
     starken Lernwillen gezeigt, da es keine einfache Aufgabe ist, Castells zu bauen. Kurz gesagt:
     das Bauen von Castells wird durch Teamarbeit, Vertrauen und den Willen, jeden Tag besser zu
     werden, erreicht!"
