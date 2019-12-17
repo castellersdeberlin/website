@@ -123,7 +123,7 @@ en:
 de:
   home: "Home"
   about: "Über uns"
-  calendar: "Kalendar"
+  calendar: "Kalender"
 ca:
   home: "Home"
   about: "Qui som"
