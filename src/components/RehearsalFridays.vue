@@ -23,9 +23,9 @@ en:
     football field. Go inside and you'll find us in the rightmost hall."
 de:
   title: Jeden Freitag
-  text: "Geht auf das Schulgelände und geht dann nach links wo ihr einen runden Gebäudeaufgang
-    findet. Geht ein paar Schritte weiter und ihr findet sie Sporthalle zu Eurer Linken, gegenüber
-    vom Fußballfeld. Geht rein und ihr werdet uns in der letzten (rechten) der drei Hallen."
+  text: "Geht auf das Schulgelände und dann nach links wo ihr einen runden Gebäudeaufgang
+    findet. Geht ein paar Schritte weiter und ihr findet die Sporthalle zu Eurer Linken, gegenüber
+    vom Fußballfeld. Geht rein und ihr findet uns in der letzten (rechten) der drei Hallen."
 ca:
   title: Cada divendres
   text: "Entra a l'escola i gira a l'esquerra un cop arribis a l'edifici amb les escales rodones.
