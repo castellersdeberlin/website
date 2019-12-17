@@ -24,7 +24,7 @@ en:
 de:
   title: Jeden Dienstag
   text: "Überquert den Parkplatz und dann rechts, dort wo die Fußballfelder sind.
-    Dort findet ihr eine größere Metalltür zur Sporthalle zu Eurer Rechten. Klopf und wir
+    Dort findet ihr eine größere Metalltür zur Sporthalle zu Eurer Rechten. Klopft und wir
     machen Euch auf sobald wir Euch hören."
 ca:
   title: Cada dimarts
