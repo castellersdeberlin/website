@@ -18,7 +18,7 @@
     "vue-instagram-embed": "1.0.0",
     "vue-router": "3.1.5",
     "vue-tweet-embed": "2.4.0",
-    "vuetify": "2.2.3",
+    "vuetify": "2.2.4",
     "vuex": "3.1.2"
   },
   "devDependencies": {
