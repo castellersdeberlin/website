@@ -28,9 +28,8 @@
 export default {
   data: () => ({
     items: [
-      { role: 'presidenta', who: ['Anna M.'] },
+      { role: 'presidenta', who: ['Mercè A.'] },
       { role: 'vicepresidenta', who: ['Laura L.'] },
-      { role: 'secretari', who: ['Mercè A.'] },
       { role: 'tresorer', who: ['Róman D.'] },
       { role: 'socialmedia', who: ['Dennis B.', 'Míriam P.', 'Héctor B.'] },
     ],
@@ -43,7 +42,6 @@ en:
   junta: "Board"
   presidenta: "President"
   vicepresidenta: "Vice-President"
-  vocal: "Vocal"
   tresorer: "Treasury"
   secretari: "Secretary"
   socialmedia: "Social Media Team"
@@ -51,7 +49,6 @@ de:
   junta: "Gremium"
   presidenta: "Präsidentin"
   vicepresidenta: "Vize-Präsidentin"
-  vocal: "Vocal"
   tresorer: "Schatzmeister"
   secretari: "Geschäftsführerin"
   socialmedia: "Social Media Team"
@@ -59,7 +56,6 @@ ca:
   junta: "Junta"
   presidenta: "Presidenta"
   vicepresidenta: "Vicepresidenta"
-  vocal: "Vocal"
   tresorer: "Tresorer"
   secretari: "Secretària"
   socialmedia: "Equip de Xarxes Socials"
