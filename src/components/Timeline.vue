@@ -81,32 +81,33 @@ export default {
   de:
     purple:
       date: 10. Januar 2018
-      title: Foundation
-      event: Castellers de Berlin was founded by a small but enthusiastic group
+      title: Gründung
+      event: Die Castellers de Berlin werden gegründet
     cyan:
       date: 15. April 2018
-      title: First rehearsal
-      event: We met and started training the first set of "espatlleres"
+      title: Erstes Training
+      event: Wir haben unser erstes Training begonnen, also unsere ersten "espatlleres"
     blue:
       date: 4. September 2018
       title: Vgg. Adler 1912
-      event: We joined the Adler family, our sport club
+      event: Wir sind Teil der Adler Familie geworden, unsere Verein
     green:
       date: 22. September 2018
       title: Joan Miró Workshop
-      event: Our first public performance along with a small workshop for the kids
+      event: Unsere erste öffentliche Aufführung, mit ein kleines Workshop für die Kinder
     amber:
       date: 28. Februar 2019
       title: Castellers on Air
-      event: "We appeared in TV, in RBB's show \"ZIBB: Zuhause in Berlin und Brandenburg\""
+      event: "Ein Beitrag über uns läuft in der RBB-Sendung
+              \"ZIBB: Zuhause in Berlin und Brandenburg\""
     orange:
       date: 1. März 2019
       title: Bizim Beatz
-      event: First pd4 in a public performance, in front of a great audience
+      event: Erster pd4 bei einer öffentlichen Aufführung
     red:
       date: 8. April 2019
       title: III International Human Tower Festival
-      event: We participated in Copenhagen and achieved 3d5 and 3d5a for the first time
+      event: Wir nehmen am Treffen in Kopenhagen teil und schaffen zum ersten Mal einen 3d5 und 3d5a
   ca:
     purple:
       date: 10 Gener 2018
