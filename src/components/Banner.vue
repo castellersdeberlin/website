@@ -1,15 +1,15 @@
 <template>
   <div id="main-banner">
     <v-parallax v-if="$vuetify.breakpoint.xsOnly"
-                src="/img/banner/mobile.jpg"
-                height="400">
-      <v-row class="white--text">
+                height="600"
+                :src="`/img/banner/${slidesMobile[mobilePicIndex].img}`">
+      <v-row class="white--text banner-mobile">
         <div class="display-1 banner-text font-weight-bold text-uppercase">
           <p>CASTELLERS</p>
           <p>DE BERLIN</p>
         </div>
         <div class="display-5 banner-author">
-          © Carlos Collado
+          {{ slidesMobile[mobilePicIndex].author }}
         </div>
       </v-row>
     </v-parallax>
@@ -59,7 +59,20 @@ export default {
           author: '© Carlos Collado',
         },
       ],
+      slidesMobile: [
+        {
+          img: 'mobile-1.jpg',
+          author: '© Carlos Collado',
+        },
+        {
+          img: 'mobile-2.jpg',
+        },
+      ],
+      mobilePicIndex: 0,
     };
+  },
+  created() {
+    this.mobilePicIndex = Math.floor(Math.random() * this.slidesMobile.length);
   },
 };
 </script>
@@ -73,6 +86,9 @@ export default {
     width: 100%;
     height: 100%;
     padding: 50px;
+    &.row.banner-mobile {
+      padding-left: 20px;
+    }
   }
   .banner-text {
     text-shadow: -0.2px 0 grey, 0 0.2px grey, 0.2px 0 grey, 0 -0.2px grey;
