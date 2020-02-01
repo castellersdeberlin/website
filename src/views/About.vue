@@ -79,9 +79,9 @@ de:
   organization: Organigramm
   about1: "Castellers de Berlin wurde im Januar 2018 von Personen gegründet, die ein Stück dieser
     katalanischen Tradition in die deutsche Hauptstadt bringen wollten. Früher gab es andere
-    Castellers Gruppen in Deutschland, aber diese ist die erste und einzige in Berlin."
-  about2: "Die Gruppe ist eine unpolitische multikulturelle Organisation, in der Menschen aus der
-    ganzen Welt willkommen sind. Das Ziel ist, die \"Castell\" Tradition in Berlin zu fördern: fürs
+    Castellers-Gruppen in Deutschland, aber diese ist die erste und einzige in Berlin."
+  about2: "Die Gruppe ist eine unpolitische, multikulturelle Organisation, in der Menschen aus der
+    ganzen Welt willkommen sind. Das Ziel ist, die Tradition der Castells in Berlin zu fördern: fürs
     Erste durch Proben und durch öffentliche Aufführungen."
   about3: "Die Castellers de Berlin haben seit der Gründung regelmäßig trainiert und haben einen
     starken Lernwillen gezeigt, da es keine einfache Aufgabe ist, Castells zu bauen. Kurz gesagt:

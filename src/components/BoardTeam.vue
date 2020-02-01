@@ -46,9 +46,9 @@ en:
   secretari: "Secretary"
   socialmedia: "Social Media Team"
 de:
-  junta: "Gremium"
-  presidenta: "Präsidentin"
-  vicepresidenta: "Vize-Präsidentin"
+  junta: "Vorstand"
+  presidenta: "Vorsitzende"
+  vicepresidenta: "Stellvertretende Vorsitzende"
   tresorer: "Schatzmeister"
   secretari: "Geschäftsführerin"
   socialmedia: "Social Media Team"
