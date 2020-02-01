@@ -46,10 +46,12 @@
       class="hidden-sm-and-up">
       <v-list dense
               nav>
+        <v-list-item/>
         <v-list-item>
           <v-btn to="/"
                  text
                  exact
+                 width="100%"
                  class="theme--light">
             {{ $t('home') }}
           </v-btn>
@@ -59,13 +61,15 @@
           <v-btn :to="{ name: link.path }"
                  text
                  exact
+                 width="100%"
                  class="theme--light">
             {{ $t(link.name) }}
           </v-btn>
         </v-list-item>
-        <v-list-item-action>
+        <v-list-item/>
+        <v-list-item>
           <LanguageSelector/>
-        </v-list-item-action>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
   </div>
