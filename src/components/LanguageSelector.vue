@@ -3,6 +3,7 @@
     <template v-slot:activator="{ on }">
       <v-btn v-on="on"
              depressed
+             width="100%"
              class="text-uppercase font-weight-black theme--light v-btn--flat">
         <v-icon>language</v-icon>
         &nbsp; {{ $i18n.locale }}
