@@ -10,17 +10,57 @@
     <v-card>
       <v-card-title class="headline">{{ $t('impressum') }}</v-card-title>
       <v-card-text>
-        <div class="overline font-weight-black">{{ $t('responsible') }}</div>
-        <div>Laura Luiz Escoriza</div>
-        <div>castellersdeberlin@gmail.com</div>
+        <div class="subtitle-1 font-weight-black">Angaben gem&auml;&szlig; &sect; 5 TMG</div>
+        <p>Castellers de Berl&iacute;n<br />
+        <p><strong>Vertreten durch:</strong><br />Mercè A.</p>
       </v-card-text>
       <v-card-text>
-        <div class="overline font-weight-black">{{ $t('liability') }}</div>
-        {{ $t('liabilityText') }}
-      </v-card-text>
-      <v-card-text>
-        <div class="overline font-weight-black">{{ $t('dataProtection') }}</div>
-        {{ $t('dataProtectionText') }}
+        <div class="subtitle-1 font-weight-black">Kontakt</div>
+        <p>E-Mail: castellersdeberlin@gmail.com</p>
+        <p>
+          Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
+          Verbraucherschlichtungsstelle teilzunehmen.
+        </p>
+        <div class="overline font-weight-black">Haftung f&uuml;r Inhalte</div>
+        <p>
+          Als Diensteanbieter sind wir gem&auml;&szlig; &sect; 7 Abs.1 TMG f&uuml;r eigene Inhalte
+          auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach &sect;&sect; 8 bis
+          10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, &uuml;bermittelte oder
+          gespeicherte fremde Informationen zu &uuml;berwachen oder nach Umst&auml;nden zu forschen,
+          die auf eine rechtswidrige T&auml;tigkeit hinweisen.</p> <p>Verpflichtungen zur Entfernung
+          oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon
+          unber&uuml;hrt. Eine diesbez&uuml;gliche Haftung ist jedoch erst ab dem Zeitpunkt der
+          Kenntnis einer konkreten Rechtsverletzung m&ouml;glich. Bei Bekanntwerden von
+          entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
+        </p>
+        <div class="overline font-weight-black">Haftung f&uuml;r Links</div>
+        <p>
+          Unser Angebot enth&auml;lt Links zu externen Websites Dritter, auf deren Inhalte wir
+          keinen Einfluss haben. Deshalb k&ouml;nnen wir f&uuml;r diese fremden Inhalte auch keine
+          Gew&auml;hr &uuml;bernehmen. F&uuml;r die Inhalte der verlinkten Seiten ist stets der
+          jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden
+          zum Zeitpunkt der Verlinkung auf m&ouml;gliche Rechtsverst&ouml;&szlig;e
+          uuml;berpr&uuml;ft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht
+          erkennbar.</p> <p>Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch
+          ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von
+          Rechtsverletzungen werden wir derartige Links umgehend entfernen.
+        </p>
+        <div class="overline font-weight-black">Urheberrecht</div>
+        <p>
+          Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen
+          dem deutschen Urheberrecht. Die Vervielf&auml;ltigung, Bearbeitung, Verbreitung und jede
+          Art der Verwertung au&szlig;erhalb der Grenzen des Urheberrechtes bed&uuml;rfen der
+          schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien
+          dieser Seite sind nur f&uuml;r den privaten, nicht kommerziellen Gebrauch gestattet.
+        </p>
+        <p>
+          Soweit die Inhalte auf dieserSeite nicht vom Betreiber erstellt wurden, werden die
+          Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche
+          gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden,
+          bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen
+          werden wir derartige Inhalte umgehend entfernen.
+        </p>
+        <p class="caption">Quelle: <a href="https://www.e-recht24.de">e-recht24.de</a></p>
       </v-card-text>
       <v-card-actions class="justify-center">
         <v-btn @click="dialog = false"
@@ -44,22 +84,11 @@ export default {
 <i18n>
 en:
   impressum: Legal notice
-  responsible: Verantwortlich für die Inhalte
-  liability: Haftungshinweis
-  liabilityText: "Trotz sorgfältiger inhaltlicher Kontrolle kann keine Haftung für die Inhalte
-    externer Links übernommen werden. Für den Inhalt der verlinkten Seiten sind ausschließlich
-    die betreibenden Personen verantwortlich."
-  dataProtection: Datenschutz
-  dataProtectionText: "Über den Webhosting-Dienst Netlify Inc. (\"Netlify\") werden
-    nicht-personenbezogene Daten erhoben. Nach Auskunft des Dienstes werden in den Logfiles
-    folgende Daten gespeichert, die nicht bestimmten Personen zuordenbar sind: Browsertyp/
-    Browserversion, verwendetes Betriebssystem, Referrer URL, Hostname des zugreifenden Rechners,
-    Uhrzeit der Serveranfrage, pseudonymisierte IP Adresse. Die Speicherung der Daten dienst
-    ausschließlich der Traffic-Analyse der Website zu Optimierungszwecken. Es werden keine Daten
-    an Dritte weitergegeben."
   close: Close
 de:
   impressum: Impressum
+  close: Schließen
 ca:
   impressum: Avís Legal
+  close: Tancar
 </i18n>
