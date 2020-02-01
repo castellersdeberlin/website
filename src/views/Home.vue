@@ -117,7 +117,7 @@ en:
   followUs: Follow us
   withSupport: With the support of
 de:
-  joinUs: Begleiten Sie uns
+  joinUs: Komm und bau mit uns
   followUs: Folge uns
   withSupport: Mit der Unterstützung von
 ca:
