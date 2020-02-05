@@ -89,8 +89,7 @@ export default {
       return this.galleries;
     },
     galleryHead() {
-      const gl = this.$t('galleries');
-      // .map(item => item[0]);
+      const gl = this.$t('galleries')[0].map(item => item[0]);
 
       console.log('gl: ', gl);
       this.$set(this.galleryHeads, 0, gl);

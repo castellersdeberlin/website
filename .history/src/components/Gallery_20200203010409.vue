@@ -53,8 +53,8 @@ export default {
   },
   data() {
     return {
-      // path: '/img/media/galleries/',
-      // images,
+      path: '/img/media/galleries/',
+      images,
       lbGallery: [],
       galleries: [],
       siteLoading,
@@ -65,7 +65,7 @@ export default {
     this.galleryHead();
   },
   methods: {
-    lopenGallery(index) {
+    openGallery(index) {
       this.imagesN(index);
       this.$refs.lightbox.showImage(0);
     },
@@ -74,11 +74,10 @@ export default {
       console.log(e);
     },
     imagesN(index) {
-      console.log(this.lbGallery);
-      // rets.$set(this.lbGallery, 0, this.images[index][0]);
-      this.$set(this.lbGallery, 0, this.$t('galleries')[index][0]);
+      thisole.log(this.lbGallery);
+      rets.$set(this.lbGallery, 0, this.images[index][0]);
 
-      console.log('this.lbGallery: ', this.lbGallery);
+      console.log( 'this.lbGallery: ', this.lbGallery );
       return this.lbGallery;
     },
   },
@@ -89,13 +88,12 @@ export default {
       return this.galleries;
     },
     galleryHead() {
+      const galleryHeads = [];
       const gl = this.$t('galleries');
-      // .map(item => item[0]);
+      this.galleryHeads = this.$t('galleries')[0];
 
-      console.log('gl: ', gl);
-      this.$set(this.galleryHeads, 0, gl);
-      // this.galleryHeads = {...gl};
-      console.log('galleryHeads: ', this.galleryHeads);
+      console.log(gl);
+      console.log(this.galleryHeads);
       return this.galleryHeads;
     },
   },
@@ -124,12 +122,12 @@ en:
           src: '/img/media/galleries/190911_diada/074.jpg'
           caption: 'Second Gallery'
           date: '11th September 2019'
-    -
       -
           thumb: '/img/media/galleries/190911_diada/088-thumb.jpg'
           src: '/img/media/galleries/190911_diada/088.jpg'
           caption: 'Second Gallery'
           date: '11th September 2019'
+    -
       -
           thumb: '/img/media/galleries/190911_diada/065-thumb.jpg'
           src: '/img/media/galleries/190911_diada/065.jpg'
@@ -141,8 +139,8 @@ en:
           caption: 'Third Gallery'
           date: '--'
       -
-          thumb: '/img/media/galleries/190911_diada/074-thumb.jpg'
-          src: '/img/media/galleries/190911_diada/074.jpg'
+          thumb: '/img/media/galleries/190911_diada/066-thumb.jpg'
+          src: '/img/media/galleries/190911_diada/066.jpg'
           caption: 'Third Gallery'
           date: '--'
 de:

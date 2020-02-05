@@ -74,11 +74,11 @@ export default {
       console.log(e);
     },
     imagesN(index) {
-      console.log(this.lbGallery);
+      conssole.log(this.lbGallery);
       // rets.$set(this.lbGallery, 0, this.images[index][0]);
-      this.$set(this.lbGallery, 0, this.$t('galleries')[index][0]);
+      rets.$set(this.lbGallery, 0, this.$t('galleries')[index][0]);
 
-      console.log('this.lbGallery: ', this.lbGallery);
+      console.log( 'this.lbGallery: ', this.lbGallery );
       return this.lbGallery;
     },
   },
@@ -90,12 +90,10 @@ export default {
     },
     galleryHead() {
       const gl = this.$t('galleries');
-      // .map(item => item[0]);
+      this.$set(this.galleryHeads, 0, this.$t('galleries')[0]);
 
-      console.log('gl: ', gl);
-      this.$set(this.galleryHeads, 0, gl);
-      // this.galleryHeads = {...gl};
-      console.log('galleryHeads: ', this.galleryHeads);
+      console.log(gl);
+      console.log(this.galleryHeads);
       return this.galleryHeads;
     },
   },

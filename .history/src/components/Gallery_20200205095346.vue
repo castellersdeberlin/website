@@ -5,7 +5,7 @@
   </h2>
   <v-row>
       <v-col
-        v-for="(image, index) in this.galleryHeads"
+        v-for="(image, index) in this.galleryHeads[0]"
         :key="index"
         cols=4
         class="col-12 col-md-4 col-lg-3"
@@ -90,8 +90,6 @@ export default {
     },
     galleryHead() {
       const gl = this.$t('galleries');
-      // .map(item => item[0]);
-
       console.log('gl: ', gl);
       this.$set(this.galleryHeads, 0, gl);
       // this.galleryHeads = {...gl};

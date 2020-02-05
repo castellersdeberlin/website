@@ -1,0 +1,62 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+actions	src/store.js	/^  actions: {$/;"	r
+autoprefixer	postcss.config.js	/^    autoprefixer: {},$/;"	r
+base	src/router.js	/^  base: process.env.BASE_URL,$/;"	r
+component	src/router.js	/^      component: About,$/;"	r
+component	src/router.js	/^      component: Calendar,$/;"	r
+component	src/router.js	/^      component: Home,$/;"	r
+component	src/router.js	/^      component: Media,$/;"	r
+enableInSFC	vue.config.js	/^      enableInSFC: true,$/;"	r
+env	.eslintrc.js	/^  env: {$/;"	r
+exports	.eslintrc.js	/^module.exports = {$/;"	r
+exports	babel.config.js	/^module.exports = {$/;"	r
+exports	postcss.config.js	/^module.exports = {$/;"	r
+exports	vue.config.js	/^module.exports = {$/;"	r
+extends	.eslintrc.js	/^  extends: [$/;"	r
+fallbackLocale	src/i18n.js	/^  fallbackLocale: 'en',$/;"	r
+fallbackLocale	vue.config.js	/^      fallbackLocale: 'en',$/;"	r
+findLocale	src/i18n.js	/^function findLocale() {$/;"	r
+i18n	src/main.js	/^  i18n,$/;"	r
+i18n	vue.config.js	/^    i18n: {$/;"	r
+iconfont	src/plugins/vuetify.js	/^    iconfont: 'mdiSvg',$/;"	r
+icons	src/plugins/vuetify.js	/^  icons: {$/;"	r
+lang	src/i18n.js	/^  document.documentElement.lang = locale;$/;"	r
+light	src/plugins/vuetify.js	/^      light: {$/;"	r
+locale	src/i18n.js	/^  locale: findLocale(),$/;"	r
+locale	vue.config.js	/^      locale: 'en',$/;"	r
+localeDir	vue.config.js	/^      localeDir: 'locales',$/;"	r
+mode	src/router.js	/^  mode: 'history',$/;"	r
+module	vue.config.js	/^    config.module$/;"	r
+mutations	src/store.js	/^  mutations: {$/;"	r
+name	src/router.js	/^      name: 'about',$/;"	r
+name	src/router.js	/^      name: 'calendar',$/;"	r
+name	src/router.js	/^      name: 'home',$/;"	r
+name	src/router.js	/^      name: 'media',$/;"	r
+node	.eslintrc.js	/^    node: true,$/;"	r
+parser	.eslintrc.js	/^    parser: 'babel-eslint',$/;"	r
+parserOptions	.eslintrc.js	/^  parserOptions: {$/;"	r
+path	src/router.js	/^      path: '\/',$/;"	r
+path	src/router.js	/^      path: '\/about',$/;"	r
+path	src/router.js	/^      path: '\/calendar',$/;"	r
+path	src/router.js	/^      path: '\/media',$/;"	r
+pluginOptions	vue.config.js	/^  pluginOptions: {$/;"	r
+plugins	postcss.config.js	/^  plugins: {$/;"	r
+presets	babel.config.js	/^  presets: [$/;"	r
+primary	src/plugins/vuetify.js	/^        primary: '#fcbf43',$/;"	r
+productionTip	src/main.js	/^Vue.config.productionTip = false;$/;"	r
+root	.eslintrc.js	/^  root: true,$/;"	r
+router	src/main.js	/^  router,$/;"	r
+routes	src/router.js	/^  routes: [$/;"	r
+rules	.eslintrc.js	/^  rules: {$/;"	r
+secondary	src/plugins/vuetify.js	/^        secondary: '#999999',$/;"	r
+state	src/store.js	/^  state: {$/;"	r
+store	src/main.js	/^  store,$/;"	r
+theme	src/plugins/vuetify.js	/^  theme: {$/;"	r
+themes	src/plugins/vuetify.js	/^    themes: {$/;"	r
+transpileDependencies	vue.config.js	/^  transpileDependencies: [$/;"	r
+vuetify	src/main.js	/^  vuetify,$/;"	r

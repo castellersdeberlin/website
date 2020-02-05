@@ -33,7 +33,7 @@
       </v-col>
   </v-row>
   <LightBox
-    :images="this.lbGallery"
+    :images="this.lbGallery[0]"
     :ref="lightbox"
     :show-caption="true"
     :show-light-box="true"
@@ -45,6 +45,7 @@
 
 <script>
 import LightBox from 'vue-image-lightbox';
+import images from './gallery_list';
 import siteLoading from './siteloading.gif';
 
 export default {
@@ -53,19 +54,16 @@ export default {
   },
   data() {
     return {
-      // path: '/img/media/galleries/',
-      // images,
+      path: '/img/media/galleries/',
+      images,
       lbGallery: [],
       galleries: [],
       siteLoading,
       galleryHeads: [],
     };
   },
-  created() {
-    this.galleryHead();
-  },
   methods: {
-    lopenGallery(index) {
+    openGallery(index) {
       this.imagesN(index);
       this.$refs.lightbox.showImage(0);
     },
@@ -74,11 +72,8 @@ export default {
       console.log(e);
     },
     imagesN(index) {
+      this.$set(this.lbGallery, 0, this.images[index]);
       console.log(this.lbGallery);
-      // rets.$set(this.lbGallery, 0, this.images[index][0]);
-      this.$set(this.lbGallery, 0, this.$t('galleries')[index][0]);
-
-      console.log('this.lbGallery: ', this.lbGallery);
       return this.lbGallery;
     },
   },
@@ -89,145 +84,20 @@ export default {
       return this.galleries;
     },
     galleryHead() {
+      const galleryHeads = [];
       const gl = this.$t('galleries');
-      // .map(item => item[0]);
+      console.log(gl);
 
-      console.log('gl: ', gl);
-      this.$set(this.galleryHeads, 0, gl);
-      // this.galleryHeads = {...gl};
-      console.log('galleryHeads: ', this.galleryHeads);
+      this.galleries.map((grup) => {
+        console.log('grup', grup[0]);
+        this.galleryHeads.push(grup[0]);
+        return;
+      });
       return this.galleryHeads;
     },
   },
 };
 </script>
-
-
-<i18n>
-en:
-  seccio2: "Gallery"
-  galleries:
-    -
-      -
-          thumb: '/img/media/galleries/190911_diada/055-thumb.jpg'
-          src: '/img/media/galleries/190911_diada/055.jpg'
-          caption: 'Show at FAZ Atrium'
-          date: '11th September 2019'
-      -
-          thumb: '/img/media/galleries/190911_diada/059-thumb.jpg'
-          src: '/img/media/galleries/190911_diada/059.jpg'
-          caption: 'Show at FAZ Atrium'
-          date: '11th September 2019'
-    -
-      -
-          thumb: '/img/media/galleries/190911_diada/074-thumb.jpg'
-          src: '/img/media/galleries/190911_diada/074.jpg'
-          caption: 'Second Gallery'
-          date: '11th September 2019'
-    -
-      -
-          thumb: '/img/media/galleries/190911_diada/088-thumb.jpg'
-          src: '/img/media/galleries/190911_diada/088.jpg'
-          caption: 'Second Gallery'
-          date: '11th September 2019'
-      -
-          thumb: '/img/media/galleries/190911_diada/065-thumb.jpg'
-          src: '/img/media/galleries/190911_diada/065.jpg'
-          caption: 'Third Gallery'
-          date: '--'
-      -
-          thumb: '/img/media/galleries/190911_diada/066-thumb.jpg'
-          src: '/img/media/galleries/190911_diada/066.jpg'
-          caption: 'Third Gallery'
-          date: '--'
-      -
-          thumb: '/img/media/galleries/190911_diada/074-thumb.jpg'
-          src: '/img/media/galleries/190911_diada/074.jpg'
-          caption: 'Third Gallery'
-          date: '--'
-de:
-  seccio2: "Galerie"
-  galleries:
-    -
-      -
-        thumb: '/img/media/galleries/190911_diada/059-thumb.jpg'
-        src: '/img/media/galleries/190911_diada/059.jpg'
-        caption: 'Aufführung am FAZ Atrium'
-        date: '11. September 2019'
-      -
-        thumb: '/img/media/galleries/190911_diada/059-thumb.jpg'
-        src: '/img/media/galleries/190911_diada/059.jpg'
-        caption: 'Aufführung am FAZ Atrium'
-        date: '11. Setembre 2019'
-    -
-      -
-        thumb: '/img/media/galleries/190911_diada/074-thumb.jpg'
-        src: '/img/media/galleries/190911_diada/074.jpg'
-        caption: 'Zweite Gallery'
-        date: '--'
-      -
-        thumb: '/img/media/galleries/190911_diada/088-thumb.jpg'
-        src: '/img/media/galleries/190911_diada/088.jpg'
-        caption: 'Zweite Gallery'
-        date: '--'
-    -
-      -
-        thumb: '/img/media/galleries/190911_diada/065-thumb.jpg'
-        src: '/img/media/galleries/190911_diada/065.jpg'
-        caption: 'Dritte Gallery'
-        date: '--'
-      -
-        thumb: '/img/media/galleries/190911_diada/066-thumb.jpg'
-        src: '/img/media/galleries/190911_diada/066.jpg'
-        caption: 'Dritte Gallery'
-        date: '--'
-      -
-        thumb: '/img/media/galleries/190911_diada/066-thumb.jpg'
-        src: '/img/media/galleries/190911_diada/066.jpg'
-        caption: 'Dritte Gallery'
-        date: '--'
-ca:
-  seccio2: "Galeria"
-  galleries:
-    -
-      -
-        thumb: '/img/media/galleries/190911_diada/055-thumb.jpg'
-        src: '/img/media/galleries/190911_diada/055.jpg'
-        caption: 'Actuació al FAZ Atrium'
-        date: '11 Setembre 2019'
-      -
-        thumb: '/img/media/galleries/190911_diada/059-thumb.jpg'
-        src: '/img/media/galleries/190911_diada/059.jpg'
-        caption: 'Actuació al FAZ Atrium'
-        date: '11 Setembre 2019'
-    -
-      -
-        thumb: '/img/media/galleries/190911_diada/074-thumb.jpg'
-        src: '/img/media/galleries/190911_diada/074.jpg'
-        caption: 'Second Gallery'
-        date: '--'
-      -
-        thumb: '/img/media/galleries/190911_diada/088-thumb.jpg'
-        src: '/img/media/galleries/190911_diada/088.jpg'
-        caption: 'Second Gallery'
-        date: '--'
-    -
-      -
-        thumb: '/img/media/galleries/190911_diada/065-thumb.jpg'
-        src: '/img/media/galleries/190911_diada/065.jpg'
-        caption: 'Third Gallery'
-        date: '--'
-      -
-        thumb: '/img/media/galleries/190911_diada/066-thumb.jpg'
-        src: '/img/media/galleries/190911_diada/066.jpg'
-        caption: 'Third Gallery'
-        date: '--'
-      -
-        thumb: '/img/media/galleries/190911_diada/066-thumb.jpg'
-        src: '/img/media/galleries/190911_diada/066.jpg'
-        caption: 'Third Gallery'
-        date: '--'
-</i18n>
 
 <style lang="scss">
 
@@ -514,3 +384,129 @@ img.vue-lb-modal-image {
   overflow-y: hidden;
 }
 </style>
+
+<i18n>
+en:
+  seccio2: "Gallery"
+  galleries:
+    -
+      -
+          thumb: '/img/media/galleries/190911_diada/055-thumb.jpg'
+          src: '/img/media/galleries/190911_diada/055.jpg'
+          caption: 'Show at FAZ Atrium'
+          date: '11th September 2019'
+      -
+          thumb: '/img/media/galleries/190911_diada/059-thumb.jpg'
+          src: '/img/media/galleries/190911_diada/059.jpg'
+          caption: 'Show at FAZ Atrium'
+          date: '11th September 2019'
+    -
+      -
+          thumb: '/img/media/galleries/190911_diada/074-thumb.jpg'
+          src: '/img/media/galleries/190911_diada/074.jpg'
+          caption: 'Second Gallery'
+          date: '11th September 2019'
+      -
+          thumb: '/img/media/galleries/190911_diada/088-thumb.jpg'
+          src: '/img/media/galleries/190911_diada/088.jpg'
+          caption: 'Second Gallery'
+          date: '11th September 2019'
+    -
+      -
+          thumb: '/img/media/galleries/190911_diada/065-thumb.jpg'
+          src: '/img/media/galleries/190911_diada/065.jpg'
+          caption: 'Third Gallery'
+          date: '--'
+      -
+          thumb: '/img/media/galleries/190911_diada/066-thumb.jpg'
+          src: '/img/media/galleries/190911_diada/066.jpg'
+          caption: 'Third Gallery'
+          date: '--'
+      -
+          thumb: '/img/media/galleries/190911_diada/066-thumb.jpg'
+          src: '/img/media/galleries/190911_diada/066.jpg'
+          caption: 'Third Gallery'
+          date: '--'
+de:
+  seccio2: "Galerie"
+  galleries:
+    -
+      -
+        thumb: '/img/media/galleries/190911_diada/059-thumb.jpg'
+        src: '/img/media/galleries/190911_diada/059.jpg'
+        caption: 'Aufführung am FAZ Atrium'
+        date: '11. September 2019'
+      -
+        thumb: '/img/media/galleries/190911_diada/059-thumb.jpg'
+        src: '/img/media/galleries/190911_diada/059.jpg'
+        caption: 'Aufführung am FAZ Atrium'
+        date: '11. Setembre 2019'
+    -
+      -
+        thumb: '/img/media/galleries/190911_diada/074-thumb.jpg'
+        src: '/img/media/galleries/190911_diada/074.jpg'
+        caption: 'Zweite Gallery'
+        date: '--'
+      -
+        thumb: '/img/media/galleries/190911_diada/088-thumb.jpg'
+        src: '/img/media/galleries/190911_diada/088.jpg'
+        caption: 'Zweite Gallery'
+        date: '--'
+    -
+      -
+        thumb: '/img/media/galleries/190911_diada/065-thumb.jpg'
+        src: '/img/media/galleries/190911_diada/065.jpg'
+        caption: 'Dritte Gallery'
+        date: '--'
+      -
+        thumb: '/img/media/galleries/190911_diada/066-thumb.jpg'
+        src: '/img/media/galleries/190911_diada/066.jpg'
+        caption: 'Dritte Gallery'
+        date: '--'
+      -
+        thumb: '/img/media/galleries/190911_diada/066-thumb.jpg'
+        src: '/img/media/galleries/190911_diada/066.jpg'
+        caption: 'Dritte Gallery'
+        date: '--'
+ca:
+  seccio2: "Galeria"
+  galleries:
+    -
+      -
+        thumb: '/img/media/galleries/190911_diada/055-thumb.jpg'
+        src: '/img/media/galleries/190911_diada/055.jpg'
+        caption: 'Actuació al FAZ Atrium'
+        date: '11 Setembre 2019'
+      -
+        thumb: '/img/media/galleries/190911_diada/059-thumb.jpg'
+        src: '/img/media/galleries/190911_diada/059.jpg'
+        caption: 'Actuació al FAZ Atrium'
+        date: '11 Setembre 2019'
+    -
+      -
+        thumb: '/img/media/galleries/190911_diada/074-thumb.jpg'
+        src: '/img/media/galleries/190911_diada/074.jpg'
+        caption: 'Second Gallery'
+        date: '--'
+      -
+        thumb: '/img/media/galleries/190911_diada/088-thumb.jpg'
+        src: '/img/media/galleries/190911_diada/088.jpg'
+        caption: 'Second Gallery'
+        date: '--'
+    -
+      -
+        thumb: '/img/media/galleries/190911_diada/065-thumb.jpg'
+        src: '/img/media/galleries/190911_diada/065.jpg'
+        caption: 'Third Gallery'
+        date: '--'
+      -
+        thumb: '/img/media/galleries/190911_diada/066-thumb.jpg'
+        src: '/img/media/galleries/190911_diada/066.jpg'
+        caption: 'Third Gallery'
+        date: '--'
+      -
+        thumb: '/img/media/galleries/190911_diada/066-thumb.jpg'
+        src: '/img/media/galleries/190911_diada/066.jpg'
+        caption: 'Third Gallery'
+        date: '--'
+</i18n>
