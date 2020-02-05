@@ -5,7 +5,7 @@
   </h2>
   <v-row>
       <v-col
-        v-for="(image, index) in this.galleryHeads"
+        v-for="(image, index) in this.galleries"
         :key="index"
         cols=4
         class="col-12 col-md-4 col-lg-3"
@@ -16,7 +16,7 @@
             :key="index"
         >
           <v-img
-            :src="image.thumb"
+            :src="image[0].thumb"
             :key="index"
             class="mx-auto"
             width="360"
@@ -24,17 +24,17 @@
           >
           </v-img>
           <v-card-title class="g-title">
-            {{ image.caption }}
+            {{ image[0].caption }}
           </v-card-title>
           <v-card-text class="g-text">
-            {{ image.date }}
+            {{ image[0].date }}
           </v-card-text>
         </v-card>
       </v-col>
   </v-row>
   <LightBox
-    :images="this.lbGallery"
-    :ref="lightbox"
+    :images="this.currentGallery[0]"
+    ref="lightbox"
     :show-caption="true"
     :show-light-box="true"
   >
@@ -53,50 +53,24 @@ export default {
   },
   data() {
     return {
-      // path: '/img/media/galleries/',
-      // images,
-      lbGallery: [],
-      galleries: [],
+      currentGallery: [[]],
+      galleries: {},
       siteLoading,
-      galleryHeads: [],
     };
   },
   created() {
-    this.galleryHead();
+    this.fetchData();
   },
   methods: {
-    lopenGallery(index) {
+    openGallery(index) {
       this.imagesN(index);
       this.$refs.lightbox.showImage(0);
     },
-    log(e) {
-      console.log(e.currentTarget);
-      console.log(e);
-    },
     imagesN(index) {
-      console.log(this.lbGallery);
-      // rets.$set(this.lbGallery, 0, this.images[index][0]);
-      this.$set(this.lbGallery, 0, this.$t('galleries')[index][0]);
-
-      console.log('this.lbGallery: ', this.lbGallery);
-      return this.lbGallery;
+      this.$set(this.currentGallery, 0, Object.values(this.$t('galleries')[index]));
     },
-  },
-  computed: {
     fetchData() {
-      this.$set(this.galleries[0], 0, this.$t('galleries'));
-      console.log('fetch: ', this.galleries);
-      return this.galleries;
-    },
-    galleryHead() {
-      const gl = this.$t('galleries');
-      // .map(item => item[0]);
-
-      console.log('gl: ', gl);
-      this.$set(this.galleryHeads, 0, gl);
-      // this.galleryHeads = {...gl};
-      console.log('galleryHeads: ', this.galleryHeads);
-      return this.galleryHeads;
+      this.galleries = this.$t('galleries');
     },
   },
 };
@@ -111,47 +85,64 @@ en:
       -
           thumb: '/img/media/galleries/190911_diada/055-thumb.jpg'
           src: '/img/media/galleries/190911_diada/055.jpg'
-          caption: 'Show at FAZ Atrium'
+          caption: 'Performance at FAZ Atrium'
           date: '11th September 2019'
       -
           thumb: '/img/media/galleries/190911_diada/059-thumb.jpg'
           src: '/img/media/galleries/190911_diada/059.jpg'
-          caption: 'Show at FAZ Atrium'
+          caption: 'Performance at FAZ Atrium'
           date: '11th September 2019'
-    -
       -
           thumb: '/img/media/galleries/190911_diada/074-thumb.jpg'
           src: '/img/media/galleries/190911_diada/074.jpg'
-          caption: 'Second Gallery'
+          caption: 'Performance at FAZ Atrium'
+          date: '11th September 2019'
+      -
+          thumb: '/img/media/galleries/190911_diada/065-thumb.jpg'
+          src: '/img/media/galleries/190911_diada/065.jpg'
+          caption: 'Performance at FAZ Atrium'
+          date: '11th September 2019'
+      -
+          thumb: '/img/media/galleries/190911_diada/066-thumb.jpg'
+          src: '/img/media/galleries/190911_diada/066.jpg'
+          caption: 'Performance at FAZ Atrium'
+          date: '11th September 2019'
+      -
+          thumb: '/img/media/galleries/190911_diada/088-thumb.jpg'
+          src: '/img/media/galleries/190911_diada/088.jpg'
+          caption: 'Performance at FAZ Atrium'
           date: '11th September 2019'
     -
       -
           thumb: '/img/media/galleries/190911_diada/088-thumb.jpg'
           src: '/img/media/galleries/190911_diada/088.jpg'
-          caption: 'Second Gallery'
-          date: '11th September 2019'
+          caption: ''
+          date: ''
+    -
       -
-          thumb: '/img/media/galleries/190911_diada/065-thumb.jpg'
-          src: '/img/media/galleries/190911_diada/065.jpg'
-          caption: 'Third Gallery'
-          date: '--'
+          thumb: '/img/media/galleries/190911_diada/088-thumb.jpg'
+          src: '/img/media/galleries/190911_diada/088.jpg'
+          caption: ''
+          date: ''
+    -
       -
-          thumb: '/img/media/galleries/190911_diada/066-thumb.jpg'
-          src: '/img/media/galleries/190911_diada/066.jpg'
-          caption: 'Third Gallery'
-          date: '--'
+          thumb: '/img/media/galleries/190911_diada/088-thumb.jpg'
+          src: '/img/media/galleries/190911_diada/088.jpg'
+          caption: ''
+          date: ''
+    -
       -
-          thumb: '/img/media/galleries/190911_diada/074-thumb.jpg'
-          src: '/img/media/galleries/190911_diada/074.jpg'
-          caption: 'Third Gallery'
-          date: '--'
+          thumb: '/img/media/galleries/190911_diada/088-thumb.jpg'
+          src: '/img/media/galleries/190911_diada/088.jpg'
+          caption: ''
+          date: ''
 de:
   seccio2: "Galerie"
   galleries:
     -
       -
-        thumb: '/img/media/galleries/190911_diada/059-thumb.jpg'
-        src: '/img/media/galleries/190911_diada/059.jpg'
+        thumb: '/img/media/galleries/190911_diada/055-thumb.jpg'
+        src: '/img/media/galleries/190911_diada/055.jpg'
         caption: 'Aufführung am FAZ Atrium'
         date: '11. September 2019'
       -
@@ -159,33 +150,50 @@ de:
         src: '/img/media/galleries/190911_diada/059.jpg'
         caption: 'Aufführung am FAZ Atrium'
         date: '11. Setembre 2019'
-    -
       -
         thumb: '/img/media/galleries/190911_diada/074-thumb.jpg'
         src: '/img/media/galleries/190911_diada/074.jpg'
-        caption: 'Zweite Gallery'
-        date: '--'
-      -
-        thumb: '/img/media/galleries/190911_diada/088-thumb.jpg'
-        src: '/img/media/galleries/190911_diada/088.jpg'
-        caption: 'Zweite Gallery'
-        date: '--'
-    -
+        caption: 'Aufführung am FAZ Atrium'
+        date: '11. Setembre 2019'
       -
         thumb: '/img/media/galleries/190911_diada/065-thumb.jpg'
         src: '/img/media/galleries/190911_diada/065.jpg'
-        caption: 'Dritte Gallery'
-        date: '--'
+        caption: 'Aufführung am FAZ Atrium'
+        date: '11. Setembre 2019'
       -
         thumb: '/img/media/galleries/190911_diada/066-thumb.jpg'
         src: '/img/media/galleries/190911_diada/066.jpg'
-        caption: 'Dritte Gallery'
-        date: '--'
+        caption: 'Aufführung am FAZ Atrium'
+        date: '11. Setembre 2019'
+      -
+        thumb: '/img/media/galleries/190911_diada/088-thumb.jpg'
+        src: '/img/media/galleries/190911_diada/066.jpg'
+        caption: 'Aufführung am FAZ Atrium'
+        date: '11. Setembre 2019'
+    -
       -
         thumb: '/img/media/galleries/190911_diada/066-thumb.jpg'
         src: '/img/media/galleries/190911_diada/066.jpg'
-        caption: 'Dritte Gallery'
-        date: '--'
+        caption: ''
+        date: ''
+    -
+      -
+        thumb: '/img/media/galleries/190911_diada/066-thumb.jpg'
+        src: '/img/media/galleries/190911_diada/066.jpg'
+        caption: ''
+        date: ''
+    -
+      -
+        thumb: '/img/media/galleries/190911_diada/066-thumb.jpg'
+        src: '/img/media/galleries/190911_diada/066.jpg'
+        caption: ''
+        date: ''
+    -
+      -
+        thumb: '/img/media/galleries/190911_diada/066-thumb.jpg'
+        src: '/img/media/galleries/190911_diada/066.jpg'
+        caption: ''
+        date: ''
 ca:
   seccio2: "Galeria"
   galleries:
@@ -200,33 +208,50 @@ ca:
         src: '/img/media/galleries/190911_diada/059.jpg'
         caption: 'Actuació al FAZ Atrium'
         date: '11 Setembre 2019'
-    -
       -
         thumb: '/img/media/galleries/190911_diada/074-thumb.jpg'
         src: '/img/media/galleries/190911_diada/074.jpg'
-        caption: 'Second Gallery'
-        date: '--'
-      -
-        thumb: '/img/media/galleries/190911_diada/088-thumb.jpg'
-        src: '/img/media/galleries/190911_diada/088.jpg'
-        caption: 'Second Gallery'
-        date: '--'
-    -
+        caption: 'Actuació al FAZ Atrium'
+        date: '11 Setembre 2019'
       -
         thumb: '/img/media/galleries/190911_diada/065-thumb.jpg'
         src: '/img/media/galleries/190911_diada/065.jpg'
-        caption: 'Third Gallery'
-        date: '--'
+        caption: 'Actuació al FAZ Atrium'
+        date: '11 Setembre 2019'
       -
         thumb: '/img/media/galleries/190911_diada/066-thumb.jpg'
         src: '/img/media/galleries/190911_diada/066.jpg'
-        caption: 'Third Gallery'
-        date: '--'
+        caption: 'Actuació al FAZ Atrium'
+        date: '11 Setembre 2019'
+      -
+        thumb: '/img/media/galleries/190911_diada/088-thumb.jpg'
+        src: '/img/media/galleries/190911_diada/088.jpg'
+        caption: 'Actuació al FAZ Atrium'
+        date: '11 Setembre 2019'
+    -
       -
         thumb: '/img/media/galleries/190911_diada/066-thumb.jpg'
         src: '/img/media/galleries/190911_diada/066.jpg'
-        caption: 'Third Gallery'
-        date: '--'
+        caption: ''
+        date: ''
+    -
+      -
+        thumb: '/img/media/galleries/190911_diada/066-thumb.jpg'
+        src: '/img/media/galleries/190911_diada/066.jpg'
+        caption: ''
+        date: ''
+    -
+      -
+        thumb: '/img/media/galleries/190911_diada/066-thumb.jpg'
+        src: '/img/media/galleries/190911_diada/066.jpg'
+        caption: ''
+        date: ''
+    -
+      -
+        thumb: '/img/media/galleries/190911_diada/066-thumb.jpg'
+        src: '/img/media/galleries/190911_diada/066.jpg'
+        caption: ''
+        date: ''
 </i18n>
 
 <style lang="scss">
@@ -235,10 +260,13 @@ ca:
   font-size: 1rem;
   font-weight: 700;
   line-height: 1;
+  padding-bottom: .5rem;
+  padding-left: 0;
 }
 
 .g-text {
   font-size: .875rem;
+  padding-left: 0;
 }
 
 .v-image__image {

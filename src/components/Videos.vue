@@ -4,15 +4,18 @@
       {{ $t('seccio') }}
     </h2>
     <v-row>
-      <v-col v-for="(video, i) in videos"
-             :key="i"
-             cols="3"
-             class="col-3 col-md-4 col-lg-3">
+      <v-col
+        v-for="(video, i) in this.videos"
+          :key="i"
+          cols="3"
+          class="col-3 col-md-4 col-lg-3"
+      >
         <v-card>
-          <youtube :video-id="video.url"
-                   :key="i"
-                   player-width="100%"
-                   class="video-container"/>
+          <youtube
+            :video-id="video.url"
+            :key="i"
+            player-width="100%"
+            class="video-container"/>
           <v-card-title class="v-title">
             {{ video.text }}
           </v-card-title>
@@ -27,12 +30,19 @@
 
 <script>
 export default {
-  data: () => ({
-    videos: [
-      { url: 'MtzhaRs6Xzs', text: 'RBB Probe' },
-      { url: 'LVL7WHGnGqU', text: 'Probe am 6.11.2018' },
-    ],
-  }),
+  data() {
+    return {
+      videos: [],
+    };
+  },
+  created() {
+    this.fetchVideos();
+  },
+  methods: {
+    fetchVideos() {
+      this.videos = Object.values(this.$t('videos'));
+    },
+  },
 };
 </script>
 
@@ -79,8 +89,29 @@ export default {
 <i18n>
 en:
   seccio: "Videos"
+  videos:
+    -
+      url: 'MtzhaRs6Xzs'
+      text: 'RBB Performace'
+    -
+      url: 'LVL7WHGnGqU'
+      text: 'Rehearsal 6.11.2018'
 de:
   seccio: "Videos"
+  videos:
+    -
+      url: 'MtzhaRs6Xzs'
+      text: 'RBB Aufführung'
+    -
+      url: 'LVL7WHGnGqU'
+      text: 'Probe 6.11.2018'
 ca:
   seccio: "Videos"
+  videos:
+    -
+      url: 'MtzhaRs6Xzs'
+      text: 'Actuació RBB'
+    -
+      url: 'LVL7WHGnGqU'
+      text: 'Assaig 6.11.2018'
 </i18n>

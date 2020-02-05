@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import VueLazyLoad from 'vue-lazyload';
 import VueYouTubeEmbed from 'vue-youtube-embed';
 import vuetify from './plugins/vuetify';
 import App from './App.vue';
@@ -7,8 +8,10 @@ import store from './store';
 import i18n from './i18n';
 import './registerServiceWorker';
 
+
 Vue.config.productionTip = false;
 Vue.use(VueYouTubeEmbed);
+Vue.use(VueLazyLoad);
 
 new Vue({
   vuetify,
