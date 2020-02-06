@@ -21,6 +21,9 @@ extends	.eslintrc.js	/^  extends: [$/;"	r
 fallbackLocale	src/i18n.js	/^  fallbackLocale: 'en',$/;"	r
 fallbackLocale	vue.config.js	/^      fallbackLocale: 'en',$/;"	r
 findLocale	src/i18n.js	/^function findLocale() {$/;"	r
+i18n	.history/src/main_20200202143644.js	/^  i18n,$/;"	r
+i18n	.history/src/main_20200205143334.js	/^  i18n,$/;"	r
+i18n	.history/src/main_20200205172632.js	/^  i18n,$/;"	r
 i18n	src/main.js	/^  i18n,$/;"	r
 i18n	vue.config.js	/^    i18n: {$/;"	r
 iconfont	src/plugins/vuetify.js	/^    iconfont: 'mdiSvg',$/;"	r
@@ -48,15 +51,27 @@ pluginOptions	vue.config.js	/^  pluginOptions: {$/;"	r
 plugins	postcss.config.js	/^  plugins: {$/;"	r
 presets	babel.config.js	/^  presets: [$/;"	r
 primary	src/plugins/vuetify.js	/^        primary: '#fcbf43',$/;"	r
+productionTip	.history/src/main_20200202143644.js	/^Vue.config.productionTip = false;$/;"	r
+productionTip	.history/src/main_20200205143334.js	/^Vue.config.productionTip = false;$/;"	r
+productionTip	.history/src/main_20200205172632.js	/^Vue.config.productionTip = false;$/;"	r
 productionTip	src/main.js	/^Vue.config.productionTip = false;$/;"	r
 root	.eslintrc.js	/^  root: true,$/;"	r
+router	.history/src/main_20200202143644.js	/^  router,$/;"	r
+router	.history/src/main_20200205143334.js	/^  router,$/;"	r
+router	.history/src/main_20200205172632.js	/^  router,$/;"	r
 router	src/main.js	/^  router,$/;"	r
 routes	src/router.js	/^  routes: [$/;"	r
 rules	.eslintrc.js	/^  rules: {$/;"	r
 secondary	src/plugins/vuetify.js	/^        secondary: '#999999',$/;"	r
 state	src/store.js	/^  state: {$/;"	r
+store	.history/src/main_20200202143644.js	/^  store,$/;"	r
+store	.history/src/main_20200205143334.js	/^  store,$/;"	r
+store	.history/src/main_20200205172632.js	/^  store,$/;"	r
 store	src/main.js	/^  store,$/;"	r
 theme	src/plugins/vuetify.js	/^  theme: {$/;"	r
 themes	src/plugins/vuetify.js	/^    themes: {$/;"	r
 transpileDependencies	vue.config.js	/^  transpileDependencies: [$/;"	r
+vuetify	.history/src/main_20200202143644.js	/^  vuetify,$/;"	r
+vuetify	.history/src/main_20200205143334.js	/^  vuetify,$/;"	r
+vuetify	.history/src/main_20200205172632.js	/^  vuetify,$/;"	r
 vuetify	src/main.js	/^  vuetify,$/;"	r
