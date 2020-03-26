@@ -21,16 +21,17 @@
               <AttendanceSlot
                   :dataProps="colName"
                   :member="memberToAdd"
+                  ref="attslot"
               />
             </v-col>
           </v-row>
           <v-row>
               <v-col cols="2">
-              </v-col>
-              <v-col hidden>
-                  <v-btn @click="addNew"
+                  <v-btn @click.prevent="addNew"
+                    type="submit"
+                    class="btn btn-lg btn-primary mb-2"
                   >
-                      Add
+                      Add Attendance
                   </v-btn>
               </v-col>
           </v-row>
@@ -39,7 +40,7 @@
 </template>
 
 <script>
-import Parse from 'parse';
+// import Parse from 'parse';
 import AttendanceSlot from './AttendanceSlot.vue';
 
 export default {
@@ -71,36 +72,38 @@ export default {
       isOpen: false,
       memberToAdd: '',
       singleDate: undefined,
-      attendancelist: [
-        { name: 'Mercè', ref: '200416_r_tuesday', value: 0 },
-        { name: 'Judit', ref: '200416_r_tuesday', value: 1 },
-        { name: 'Benja', ref: '200416_r_tuesday', value: 0 },
-        { name: 'Xarli', ref: '200416_r_tuesday', value: 2 },
-      ],
       options: ['no', 'yes', 'maybe', undefined],
+      attending: [],
+      notAttending: [],
+      maybeAttending: [],
     };
+  },
+  created() {
+
   },
   methods: {
     addNew() {
-      const newAdded = new Parse.Query('CdbSession');
-      newAdded.equalTo('name', '200416_r_tuesday');
-      newAdded.first().then((resp) => {
-        if (resp) {
-          this.update(resp);
-        } else {
-          console.log('Something went wrong');
-        }
-      }).catch((error) => {
-        console.log(error.message);
-      });
+      this.$refs.attslot.forEach((item) => item.readThenUpdate());
     },
-    update(resp) {
-      resp.set('attendancelist', this.attendancelist);
-      resp.save().then(() => {
-        console.log('Success!');
-      }).catch((error) => {
-        console.log(error.message);
+    getTotals() {
+      const att0 = [];
+      const att1 = [];
+      const att2 = [];
+      this.members.map((member) => {
+        if (member.value === 0) {
+          att0.push(member);
+        }
+        if (member.value === 1) {
+          att1.push(member);
+        }
+        if (member.value === 2) {
+          att2.push(member);
+        }
+        return null;
       });
+      this.notAttending = att0;
+      this.attending = att1;
+      this.maybeAttending = att2;
     },
   },
   computed: {
