@@ -32,12 +32,13 @@
                 Add
               </v-btn>
             </template>
-            <AddEntry
-              :headers="tableHeaders"
+            <AttendanceForm
+              :headers="datesElements"
               :members="members"
               :dates="itemsDates"
               :editMode="editFormMode"
               :titleForm="titleForm"
+              class="attendance-dialog"
               />
           </v-dialog>
         </v-toolbar>
@@ -66,12 +67,12 @@
 </template>
 
 <script>
-import AddEntry from './AddEntry.vue';
+import AttendanceForm from './AttendanceForm.vue';
 
 export default {
   name: 'AttendanceList',
   components: {
-    AddEntry,
+    AttendanceForm,
   },
   props: {
     itemsDates: {
@@ -112,9 +113,8 @@ export default {
     },
   },
   computed: {
-    tableHeaders() {
+    datesElements() {
       const headerob = [];
-      headerob[0] = { text: 'Name', value: 'name' };
       this.itemsDates.map((dateItem) => {
         const ob = {
           text: dateItem.sessiondate.toLocaleString('de-De'),
@@ -123,7 +123,12 @@ export default {
         headerob.push(ob);
         return null;
       });
-      headerob.push({ text: 'Actions', value: 'actions' });
+      return headerob;
+    },
+    tableHeaders() {
+      const ob = [];
+      ob[0] = { text: 'Name', value: 'name' };
+      const headerob = ob.concat(this.datesElements);
       return headerob;
     },
     tableAttendance() {
@@ -171,16 +176,19 @@ export default {
     text-transform: capitalize;
     font-weight: 300;
   }
+  .attendance-dialog {
+    /* margin: 0; */
+  }
 </style>
 
 <i18n>
   en:
     formName: 'Attendance'
-    tableTitle: 'Members'
+    tableTitle: 'Attendance'
   de:
     formName: 'Anwesenheit'
-    tableTitle: 'Mitglieder'
+    tableTitle: 'Anwesenheit'
   cat:
     formName: 'Assistència'
-    tableTitle: 'Membres'
+    tableTitle: 'Assistència'
 </i18n>
