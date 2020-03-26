@@ -175,3 +175,8 @@ en:
 de:
 ca:
 </i18n>
+
+//TODO: conditional icons on tables (members, attendance, based on value)
+//TODO: date format on input field in DatesForm
+//TODO: attendance formular
+//TODO: update member list on adding or updating members

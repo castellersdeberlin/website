@@ -1,19 +1,15 @@
 <template>
     <v-container
+        class="attendance-form"
     >
         <v-row>
-            <v-col cols="12">
-                <v-data-table
-                    hide-default-footer
-                    :headers="this.headers"
-                />
-            </v-col>
-        </v-row>
-        <v-row>
-          <v-col v-for="(colName, i) in this.headers"
+          <v-col v-for="(colName, i) in shift(this.headers)"
           :key="i"
           >
+            <div>
             {{ colName.text }}
+            </div>
+            <v-text-field />
           </v-col>
         </v-row>
         <v-row>
@@ -29,7 +25,7 @@
             >
             <!-- {{ date.attendancelist }} -->
             </v-col>
-            <v-col>
+            <v-col hidden>
                 <v-btn @click="addNew"
                 >
                     Add
@@ -108,4 +104,9 @@ export default {
 </script>
 
 <style scoped>
+  .attendance-form {
+    background: #fff;
+    width: 100%;
+    padding: 0;
+  }
 </style>

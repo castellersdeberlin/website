@@ -20,7 +20,6 @@
           />
           <v-spacer></v-spacer>
           <v-dialog v-model="dialog" max-width="90%"
-            class="attendance-form"
             elevation-10
             overlay-color="yellow"
           >
@@ -172,13 +171,6 @@ export default {
     text-transform: capitalize;
     font-weight: 300;
   }
-
-  .attendance-form {
-    background: #fff;
-    width: 100%;
-    padding: 0;
-  }
-
 </style>
 
 <i18n>
