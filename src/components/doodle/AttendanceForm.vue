@@ -1,17 +1,28 @@
 <template>
     <v-form class="attendance-form p-5">
       <v-container>
-          <v-row>
+          <h1 class="px-5">
+            {{ this.titleForm }}
+          </h1>
+          <v-row class="px-5">
               <v-col cols="4" md="3" xl="2">
                   <v-autocomplete
                   v-model="memberToAdd"
+                  v-if="editFormMode"
                   :items="this.memberList"
-                  placeholder="Add Name"
+                  placeholder="Select Member"
                   >
                   </v-autocomplete>
+                  <v-text-field
+                    v-if="!editFormMode"
+                    readonly
+                    placeholder="this.attendance.name"
+                  >
+                    {{ this.attendance.name }}
+                  </v-text-field>
               </v-col>
           </v-row>
-          <v-row>
+          <v-row class="px-5 my-0">
             <v-col v-for="(colName, i) in this.headers"
             :key="i"
             >
@@ -49,20 +60,35 @@ export default {
     AttendanceSlot,
   },
   props: {
-    members: {
-      type: Array,
+    attendance: {
+      type: Object,
       required: true,
-      default: () => [],
+      default: () => {},
     },
     dates: {
       type: Array,
       required: true,
       default: () => [],
     },
+    editFormMode: {
+      type: Boolean,
+      required: true,
+      default: () => false,
+    },
     headers: {
       type: Array,
       required: true,
       default: () => [],
+    },
+    members: {
+      type: Array,
+      required: true,
+      default: () => [],
+    },
+    titleForm: {
+      type: String,
+      required: true,
+      default: () => 'Add Item',
     },
   },
   data() {
@@ -73,9 +99,6 @@ export default {
       memberToAdd: '',
       singleDate: undefined,
       options: ['no', 'yes', 'maybe', undefined],
-      attending: [],
-      notAttending: [],
-      maybeAttending: [],
     };
   },
   created() {
@@ -85,25 +108,8 @@ export default {
     addNew() {
       this.$refs.attslot.forEach((item) => item.readThenUpdate());
     },
-    getTotals() {
-      const att0 = [];
-      const att1 = [];
-      const att2 = [];
-      this.members.map((member) => {
-        if (member.value === 0) {
-          att0.push(member);
-        }
-        if (member.value === 1) {
-          att1.push(member);
-        }
-        if (member.value === 2) {
-          att2.push(member);
-        }
-        return null;
-      });
-      this.notAttending = att0;
-      this.attending = att1;
-      this.maybeAttending = att2;
+    close() {
+      this.$emit('close');
     },
   },
   computed: {

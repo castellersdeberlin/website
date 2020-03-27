@@ -10,19 +10,21 @@
     >
 
       <template v-slot:item.member="{ item }">
-        <v-chip class="check"
-          :color="getBkg(item.member)"
-          small
-        >
-          </v-chip>
+          <v-icon v-if="item.member" :color="getBkg(item.member)">
+          mdi-check
+          </v-icon>
+          <v-icon v-else :color="getBkg(item.member)">
+          close
+          </v-icon>
       </template>
 
       <template v-slot:item.regular="{ item }">
-        <v-chip class="check"
-          :color="getBkg(item.regular)"
-          small
-        >
-        </v-chip>
+          <v-icon v-if="item.regular" :color="getBkg(item.regular)">
+          mdi-check
+          </v-icon>
+          <v-icon v-else :color="getBkg(item.regular)">
+          close
+          </v-icon>
       </template>
 
       <template v-slot:top>
@@ -64,14 +66,15 @@
 
       <template v-slot:item.actions="{ item }">
         <v-icon
+          class="pr-5"
           small
-          class="mr-2"
           color="#999"
           @click="editItem(item); setFormMode(false)"
         >
           mdi-pencil
         </v-icon>
         <v-icon
+          class="pr-4"
           small
           @click="readThenDelete(item)"
         >
@@ -161,15 +164,18 @@ export default {
       if (val === true) {
         return '#fcbf43';
       }
+      if (val === false) {
+        return 'red';
+      }
       return '#efefef';
     },
     setFormMode(mode) {
       this.editFormMode = mode;
       if (this.editFormMode) {
         this.editedItem = this.defaultItem;
-        this.titleForm = 'Add Member';
+        this.titleForm = 'Add Item';
       } else {
-        this.titleForm = 'Edit Member';
+        this.titleForm = 'Edit Item';
       }
     },
     readThenDelete(item) {

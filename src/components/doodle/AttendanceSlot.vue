@@ -1,5 +1,5 @@
 <template>
-    <v-container>
+    <v-container class="my-0">
         <v-radio-group v-model="radioGroup">
             <v-radio
                 v-for="(item, i) in this.options"
@@ -56,16 +56,29 @@ export default {
     },
     update(sess) {
       const att = sess.get('attendancelist');
-      console.log('attendance for this session: ', att);
-      console.log('member to add: ', this.member);
-      const nw = {
-        name: this.member,
-        ref: this.dataProps.value.split('.')[0],
-        value: this.radioGroup,
-      };
-      att.push(nw);
       console.log(att);
 
+      const existing = att.map((item) => item.name);
+
+      if (!existing.indexOf(this.member)) {
+        console.log('new entry');
+        const nw = {
+          name: this.member,
+          value: this.radioGroup,
+        };
+        att.push(nw);
+        // console.log(att);
+      } else {
+        console.log('entry existed');
+        att.map((item, i) => {
+          if (item.name === this.member) {
+            att[i].value = this.radioGroup;
+          }
+          return null;
+        });
+      }
+
+      console.log('att: ', att);
       sess.set('attendancelist', att);
 
       sess.save().then(() => {
@@ -73,8 +86,6 @@ export default {
       }).catch((error) => {
         console.log(`Error: ${error.message}`);
       });
-      // this.close();
-      // this.siblingUpdateList();
     },
   },
 };

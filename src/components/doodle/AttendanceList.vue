@@ -1,10 +1,25 @@
 <template>
   <v-container>
+    <div  v-for="(col, i) in this.itemsDates"
+      :key="i"
+      >
+        {{`${col.name}.value` }}
+    </div>
     <v-data-table
       :headers="this.tableHeaders"
       :items="this.tableAttendance"
+      :dateCols="this.datesElements"
       hide-default-footer
       >
+
+      <template v-for="col in this.itemsDates">
+        <v-chip :key="col.value">
+          {{ item }}
+          <v-icon>
+            close
+          </v-icon>
+        </v-chip>
+      </template>
 
       <template v-slot:top>
         <v-toolbar flat color="#fff">
@@ -36,9 +51,11 @@
               :headers="datesElements"
               :members="members"
               :dates="itemsDates"
-              :editMode="editFormMode"
+              :editFormMode="editFormMode"
               :titleForm="titleForm"
+              :attendance="editedItem"
               class="attendance-dialog"
+              @close="closeDialog"
               />
           </v-dialog>
         </v-toolbar>
@@ -93,14 +110,44 @@ export default {
       editedItem: {},
       defaultItem: {},
       editFormMode: false,
-      titleForm: 'Add',
+      titleForm: 'Add Item',
+      attending: [],
+      notAttending: [],
+      maybeAttending: [],
     };
   },
   created() {
+    this.getTotals();
   },
   methods: {
     closeDialog() {
       this.dialog = false;
+    },
+    getTotals() {
+      const att0 = [];
+      const att1 = [];
+      const att2 = [];
+
+      this.members.map((member) => {
+        if (member.value === 0) {
+          att0.push(member);
+        }
+        if (member.value === 1) {
+          att1.push(member);
+        }
+        if (member.value === 2) {
+          att2.push(member);
+        }
+        return null;
+      });
+      this.notAttending = att0;
+      this.attending = att1;
+      this.maybeAttending = att2;
+    },
+    editItem(item) {
+      this.editedItem = { ...item };
+      this.setFormMode(false);
+      this.dialog = true;
     },
     setFormMode(mode) {
       this.editFormMode = mode;
@@ -129,6 +176,7 @@ export default {
       const ob = [];
       ob[0] = { text: 'Name', value: 'name' };
       const headerob = ob.concat(this.datesElements);
+      headerob.push({ text: 'Actions', value: 'actions' });
       return headerob;
     },
     tableAttendance() {
@@ -176,9 +224,6 @@ export default {
     text-transform: capitalize;
     font-weight: 300;
   }
-  .attendance-dialog {
-    /* margin: 0; */
-  }
 </style>
 
 <i18n>
@@ -192,3 +237,5 @@ export default {
     formName: 'Assistència'
     tableTitle: 'Assistència'
 </i18n>
+
+//TODO: v-slot convert number to icon
