@@ -45,6 +45,11 @@
             label="Comments"
             required>
         </v-text-field>
+        <v-checkbox v-model="added.show"
+            type="text"
+            label="Edit"
+            required>
+        </v-checkbox>
 
         <template class="baux" v-slot:added.sessiondate="{ item }">
           <div class="baux">

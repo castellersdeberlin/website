@@ -1,25 +1,11 @@
 <template>
-  <v-container>
-    <div  v-for="(col, i) in this.itemsDates"
-      :key="i"
-      >
-        {{`${col.name}.value` }}
-    </div>
     <v-data-table
       :headers="this.tableHeaders"
       :items="this.tableAttendance"
       :dateCols="this.datesElements"
       hide-default-footer
+      class="dates-table"
       >
-
-      <template v-for="col in this.itemsDates">
-        <v-chip :key="col.value">
-          {{ item }}
-          <v-icon>
-            close
-          </v-icon>
-        </v-chip>
-      </template>
 
       <template v-slot:top>
         <v-toolbar flat color="#fff">
@@ -61,6 +47,22 @@
         </v-toolbar>
       </template>
 
+      <template class="sloty"
+        v-for="(colmn, i) in this.datesElements" #[`item.${colmn.value}`]="{ item }">
+          <div :key="i">
+              <v-icon v-if="item[`${colmn.value}`] === 0" color="red">
+                close
+              </v-icon>
+              <v-icon v-if="item[`${colmn.value}`] === 1" color="green">
+                done
+              </v-icon>
+              <v-icon v-if="item[`${colmn.value}`] === 2" color="#e2e2e2">
+                help
+              </v-icon>
+            </div>
+      </template>
+
+
       <template v-slot:item.actions="{ item }">
         <v-icon
           small
@@ -78,9 +80,6 @@
         </v-icon>
       </template>
     </v-data-table>
-
-
-  </v-container>
 </template>
 
 <script>
@@ -165,7 +164,7 @@ export default {
       this.itemsDates.map((dateItem) => {
         const ob = {
           text: dateItem.sessiondate.toLocaleString('de-De'),
-          value: `${dateItem.name}.value`,
+          value: `${dateItem.name}value`,
         };
         headerob.push(ob);
         return null;
@@ -191,14 +190,14 @@ export default {
               names.push(cst.name);
               const ob = {};
               ob.name = cst.name;
-              ob[`${itemRef}.value`] = cst.value;
+              ob[`${itemRef}value`] = cst.value;
               Att.push(ob);
             } else {
               // find index of object with name === cst.name
               // assign new property to Att[foundindex]
               Att.map((attItem, i) => {
                 if (attItem.name === cst.name) {
-                  Att[i][`${itemRef}.value`] = cst.value;
+                  Att[i][`${itemRef}value`] = cst.value;
                 }
                 return null;
               });
@@ -223,6 +222,10 @@ export default {
   .dates-table {
     text-transform: capitalize;
     font-weight: 300;
+  }
+  .sloty {
+    background: yellow !important;
+    border: 2px dashed black;
   }
 </style>
 

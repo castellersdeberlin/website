@@ -8,11 +8,6 @@
                 :value="item.value"
             ></v-radio>
         </v-radio-group>
-        <v-btn
-          @click="readThenUpdate"
-        >
-        Update
-        </v-btn>
     </v-container>
 </template>
 
@@ -56,20 +51,16 @@ export default {
     },
     update(sess) {
       const att = sess.get('attendancelist');
-      console.log(att);
 
       const existing = att.map((item) => item.name);
 
       if (!existing.indexOf(this.member)) {
-        console.log('new entry');
         const nw = {
           name: this.member,
           value: this.radioGroup,
         };
         att.push(nw);
-        // console.log(att);
       } else {
-        console.log('entry existed');
         att.map((item, i) => {
           if (item.name === this.member) {
             att[i].value = this.radioGroup;
@@ -78,7 +69,6 @@ export default {
         });
       }
 
-      console.log('att: ', att);
       sess.set('attendancelist', att);
 
       sess.save().then(() => {

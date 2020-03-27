@@ -1,12 +1,12 @@
 <template>
    <v-data-table
       class="memberlist"
-      dense
       :headers="this.propNames"
       :items="this.tableItems"
       :items-per-page="50"
       item-key="name"
       hide-default-footer
+      :search="search"
     >
 
       <template v-slot:item.member="{ item }">
@@ -57,7 +57,7 @@
                 :editMode="editFormMode"
                 :titleForm="titleForm"
                 @dialogIsOpen="closeDialog"
-                @listener="updateList"
+                @updateList="parentUpdateList"
               />
 
           </v-dialog>
@@ -136,6 +136,7 @@ export default {
         member: false,
         regular: false,
       },
+      search: '',
       toDelete: {},
       titleForm: 'Add Member',
       editFormMode: false,
@@ -192,6 +193,9 @@ export default {
       }).catch((error) => {
         console.log(`Error: ${error.code} + ${error.message}`);
       });
+    },
+    parentUpdateList() {
+      this.$emit('updateMemberList', true);
     },
   },
 };

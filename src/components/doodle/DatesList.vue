@@ -11,6 +11,15 @@
         <span>{{new Date(item.sessiondate).toLocaleString('de-De')}}</span>
       </template>
 
+      <template v-slot:item.show="{ item }">
+          <v-icon v-if="item.show" color="green">
+          mdi-check
+          </v-icon>
+          <v-icon v-else color="red">
+          close
+          </v-icon>
+      </template>
+
       <template v-slot:top>
         <v-toolbar flat color="#fff">
           <v-toolbar-title
@@ -91,7 +100,8 @@ export default {
         name: '',
         type: '',
         comments: '',
-        attendancelist: '',
+        show: false,
+        attendancelist: [],
       },
       dialog: false,
       editedIndex: -1,
@@ -108,6 +118,7 @@ export default {
         { text: 'Type', value: 'type' },
         { text: 'Location', value: 'location' },
         { text: 'Comments', value: 'comments', sortable: false },
+        { text: 'Editable', value: 'show', sortable: false },
         { text: 'Actions', value: 'actions', sortable: false },
       ],
       titleForm: 'Add Date',

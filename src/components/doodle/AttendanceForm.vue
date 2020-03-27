@@ -13,13 +13,11 @@
                   placeholder="Select Member"
                   >
                   </v-autocomplete>
-                  <v-text-field
+                  <h3
                     v-if="!editFormMode"
-                    readonly
-                    placeholder="this.attendance.name"
                   >
                     {{ this.attendance.name }}
-                  </v-text-field>
+                  </h3>
               </v-col>
           </v-row>
           <v-row class="px-5 my-0">

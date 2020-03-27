@@ -1,93 +1,110 @@
 <template>
-    <v-form class="form-addcasteller"
-      dense
-      >
-        <h1 class="h3 mb-3 font-weight-normal">{{ this.titleForm }}</h1>
-        <v-text-field v-model="added.name"
-            type="input"
-            label="Name"
-            id="inputNom"
-            class="form-control"
-            required
-            autofocus>
-        </v-text-field>
-        <v-text-field v-model="added.shoulders"
-            type="number"
-            label="Shoulders (cm)"
-            id="inputShoulders"
-            required>
-        </v-text-field>
-        <v-text-field v-model="added.arm"
-            type="number"
-            label="Arm (cm)"
-            id="inputArm"
-            class="form-control"
-            required>
-        </v-text-field>
-        <v-text-field v-model="added.weight"
-            type="number"
-            label="Weight (Kg)"
-            id="inputWeight"
-            class="form-control"
-            required>
-        </v-text-field>
+    <v-form class="form-addcasteller">
+      <v-container>
         <v-row>
-          <v-col cols="12" md="4">
-            <v-checkbox v-model="added.member"
-                class="form-checkb"
-                type="checkbox"
-                label="Member"
-                dense
-            >
-            </v-checkbox>
-          </v-col>
-          <v-col cols="12" md="4">
-            <v-checkbox v-model="added.regular"
-                class="form-checkb"
-                type="checkbox"
-                label="Regular"
-                dense
-            >
-            </v-checkbox>
-          </v-col>
-          <v-col cols="12" md="4">
-            <v-checkbox v-model="added.adult"
-                class="form-checkb"
-                type="checkbox"
-                label="Adult"
-                dense
-            >
-            </v-checkbox>
+          <v-col>
+            <h1 class="h3 mb-3 font-weight-normal">{{ this.titleForm }}</h1>
           </v-col>
         </v-row>
+        <v-row>
+          <v-col>
+            <v-text-field v-model="added.name"
+                type="input"
+                label="Name"
+                id="inputNom"
+                class="form-control"
+                required
+                autofocus>
+            </v-text-field>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="12" md="4">
+            <v-text-field v-model="added.shoulders"
+                type="number"
+                label="Shoulders (cm)"
+                id="inputShoulders"
+                required>
+            </v-text-field>
+          </v-col>
+          <v-col cols="12" md="4">
+            <v-text-field v-model="added.arm"
+                type="number"
+                label="Arm (cm)"
+                id="inputArm"
+                class="form-control"
+                required>
+            </v-text-field>
+          </v-col>
+          <v-col cols="12" md="4">
+            <v-text-field v-model="added.weight"
+                type="number"
+                label="Weight (Kg)"
+                id="inputWeight"
+                class="form-control"
+                required>
+            </v-text-field>
+          </v-col>
+        </v-row>
+            <v-row>
+              <v-col cols="12" md="4">
+                <v-checkbox v-model="added.member"
+                    class="form-checkb"
+                    type="checkbox"
+                    label="Member"
+                    dense
+                >
+                </v-checkbox>
+              </v-col>
+              <v-col cols="12" md="4">
+                <v-checkbox v-model="added.regular"
+                    class="form-checkb"
+                    type="checkbox"
+                    label="Regular"
+                    dense
+                >
+                </v-checkbox>
+              </v-col>
+              <v-col cols="12" md="4">
+                <v-checkbox v-model="added.adult"
+                    class="form-checkb"
+                    type="checkbox"
+                    label="Adult"
+                    dense
+                >
+                </v-checkbox>
+              </v-col>
+            </v-row>
 
-        <v-row>
-          <v-col cols="12" md="4" v-if="this.editMode">
-            <v-btn v-on:click="this.savePost"
-                class="btn btn-lg btn-primary mb-2"
-                block
-                type="button">
-                    Add
-            </v-btn>
-          </v-col>
-          <v-col cols="12" md="4" v-if="!this.editMode">
-            <v-btn v-on:click="this.readThenUpdate"
-                class="btn btn-lg btn-secondary mb-2"
-                block
-                type="button">
-                    Update
-            </v-btn>
-          </v-col>
-          <v-col cols="12" md="4">
-            <v-btn
-              @click="this.close"
-              block
-              class="btn btn-lg btn-primary mb-2"
-            >
-                Cancel
-              </v-btn>
-          </v-col>
-        </v-row>
+            <v-row>
+              <v-col cols="12" md="4" v-if="this.editMode">
+                <v-btn v-on:click="this.savePost"
+                    class="btn btn-lg btn-primary mb-2"
+                    block
+                    type="button">
+                        Add
+                </v-btn>
+              </v-col>
+              <v-col cols="12" md="4" v-if="!this.editMode">
+                <v-btn v-on:click="this.readThenUpdate"
+                    class="btn btn-lg btn-secondary mb-2"
+                    block
+                    type="button">
+                        Update
+                </v-btn>
+              </v-col>
+              <v-col cols="12" md="4">
+                <v-btn
+                  @click="this.close"
+                  block
+                  class="btn btn-lg btn-primary mb-2"
+                >
+                    Cancel
+                  </v-btn>
+              </v-col>
+            </v-row>
+
+      </v-container>
     </v-form>
 
 </template>
@@ -152,7 +169,7 @@ export default {
         });
       this.$set(this.added, this.defaultItem);
       this.close();
-      this.siblingUpdateList();
+      this.parentUpdateList();
     },
     readThenUpdate() {
       const query = new Parse.Query('CdbMember');
@@ -168,7 +185,7 @@ export default {
         console.log(`Error: ${error.code} + ${error.message}`);
       });
     },
-    siblingUpdateList() {
+    parentUpdateList() {
       this.$emit('updateList', true);
     },
     update(membrfound) {
@@ -183,7 +200,7 @@ export default {
         console.log(`Error: ${error.message}`);
       });
       this.close();
-      this.siblingUpdateList();
+      this.parentUpdateList();
     },
   },
   watch: {
@@ -202,7 +219,7 @@ export default {
     max-width: 100%;
     margin: 0 auto;
     border-left: 1px solid gray;
-    padding: 2rem;
+    padding: 0 1rem;
   }
   input {
     padding: .25rem .5rem .25rem 2rem;

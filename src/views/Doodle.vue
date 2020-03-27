@@ -15,25 +15,22 @@
     <v-row>
       <v-col>
 
-        <template v-if="tab === 0">
           <AttendanceList
             :itemsDates="this.tableDates"
             :members="this.tableMembers"
+            v-if="tab === 0"
           />
-        </template>
 
-        <template v-if="tab === 1">
           <DatesList :propDates="this.tableDates"
             @updateList="getDates"
+            v-if="tab === 1"
             />
-        </template>
 
-        <template v-if="tab === 2">
           <MemberList
             :members="this.tableMembers"
-            @llisteners="setMembers"
+            @updateMemberList="getMembers"
+            v-if="tab === 2"
           />
-        </template>
 
       </v-col>
     </v-row>
@@ -96,17 +93,16 @@ export default {
       this.dates.map((item) => {
         const ob = {};
         ob.sessiondate = item.get('sessiondate');
-        // console.log('typeof', ob.sessiondate);
         ob.type = item.get('type');
         ob.name = item.get('name');
         ob.comments = item.get('comments');
         ob.location = item.get('location');
         ob.attendancelist = item.get('attendancelist');
+        ob.show = item.get('show');
+
         tDates.push(ob);
-        // this.$emit('importDates', tDates);
         return null;
       });
-      // console.log('tDates: ', tDates);
       this.tableDates = tDates;
     },
     setMembers(value) {
@@ -114,7 +110,6 @@ export default {
       this.members = value;
     },
     updateDates() {
-      console.log('triggered');
       this.getDates();
     },
     getMembers() {
@@ -145,7 +140,6 @@ export default {
         return null;
       });
       this.tableMembers = tItems;
-      // this.$emit('getMembersFromChild', this.tableMembers);
     },
     updateList() {
       this.getMembers();
