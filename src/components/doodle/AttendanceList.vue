@@ -164,7 +164,7 @@ export default {
       this.itemsDates.map((dateItem) => {
         const ob = {
           text: dateItem.sessiondate.toLocaleString('de-De'),
-          value: `${dateItem.name}value`,
+          value: `${dateItem.name}.value`,
         };
         headerob.push(ob);
         return null;
@@ -190,14 +190,14 @@ export default {
               names.push(cst.name);
               const ob = {};
               ob.name = cst.name;
-              ob[`${itemRef}value`] = cst.value;
+              ob[`${itemRef}.value`] = cst.value;
               Att.push(ob);
             } else {
               // find index of object with name === cst.name
               // assign new property to Att[foundindex]
               Att.map((attItem, i) => {
                 if (attItem.name === cst.name) {
-                  Att[i][`${itemRef}value`] = cst.value;
+                  Att[i][`${itemRef}.value`] = cst.value;
                 }
                 return null;
               });

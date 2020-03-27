@@ -26,7 +26,7 @@ export default {
   },
   data() {
     return {
-      radioGroup: undefined,
+      radioGroup: this.dataProps.value,
       options: [
         { text: 'no', value: 0 },
         { text: 'yes', value: 1 },
@@ -37,6 +37,8 @@ export default {
   methods: {
     readThenUpdate() {
       const query = new Parse.Query('CdbSession');
+      const val = this.dataProps.value.split('.')[0];
+      console.log('val: ', val);
       query.equalTo('name', this.dataProps.value.split('.')[0]);
       query.first().then((sess) => {
         if (sess) {
