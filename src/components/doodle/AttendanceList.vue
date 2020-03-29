@@ -230,7 +230,9 @@ export default {
     },
     datesElements() {
       const headerob = [];
-      this.itemsDates.map((dateItem) => {
+      const datesShow = this.itemsDates.filter((filt) => filt.show === true);
+
+      datesShow.map((dateItem) => {
         const ob = {
           text: dateItem.sessiondate.toLocaleString('de-De').split(',')[0],
           value: `${dateItem.name}.value`,
