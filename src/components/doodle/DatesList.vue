@@ -132,7 +132,7 @@ export default {
     delete(deldate) {
       deldate.destroy().then(() => {
         console.log(`Date ${deldate.get('sessiondate')} erased successfully`);
-        this.$emit('updateList', true);
+        this.$emit('updateDates', true);
       }).catch((response, error) => {
         console.log(`Error: ${error.message}`);
       });
@@ -169,8 +169,7 @@ export default {
       }
     },
     updateList() {
-    //   console.log('emit in dates list');
-      this.$emit('updateList', true);
+      this.$emit('updateDates', true);
     },
   },
   watch: {

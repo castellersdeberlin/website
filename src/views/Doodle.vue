@@ -18,11 +18,13 @@
           <AttendanceList
             :itemsDates="this.tableDates"
             :members="this.tableMembers"
+            @updateDates="this.getDates"
             v-if="tab === 0"
           />
 
-          <DatesList :propDates="this.tableDates"
-            @updateList="getDates"
+          <DatesList
+           :propDates="this.tableDates"
+            @updateDates="this.getDates"
             v-if="tab === 1"
             />
 
@@ -65,8 +67,8 @@ export default {
   }),
   created() {
     this.initParse();
-    this.getDates();
     this.getMembers();
+    this.getDates();
   },
   methods: {
     initParse() {
@@ -145,19 +147,6 @@ export default {
       this.getMembers();
     },
   },
-  computed: {
-    // datesList() {
-    //   const ds = [];
-    //   this.tableDates.map((item) => {
-    //     const dob = {};
-    //     dob.sessiondate = item.sessiondate;
-    //     ds.push(dob);
-    //     return null;
-    //   });
-    // console.log('ds: ', ds);
-    // return ds;
-    // },
-  },
 };
 </script>
 
@@ -170,7 +159,7 @@ de:
 ca:
 </i18n>
 
-//TODO: date format on input field in DatesForm
+//TODO: date format on input field in DatesForm (on edit?)
 //TODO: attendance formular >> pass info on edit
 //TODO: update lists when adding or updating items
 //TODO: filter dates on attendance based on field 'show'

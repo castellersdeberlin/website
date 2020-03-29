@@ -39,9 +39,10 @@
             :dates="itemsDates"
             :editFormMode="editFormMode"
             :titleForm="titleForm"
-            :attendance="editedItem"
+            :editedItem="editedItem"
+            @dialogIsOpen="closeDialog"
+            @updateDates="getDates"
             class="attendance-dialog"
-            @close="closeDialog"
           />
         </v-dialog>
       </v-toolbar>
@@ -137,9 +138,6 @@ export default {
       attendance: [],
     };
   },
-  created() {
-    this.getTotals();
-  },
   methods: {
     closeDialog() {
       this.dialog = false;
@@ -148,6 +146,9 @@ export default {
       this.editedItem = { ...item };
       this.setFormMode(false);
       this.dialog = true;
+    },
+    getDates() {
+      this.$emit('updateDates', true);
     },
     setFormMode(mode) {
       this.editFormMode = mode;
@@ -188,11 +189,13 @@ export default {
         return null;
       });
       this.attendance = attendanceLoop;
+      // return this.totals;
     },
   },
   computed: {
     totals() {
-      // let totalItems = [];
+      this.getTotals();
+
       const totalItems = [
         {
           pos: 0,

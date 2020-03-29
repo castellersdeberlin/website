@@ -14,7 +14,7 @@
           >
           </v-autocomplete>
           <h3 v-if="!editFormMode">
-            {{ this.attendance.name }}
+            {{ this.editedItem.name }}
           </h3>
         </v-col>
       </v-row>
@@ -28,6 +28,7 @@
           <AttendanceSlot
             :dataProps="colName"
             :member="memberToAdd"
+            :itemData="editedItem"
 
             ref="attslot"
           />
@@ -35,11 +36,11 @@
       </v-row>
       <v-row>
         <v-col cols="2">
-          <v-btn @click.prevent="addNew"
+          <v-btn @click.prevent="saveForm"
             type="submit"
             class="btn btn-lg btn-primary mb-2"
           >
-            Add Attendance
+            Save
           </v-btn>
         </v-col>
       </v-row>
@@ -57,7 +58,7 @@ export default {
     AttendanceSlot,
   },
   props: {
-    attendance: {
+    editedItem: {
       type: Object,
       required: true,
       default: () => {},
@@ -93,20 +94,23 @@ export default {
       search: '',
       results: [],
       isOpen: false,
-      memberToAdd: '',
+      memberToAdd: this.editedItem.name,
       singleDate: undefined,
       options: ['no', 'yes', 'maybe', undefined],
     };
   },
-  created() {
-
-  },
   methods: {
-    addNew() {
+    saveForm() {
       this.$refs.attslot.forEach((item) => item.readThenUpdate());
+      this.close();
     },
     close() {
-      this.$emit('close');
+      this.$emit('dialogIsOpen', false);
+      setTimeout(() => {
+        // this.editedItem = this.defaultItem;
+        // this.editedIndex = -1;
+        this.$emit('updateDates', true);
+      }, 300);
     },
   },
   computed: {
@@ -122,7 +126,5 @@ export default {
     background: #fff;
     width: 100%;
     padding: 0;
-    /* margin: 0 -1.5rem; */
-    /* width: 100%; */
   }
 </style>
