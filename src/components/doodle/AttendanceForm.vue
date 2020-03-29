@@ -28,6 +28,7 @@
           <AttendanceSlot
             :dataProps="colName"
             :member="memberToAdd"
+
             ref="attslot"
           />
         </v-col>

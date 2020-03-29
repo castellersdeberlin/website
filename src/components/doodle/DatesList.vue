@@ -12,10 +12,10 @@
       </template>
 
       <template v-slot:item.show="{ item }">
-          <v-icon v-if="item.show" color="green">
+          <v-icon v-if="item.show" color="green" class="center">
           mdi-check
           </v-icon>
-          <v-icon v-else color="red">
+          <v-icon v-else color="red" class="center">
           close
           </v-icon>
       </template>

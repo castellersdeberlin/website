@@ -10,10 +10,10 @@
     >
 
       <template v-slot:item.member="{ item }">
-          <v-icon v-if="item.member" :color="getBkg(item.member)">
+          <v-icon v-if="item.member" :color="getBkg(item.member)" class="center">
           mdi-check
           </v-icon>
-          <v-icon v-else :color="getBkg(item.member)">
+          <v-icon v-else :color="getBkg(item.member)" class="center">
           close
           </v-icon>
       </template>
@@ -206,11 +206,5 @@ export default {
       font-size: .4rem;
       font-weight: 300;
       text-transform: capitalize;
-    }
-    .v-application .container .section-title {
-      /* text-transform: lowercase; */
-    }
-    .check {
-      font-size: 0;
     }
 </style>

@@ -1,85 +1,109 @@
 <template>
-    <v-data-table
-      :headers="this.tableHeaders"
-      :items="this.tableAttendance"
-      :dateCols="this.datesElements"
-      hide-default-footer
-      class="dates-table"
-      >
-
-      <template v-slot:top>
-        <v-toolbar flat color="#fff">
-          <v-toolbar-title
-            color="white"
-          >
+  <div>
+  <v-data-table
+    :headers="this.tableHeaders"
+    :items="this.tableAttendance"
+    :dateCols="this.datesElements"
+    hide-default-footer
+    class="dates-table"
+  >
+    <template v-slot:top>
+      <v-toolbar flat color="#fff">
+        <v-toolbar-title
+          color="white"
+        >
           {{ $t('tableTitle') }}
-          </v-toolbar-title>
+        </v-toolbar-title>
           <v-divider
             class="mx-4"
             inset
             vertical
           />
           <v-spacer></v-spacer>
-          <v-dialog v-model="dialog" max-width="90%"
-            elevation-10
-            overlay-color="yellow"
-          >
-            <template v-slot:activator="{ on }">
-              <v-btn color="secondary"
-                dark class="mb-2"
+        <v-dialog v-model="dialog" max-width="90%"
+          elevation-10
+          overlay-color="yellow"
+        >
+          <template v-slot:activator="{ on }">
+            <v-btn color="secondary"
+                class="mb-2"
                 v-on="on"
                 @click="setFormMode(true)"
-              >
-                Add
-              </v-btn>
-            </template>
-            <AttendanceForm
-              :headers="datesElements"
-              :members="members"
-              :dates="itemsDates"
-              :editFormMode="editFormMode"
-              :titleForm="titleForm"
-              :attendance="editedItem"
-              class="attendance-dialog"
-              @close="closeDialog"
-              />
-          </v-dialog>
-        </v-toolbar>
-      </template>
+            >
+              Add
+            </v-btn>
+          </template>
+          <AttendanceForm
+            :headers="datesElements"
+            :members="members"
+            :dates="itemsDates"
+            :editFormMode="editFormMode"
+            :titleForm="titleForm"
+            :attendance="editedItem"
+            class="attendance-dialog"
+            @close="closeDialog"
+          />
+        </v-dialog>
+      </v-toolbar>
+    </template>
 
-      <template class="sloty"
-        v-for="(colmn, i) in this.datesElements" #[`item.${colmn.value}`]="{ item }">
-          <div :key="i">
-              <v-icon v-if="item[`${colmn.value}`] === 0" color="red">
-                close
-              </v-icon>
-              <v-icon v-if="item[`${colmn.value}`] === 1" color="green">
-                done
-              </v-icon>
-              <v-icon v-if="item[`${colmn.value}`] === 2" color="#e2e2e2">
-                help
-              </v-icon>
-            </div>
-      </template>
-
-
-      <template v-slot:item.actions="{ item }">
-        <v-icon
-          small
-          class="mr-2"
-          color="#999"
-          @click="editItem(item); setFormMode(false)"
-        >
-          mdi-pencil
+    <template
+      v-for="(colmn, i) in this.datesElements"
+      #[`item.${colmn.value}`]="{ item }">
+      <div :key="i">
+        <v-icon v-if="item[`${colmn.value}`] === 0" color="red" class="center">
+          close
         </v-icon>
-        <v-icon
-          small
-          @click="readThenDelete(item)"
-        >
-          mdi-delete
+        <v-icon v-if="item[`${colmn.value}`] === 1" color="green" class="center">
+          done
         </v-icon>
-      </template>
-    </v-data-table>
+        <v-icon v-if="item[`${colmn.value}`] === 2" color="#e2e2e2" class="center">
+          help
+        </v-icon>
+      </div>
+    </template>
+
+    <template v-for="(h, i) in this.tableHeaders"
+      #[`header.${h.text}`]="{ header }"
+      >
+      <div :key="i" class="baux center">
+        <div>
+          {{ header.text.split(', ')[0] }}
+        </div>
+        <div>
+          some
+        </div>
+      </div>
+    </template>
+
+    <template v-slot:item.actions="{ item }">
+      <v-icon
+        small
+        class="mr-2"
+        color="#999"
+        @click="editItem(item); setFormMode(false)"
+      >
+        mdi-pencil
+      </v-icon>
+      <v-icon
+        small
+        @click="readThenDelete(item)"
+      >
+        mdi-delete
+      </v-icon>
+    </template>
+  </v-data-table>
+  <v-divider color="#000" />
+  <v-data-table
+    :headers="this.tableHeaders"
+    :items="this.totals"
+    hide-default-footer
+    justify-center
+    class="results-table"
+    >
+
+  </v-data-table>
+  </div>
 </template>
 
 <script>
@@ -110,9 +134,7 @@ export default {
       defaultItem: {},
       editFormMode: false,
       titleForm: 'Add Item',
-      attending: [],
-      notAttending: [],
-      maybeAttending: [],
+      attendance: [],
     };
   },
   created() {
@@ -121,27 +143,6 @@ export default {
   methods: {
     closeDialog() {
       this.dialog = false;
-    },
-    getTotals() {
-      const att0 = [];
-      const att1 = [];
-      const att2 = [];
-
-      this.members.map((member) => {
-        if (member.value === 0) {
-          att0.push(member);
-        }
-        if (member.value === 1) {
-          att1.push(member);
-        }
-        if (member.value === 2) {
-          att2.push(member);
-        }
-        return null;
-      });
-      this.notAttending = att0;
-      this.attending = att1;
-      this.maybeAttending = att2;
     },
     editItem(item) {
       this.editedItem = { ...item };
@@ -157,13 +158,78 @@ export default {
         this.titleForm = 'Edit';
       }
     },
+    getTotals() {
+      const attendanceLoop = [];
+
+      this.itemsDates.map((date) => {
+        const attDate = {
+          name: date.name,
+          attending: [],
+          notattending: [],
+          maybeattending: [],
+        };
+
+        date.attendancelist.map((item) => {
+          if (item.value === 0) {
+            attDate.notattending.push(item.name);
+            return attDate;
+          }
+          if (item.value === 1) {
+            attDate.attending.push(item.name);
+            return attDate;
+          }
+          if (item.value === 2) {
+            attDate.maybeattending.push(item.name);
+            return attDate;
+          }
+          return null;
+        });
+        attendanceLoop.push(attDate);
+        return null;
+      });
+      this.attendance = attendanceLoop;
+    },
   },
   computed: {
+    totals() {
+      // let totalItems = [];
+      const totalItems = [
+        {
+          pos: 0,
+          name: 'No',
+        },
+        {
+          pos: 1,
+          name: 'Yes',
+        },
+        {
+          pos: 2,
+          name: 'Maybe',
+        },
+      ];
+      this.attendance.map((attitem) => {
+        const name = `${attitem.name}.value`;
+        totalItems.map((titem, i) => {
+          if (titem.pos === 0) {
+            totalItems[i][name] = attitem.notattending.length;
+          }
+          if (titem.pos === 1) {
+            totalItems[i][name] = attitem.attending.length;
+          }
+          if (titem.pos === 2) {
+            totalItems[i][name] = attitem.maybeattending.length;
+          }
+          return null;
+        });
+        return totalItems;
+      });
+      return totalItems;
+    },
     datesElements() {
       const headerob = [];
       this.itemsDates.map((dateItem) => {
         const ob = {
-          text: dateItem.sessiondate.toLocaleString('de-De'),
+          text: dateItem.sessiondate.toLocaleString('de-De').split(',')[0],
           value: `${dateItem.name}.value`,
         };
         headerob.push(ob);
@@ -183,7 +249,6 @@ export default {
       const names = [];
       this.itemsDates.map((item) => {
         const itemRef = item.name;
-        // if attendance entry for the date exists
         if (item.attendancelist) {
           item.attendancelist.map((cst) => {
             if (names.indexOf(cst.name) === -1) {
@@ -223,9 +288,16 @@ export default {
     text-transform: capitalize;
     font-weight: 300;
   }
-  .sloty {
+  .results-table {
+    background: #fcbf43;
+  }
+  .baux {
     background: yellow !important;
     border: 2px dashed black;
+  }
+  .center {
+    display: flex;
+    justify-content: center;;
   }
 </style>
 
