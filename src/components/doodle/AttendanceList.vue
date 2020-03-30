@@ -4,6 +4,8 @@
     :headers="this.tableHeaders"
     :items="this.tableAttendance"
     :dateCols="this.datesElements"
+    items-per-page="100"
+    hide-default-footer
     class="dates-table"
   >
     <template v-slot:top>
@@ -79,7 +81,7 @@
     <template v-slot:item.actions="{ item }">
       <v-icon
         small
-        class="mr-2"
+        class="mr-5"
         color="#999"
         @click="editItem(item); setFormMode(false)"
       >
@@ -93,14 +95,29 @@
       </v-icon>
     </template>
   </v-data-table>
+
   <v-divider color="#000" />
+
   <v-data-table
     :headers="this.tableHeaders"
     :items="this.totals"
     hide-default-footer
-    justify-center
     class="results-table"
     >
+
+    <template #item.name="{ item }">
+      <div>
+        <v-icon v-if="item.name == 0" color="red">
+          close
+        </v-icon>
+        <v-icon v-if="item.name == 1" color="green">
+          done
+        </v-icon>
+        <v-icon v-if="item.name == 2" color="#e2e2e2">
+          help
+        </v-icon>
+      </div>
+    </template>
 
   </v-data-table>
   </div>
@@ -198,15 +215,15 @@ export default {
       const totalItems = [
         {
           pos: 0,
-          name: 'No',
+          name: '0',
         },
         {
           pos: 1,
-          name: 'Yes',
+          name: '1',
         },
         {
           pos: 2,
-          name: 'Maybe',
+          name: '2',
         },
       ];
       this.attendance.map((attitem) => {
@@ -248,7 +265,7 @@ export default {
 
     tableHeaders() {
       const ob = [];
-      ob[0] = { text: '', value: 'name' };
+      ob[0] = { text: 'Name', value: 'name', width: '100' };
       const headerob = ob.concat(this.datesElements);
       headerob.push({ text: 'Actions', value: 'actions' });
       return headerob;
@@ -268,8 +285,6 @@ export default {
               ob[`${itemRef}.value`] = cst.value;
               Att.push(ob);
             } else {
-              // find index of object with name === cst.name
-              // assign new property to Att[foundindex]
               Att.map((attItem, i) => {
                 if (attItem.name === cst.name) {
                   Att[i][`${itemRef}.value`] = cst.value;
@@ -299,15 +314,13 @@ export default {
     font-weight: 300;
   }
   .results-table {
-    background: #fcbf43;
-  }
-  .baux {
-    background: yellow !important;
-    border: 2px dashed black;
+    /* background: #fcbf43; */
+    /* background: #efefef; */
+    border-top: 4px #fcbf43 solid;
   }
   .center {
     display: flex;
-    justify-content: center;;
+    justify-content: center;
   }
 </style>
 

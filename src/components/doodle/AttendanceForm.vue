@@ -28,6 +28,7 @@
           <AttendanceSlot
             :dataProps="colName"
             :member="editedItem.name"
+            :memberToAdd="memberToAdd"
             :itemData="editedItem"
             ref="attslot"
           />

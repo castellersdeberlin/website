@@ -3,43 +3,83 @@
     dense
     >
     <h1 class="h3 mb-3 font-weight-normal">{{ this.titleForm }}</h1>
-    <v-menu
-      v-model="menu2"
-      :close-on-content-click="false"
-      :nudge-right="40"
-      transition="scale-transition"
-      offset-y
-      min-width="290px"
-    >
 
-      <template v-slot:activator="{ on }">
-        <v-text-field
-          v-model="date"
-          label="Date"
-          prepend-icon="event"
-          hint="DD/MM/YYYY"
-          persistent-hint
-          readonly
-          v-on="on"
-        />
-      </template>
-      <v-date-picker
-        v-model="date"
-        @input="menu2 = false"
-      >
-      </v-date-picker>
-    </v-menu>
+    <v-row>
+      <v-col>
+        <v-menu
+          v-model="menu"
+          :close-on-content-click="false"
+          :nudge-right="40"
+          transition="scale-transition"
+          offset-y
+          min-width="290px"
+        >
 
-    <v-text-field v-model="session.name"
-      type="text"
-      label="Ref"
-      required>
-    </v-text-field>
-    <v-text-field v-model="session.type"
-      type="text"
-      label="Type"
-      required>
-    </v-text-field>
+          <template v-slot:activator="{ on }">
+            <v-text-field
+              v-model="date"
+              label="Date"
+              prepend-icon="event"
+              hint="DD/MM/YYYY"
+              persistent-hint
+              readonly
+              v-on="on"
+            />
+          </template>
+          <v-date-picker
+            v-model="date"
+            @input="menu = false"
+          >
+          </v-date-picker>
+        </v-menu>
+      </v-col>
+
+      <v-col>
+        <v-menu
+          v-model="menu2"
+          :close-on-content-click="false"
+          :nudge-right="40"
+          transition="scale-transition"
+          offset-y
+          min-width="290px"
+        >
+
+          <template v-slot:activator="{ on }">
+            <v-text-field
+              v-model="time"
+              label="Time"
+              prepend-icon="mdi-clock-outline"
+              hint="hh:mm"
+              persistent-hint
+              readonly
+              v-on="on"
+            />
+          </template>
+          <v-time-picker
+            v-model="time"
+            @input="menu2 = false"
+          >
+          </v-time-picker>
+        </v-menu>
+      </v-col>
+    </v-row>
+
+    <v-row>
+      <v-col cols="6">
+        <v-text-field v-model="session.name"
+          type="text"
+          label="Ref"
+          required>
+        </v-text-field>
+      </v-col>
+      <v-col cols="6">
+        <v-text-field v-model="session.type"
+          type="text"
+          label="Type"
+          required>
+        </v-text-field>
+      </v-col>
+    </v-row>
     <v-text-field v-model="session.comments"
       type="text"
       label="Comments"
@@ -93,6 +133,11 @@ export default {
     formatedDate: {
       type: String,
     },
+    formatedTime: {
+      type: String,
+      required: true,
+      default: () => '18:00',
+    },
     titleForm: {
       type: String,
       default: 'Add Date',
@@ -105,12 +150,15 @@ export default {
     return {
       session: this.editedSession,
       date: this.formatedDate,
+      time: this.formatedTime,
       startName: this.editedSession.name,
-      modal: false,
       menu: false,
       menu2: false,
       defaultItem: {
         sessiondate: '',
+        time: '',
+        month: '',
+        year: '',
         type: '',
         comments: '',
       },
@@ -172,6 +220,14 @@ export default {
       this.$emit('updateDates', true);
     },
 
+    stringToTime(timestr) {
+      const dat = new Date();
+      const time = timestr.split(/:|-/g);
+      dat.setHours(time[0]);
+      dat.setMinutes(time[1]);
+      return dat;
+    },
+
     update(sessFound) {
       sessFound.set(this.session);
       sessFound.set('sessiondate', new Date(this.date));
@@ -191,6 +247,9 @@ export default {
     },
     formatedDate() {
       this.date = this.formatedDate;
+    },
+    formatedTime() {
+      this.time = this.formatedTime;
     },
   },
 };

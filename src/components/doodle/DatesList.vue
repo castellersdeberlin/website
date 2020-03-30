@@ -4,11 +4,18 @@
         :items="this.propDates"
         :group-by="this.propDates.month"
         hide-default-footer
+        :options="this.options"
         class="dates-table"
     >
       <template v-slot:item.sessiondate="{ item }">
         <span>
           {{ new Date(item.sessiondate).toISOString().slice(0, 10)  }}
+        </span>
+      </template>
+
+      <template v-slot:item.sessiontime="{ item }">
+        <span>
+          {{ item.sessiontime }}
         </span>
       </template>
 
@@ -51,6 +58,7 @@
             <DatesForm
               :editedSession="editedsession"
               :formatedDate="formatedDate"
+              :formatedTime="editedsession.sessiontime"
               :editMode="editFormMode"
               :titleForm="titleForm"
               @dialogIsOpen="closeDialog"
@@ -113,9 +121,10 @@ export default {
           text: 'Date',
           value: 'sessiondate',
           align: 'start',
-          sortable: false,
+          sortable: true,
         },
-        { text: 'Ref', value: 'name', align: 'center' },
+        { text: 'Time', value: 'sessiontime' },
+        { text: 'Ref', value: 'name' },
         { text: 'Type', value: 'type' },
         { text: 'Location', value: 'location' },
         { text: 'Attending', value: 'attendance' },
@@ -128,6 +137,10 @@ export default {
         },
         { text: 'Actions', value: 'actions', sortable: false },
       ],
+      options: {
+        'items-per-page': 2,
+        'group-by': ['month'],
+      },
       titleForm: 'Add Date',
       editFormMode: false,
     };
@@ -183,6 +196,7 @@ export default {
     updateList() {
       this.$emit('updateDates', true);
     },
+
   },
 
   computed: {

@@ -24,6 +24,9 @@ export default {
       type: Object,
     },
     itemData: {},
+    memberToAdd: {
+      type: String,
+    },
   },
 
   data() {
@@ -67,7 +70,7 @@ export default {
       const existing = att.map((item) => item.name);
       if (existing.indexOf(this.itemData.name) === -1) {
         const nw = {
-          name: this.itemData.name,
+          name: this.memberToAdd,
           value: this.radioGroup,
         };
         att.push(nw);

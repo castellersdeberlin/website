@@ -18,14 +18,14 @@
       <v-col>
 
         <AttendanceList
-          :itemsDates="this.datesToTable"
+          :itemsDates="this.tableDates"
           :members="this.tableMembers"
           @updateDates="this.getDates"
           v-if="tab === 0"
         />
 
         <DatesList
-         :propDates="this.datesToTable"
+         :propDates="this.tableDates"
           @updateDates="this.getDates"
           v-if="tab === 1"
           />
@@ -90,7 +90,7 @@ export default {
         }
       }).then(() => {
         console.log('Dates updated');
-        // this.datesToTable();
+        // this.tableDates();
       }).catch((error) => {
         console.log(`Error ${error.code} with message: ${error.message}`);
       });
@@ -113,14 +113,18 @@ export default {
 
   computed: {
 
-    datesToTable() {
+    tableDates() {
       const tDates = [];
       this.dates.map((item) => {
         const ob = {};
         ob.sessiondate = item.get('sessiondate');
-        ob.time = item.get('sessiondate');
         ob.year = item.get('sessiondate').toISOString().slice(0, 4);
         ob.month = item.get('sessiondate').toISOString().slice(5, 2);
+        if (item.get('sessionTime') !== undefined) {
+          ob.sessiontime = new Date().toISOString().slice(11, 15);
+        } else {
+          ob.sessiontime = '00:00';
+        }
         ob.type = item.get('type');
         ob.name = item.get('name');
         ob.comments = item.get('comments');
