@@ -4,7 +4,6 @@
     :headers="this.tableHeaders"
     :items="this.tableAttendance"
     :dateCols="this.datesElements"
-    hide-default-footer
     class="dates-table"
   >
     <template v-slot:top>
@@ -228,20 +227,25 @@ export default {
       });
       return totalItems;
     },
+
     datesElements() {
       const headerob = [];
       const datesShow = this.itemsDates.filter((filt) => filt.show === true);
+
+      datesShow.sort((a, b) => a.sessiondate - b.sessiondate);
 
       datesShow.map((dateItem) => {
         const ob = {
           text: dateItem.sessiondate.toLocaleString('de-De').split(',')[0],
           value: `${dateItem.name}.value`,
+          align: 'center',
         };
         headerob.push(ob);
         return null;
       });
       return headerob;
     },
+
     tableHeaders() {
       const ob = [];
       ob[0] = { text: '', value: 'name' };
@@ -249,6 +253,7 @@ export default {
       headerob.push({ text: 'Actions', value: 'actions' });
       return headerob;
     },
+
     tableAttendance() {
       const Att = [];
       const names = [];
@@ -301,8 +306,8 @@ export default {
     border: 2px dashed black;
   }
   .center {
-    /* display: flex; */
-    /* justify-content: center;; */
+    display: flex;
+    justify-content: center;;
   }
 </style>
 

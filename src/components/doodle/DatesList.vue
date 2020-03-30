@@ -2,13 +2,14 @@
     <v-data-table
         :headers="this.colNames"
         :items="this.propDates"
+        :group-by="this.propDates.month"
         hide-default-footer
-        sort-by='sessiondate'
-        sort-desc
         class="dates-table"
     >
       <template v-slot:item.sessiondate="{ item }">
-        <span>{{ new Date(item.sessiondate).toISOString().slice(0,10)  }}</span>
+        <span>
+          {{ new Date(item.sessiondate).toISOString().slice(0, 10)  }}
+        </span>
       </template>
 
       <template v-slot:item.show="{ item }">
@@ -112,15 +113,19 @@ export default {
           text: 'Date',
           value: 'sessiondate',
           align: 'start',
-          sortable: true,
-          defaultSort: 'asc',
+          sortable: false,
         },
-        { text: 'Ref', value: 'name' },
+        { text: 'Ref', value: 'name', align: 'center' },
         { text: 'Type', value: 'type' },
         { text: 'Location', value: 'location' },
         { text: 'Attending', value: 'attendance' },
         { text: 'Comments', value: 'comments', sortable: false },
-        { text: 'Editable', value: 'show', sortable: false },
+        {
+          text: 'Editable',
+          value: 'show',
+          sortable: false,
+          align: 'center',
+        },
         { text: 'Actions', value: 'actions', sortable: false },
       ],
       titleForm: 'Add Date',
@@ -201,6 +206,10 @@ export default {
   .dates-table {
     text-transform: capitalize;
     font-weight: 300;
+  }
+  .center {
+    display: flex;
+    justify-content: center;
   }
 </style>
 

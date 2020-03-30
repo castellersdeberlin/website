@@ -118,6 +118,9 @@ export default {
       this.dates.map((item) => {
         const ob = {};
         ob.sessiondate = item.get('sessiondate');
+        ob.time = item.get('sessiondate');
+        ob.year = item.get('sessiondate').toISOString().slice(0, 4);
+        ob.month = item.get('sessiondate').toISOString().slice(5, 2);
         ob.type = item.get('type');
         ob.name = item.get('name');
         ob.comments = item.get('comments');
@@ -128,8 +131,7 @@ export default {
         tDates.push(ob);
         return null;
       });
-      return tDates;
-      // this.tableDates = tDates;
+      return tDates.sort((a, b) => b.sessiondate - a.sessiondate);
     },
 
     tableMembers() {
