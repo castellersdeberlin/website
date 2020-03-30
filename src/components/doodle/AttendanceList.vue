@@ -244,7 +244,7 @@ export default {
     },
     tableHeaders() {
       const ob = [];
-      ob[0] = { text: 'Name', value: 'name' };
+      ob[0] = { text: '', value: 'name' };
       const headerob = ob.concat(this.datesElements);
       headerob.push({ text: 'Actions', value: 'actions' });
       return headerob;
@@ -301,8 +301,8 @@ export default {
     border: 2px dashed black;
   }
   .center {
-    display: flex;
-    justify-content: center;;
+    /* display: flex; */
+    /* justify-content: center;; */
   }
 </style>
 

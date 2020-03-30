@@ -1,4 +1,5 @@
 <template>
+  <div>
    <v-data-table
       class="memberlist"
       :headers="this.propNames"
@@ -31,7 +32,9 @@
         <v-toolbar flat color="#fff">
           <v-toolbar-title
             color="white"
-          >Members</v-toolbar-title>
+          >
+            Members
+          </v-toolbar-title>
           <v-divider
             class="mx-4"
             inset
@@ -56,8 +59,9 @@
                 :info="editedItem"
                 :editMode="editFormMode"
                 :titleForm="titleForm"
+                :memberList="memberList"
                 @dialogIsOpen="closeDialog"
-                @updateList="parentUpdateList"
+                @updateMemberList="updateMemberList"
               />
 
           </v-dialog>
@@ -82,6 +86,8 @@
         </v-icon>
       </template>
     </v-data-table>
+    <v-btn @click="updateMemberList"> Update </v-btn>
+    </div>
 </template>
 
 <script>
@@ -145,22 +151,27 @@ export default {
   created() {
   },
   methods: {
+
     closeDialog() {
       this.dialog = false;
     },
+
     delete(member) {
       member.destroy().then(() => {
         console.log(`Member ${member.get('name')} erased successfully`);
-        this.getMembers();
+      }).then(() => {
+        this.$emit('updateMemberList', true);
       }).catch((response, error) => {
         console.log(`Error: ${error.message}`);
       });
     },
+
     editItem(item) {
       this.editedItem = { ...item };
       this.setFormMode(false);
       this.dialog = true;
     },
+
     getBkg(val) {
       if (val === true) {
         return '#fcbf43';
@@ -170,6 +181,7 @@ export default {
       }
       return '#efefef';
     },
+
     setFormMode(mode) {
       this.editFormMode = mode;
       if (this.editFormMode) {
@@ -179,6 +191,7 @@ export default {
         this.titleForm = 'Edit Item';
       }
     },
+
     readThenDelete(item) {
       this.toDelete = item.name;
       const query = new Parse.Query('CdbMember');
@@ -194,8 +207,21 @@ export default {
         console.log(`Error: ${error.code} + ${error.message}`);
       });
     },
-    parentUpdateList() {
-      this.$emit('updateMemberList', true);
+
+    updateMemberList(val = true) {
+      this.$emit('updateMemberList', val);
+    },
+  },
+
+  computed: {
+    memberList() {
+      return this.tableItems.map((item) => item.name);
+    },
+  },
+
+  watch: {
+    members() {
+      this.tableItems = this.members;
     },
   },
 };

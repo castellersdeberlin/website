@@ -1,38 +1,40 @@
 <template>
   <v-container>
-    <v-row class="section-title">
+    <v-row>
       <v-col>
+
         <v-tabs v-model="tab">
           <v-tab v-for="tab in tabItems"
             :key="tab.index"
           >
-          {{ tab.name }}
+          {{ $t(`tabTitle${tab.index}`) }}
           </v-tab>
         </v-tabs>
+
       </v-col>
     </v-row>
 
     <v-row>
       <v-col>
 
-          <AttendanceList
-            :itemsDates="this.tableDates"
-            :members="this.tableMembers"
-            @updateDates="this.getDates"
-            v-if="tab === 0"
+        <AttendanceList
+          :itemsDates="this.datesToTable"
+          :members="this.tableMembers"
+          @updateDates="this.getDates"
+          v-if="tab === 0"
+        />
+
+        <DatesList
+         :propDates="this.datesToTable"
+          @updateDates="this.getDates"
+          v-if="tab === 1"
           />
 
-          <DatesList
-           :propDates="this.tableDates"
-            @updateDates="this.getDates"
-            v-if="tab === 1"
-            />
-
-          <MemberList
-            :members="this.tableMembers"
-            @updateMemberList="getMembers"
-            v-if="tab === 2"
-          />
+        <MemberList
+          :members="this.tableMembers"
+          @updateMemberList="getMembers"
+          v-if="tab === 2"
+        />
 
       </v-col>
     </v-row>
@@ -53,29 +55,31 @@ export default {
     DatesList,
     MemberList,
   },
+
   data: () => ({
     dates: [],
     members: [],
-    tableDates: [],
     tab: 0,
     tabItems: [
       { index: 0, name: 'Attendance' },
       { index: 1, name: 'Dates' },
       { index: 2, name: 'Members' },
     ],
-    tableMembers: [],
   }),
+
   created() {
     this.initParse();
     this.getMembers();
     this.getDates();
   },
+
   methods: {
+
     initParse() {
       Parse.initialize(process.env.VUE_APP_B4APPID, process.env.VUE_APP_B4AJAVASCRIPTKEY);
       Parse.serverURL = process.env.VUE_APP_SERVERURL;
-      // console.log('Initializing Application', process.env.VUE_APP_B4APPID);
     },
+
     getDates() {
       const datesQuery = new Parse.Query('CdbSession');
       datesQuery.find().then((items) => {
@@ -90,6 +94,25 @@ export default {
         console.log(`Error ${error.code} with message: ${error.message}`);
       });
     },
+
+    getMembers() {
+      console.log('update triggered in doodle update');
+      const query = new Parse.Query('CdbMember');
+      query.find().then((items) => {
+        if (items) {
+          this.members = items;
+        } else {
+          console.log('Nothing found, please try again');
+        }
+      }).catch((error) => {
+        console.log(`Error: ${error.code} / ${error.message}`);
+      });
+    },
+
+  },
+
+  computed: {
+
     datesToTable() {
       const tDates = [];
       this.dates.map((item) => {
@@ -105,30 +128,11 @@ export default {
         tDates.push(ob);
         return null;
       });
-      this.tableDates = tDates;
+      return tDates;
+      // this.tableDates = tDates;
     },
-    setMembers(value) {
-      console.log('value: ', value);
-      this.members = value;
-    },
-    updateDates() {
-      this.getDates();
-    },
-    getMembers() {
-      const query = new Parse.Query('CdbMember');
-      query.find().then((items) => {
-        if (items) {
-          this.members = items;
-        } else {
-          console.log('Nothing found, please try again');
-        }
-      }).then(() => {
-        this.toTableMembers();
-      }).catch((error) => {
-        console.log(`Error: ${error.code} / ${error.message}`);
-      });
-    },
-    toTableMembers() {
+
+    tableMembers() {
       const tItems = [];
       this.members.map((member) => {
         const ob = {};
@@ -141,11 +145,12 @@ export default {
         tItems.push(ob);
         return null;
       });
-      this.tableMembers = tItems;
+      return tItems;
     },
-    updateList() {
-      this.getMembers();
-    },
+  },
+
+  watch: {
+
   },
 };
 </script>
@@ -155,11 +160,18 @@ export default {
 
 <i18n>
 en:
+  tabTitle0: 'Attendance'
+  tabTitle1: 'Dates'
+  tabTitle2: 'Members'
 de:
+  tabTitle0: 'Anwesenheit'
+  tabTitle1: 'Dates'
+  tabTitle2: 'Mitglieder'
 ca:
+  tabTitle0: 'Assistència'
+  tabTitle1: 'Dates'
+  tabTitle2: 'Membres'
 </i18n>
 
-//TODO: date format on input field in DatesForm (on edit?)
-//TODO: attendance formular >> pass info on edit
-//TODO: update lists when adding or updating items
-//TODO: filter dates on attendance based on field 'show'
+//TODO: date format on input field in DatesForm >> on edit
+//TODO: update lists when adding or updating member

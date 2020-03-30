@@ -95,7 +95,7 @@
               </v-col>
               <v-col cols="12" md="4">
                 <v-btn
-                  @click="this.close"
+                  @click="close"
                   block
                   class="btn btn-lg btn-primary mb-2"
                 >
@@ -118,12 +118,15 @@ export default {
     info: {
       type: Object,
     },
-    titleForm: {
-      type: String,
-      default: 'Add Member',
-    },
     editMode: {
       type: Boolean,
+    },
+    titleForm: {
+      type: String,
+      default: () => 'Add Member',
+    },
+    memberList: {
+      type: Array,
     },
   },
   data() {
@@ -141,17 +144,22 @@ export default {
     };
   },
   methods: {
+
     close() {
       this.$emit('dialogIsOpen', false);
       setTimeout(() => {
         this.editedItem = this.defaultItem;
         this.editedIndex = -1;
+        this.updateMemberList(true);
       }, 300);
+      console.log('close trigger in form');
     },
+
     editItem(item) {
       this.editedIndex = this.tableItems.indexOf(item);
       this.editedItem = item;
     },
+
     savePost() {
       const Cst = Parse.Object.extend('CdbMember');
       const casteller = new Cst();
@@ -161,16 +169,21 @@ export default {
       casteller.set('weight', parseInt(this.added.weight, 10));
       casteller.set('arm', parseInt(this.added.arm, 10));
 
-      casteller.save()
-        .then((res) => {
-          console.log(`New object created with objectId: ${res.id}`);
-        }, (error) => {
-          console.log(`Failed to create new object, with error code: ${error.message}`);
-        });
-      this.$set(this.added, this.defaultItem);
-      this.close();
-      this.parentUpdateList();
+      if (this.memberList.indexOf(this.added.name) === -1) {
+        casteller.save()
+          .then((res) => {
+            console.log(`New object created with objectId: ${res.id}`);
+          }, (error) => {
+            console.log(`Failed to create new object, with error code: ${error.message}`);
+          });
+        this.$set(this.added, this.defaultItem);
+        this.$emit('updateMemberList', casteller);
+        this.close();
+      } else {
+        console.log('This member name alreade exists');
+      }
     },
+
     readThenUpdate() {
       const query = new Parse.Query('CdbMember');
       query.equalTo('name', this.added.name);
@@ -185,9 +198,7 @@ export default {
         console.log(`Error: ${error.code} + ${error.message}`);
       });
     },
-    parentUpdateList() {
-      this.$emit('updateList', true);
-    },
+
     update(membrfound) {
       membrfound.set(this.added);
       membrfound.set('shoulders', parseInt(this.added.shoulders, 10));
@@ -199,8 +210,12 @@ export default {
       }).catch((error) => {
         console.log(`Error: ${error.message}`);
       });
+      this.$emit('updateMemberList', this.added);
       this.close();
-      this.parentUpdateList();
+    },
+
+    updateMemberList() {
+      this.$emit('updateMemberList', true);
     },
   },
   watch: {

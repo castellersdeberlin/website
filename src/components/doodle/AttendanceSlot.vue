@@ -18,17 +18,14 @@ import Parse from 'parse';
 
 export default {
   name: 'AttendanceSlot',
+
   props: {
     dataProps: {
       type: Object,
     },
-    member: {
-      type: String,
-      required: true,
-      default: () => 'none',
-    },
     itemData: {},
   },
+
   data() {
     return {
       radioGroup: this.itemData[`${this.dataProps.value}`],
@@ -40,12 +37,15 @@ export default {
       modified: false,
     };
   },
+
   methods: {
+
     activate() {
       this.modified = true;
     },
+
     readThenUpdate() {
-      if (this.modified && this.member !== 'none') {
+      if (this.modified && this.itemData.name !== 'none') {
         const query = new Parse.Query('CdbSession');
         query.equalTo('name', this.dataProps.value.split('.')[0]);
         query.first().then((sess) => {
@@ -61,33 +61,37 @@ export default {
       }
       return null;
     },
+
     update(sess) {
       const att = sess.get('attendancelist');
-
       const existing = att.map((item) => item.name);
-
-      if (existing.indexOf(this.member) === -1) {
+      if (existing.indexOf(this.itemData.name) === -1) {
         const nw = {
-          name: this.member,
+          name: this.itemData.name,
           value: this.radioGroup,
         };
         att.push(nw);
       } else {
         att.map((item, i) => {
-          if (item.name === this.member) {
+          if (item.name === this.itemData.name) {
             att[i].value = this.radioGroup;
           }
           return null;
         });
       }
-
       sess.set('attendancelist', att);
-
       sess.save().then(() => {
         console.log('Session updated!');
       }).catch((error) => {
         console.log(`Error: ${error.message}`);
       });
+    },
+
+  },
+
+  watch: {
+    itemData() {
+      this.radioGroup = this.itemData[`${this.dataProps.value}`];
     },
   },
 };

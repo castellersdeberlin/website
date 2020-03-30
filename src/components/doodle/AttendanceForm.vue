@@ -27,9 +27,8 @@
           </div>
           <AttendanceSlot
             :dataProps="colName"
-            :member="memberToAdd"
+            :member="editedItem.name"
             :itemData="editedItem"
-
             ref="attslot"
           />
         </v-col>
