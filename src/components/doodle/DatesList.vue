@@ -8,7 +8,7 @@
         class="dates-table"
     >
       <template v-slot:item.sessiondate="{ item }">
-        <span>{{new Date(item.sessiondate).toLocaleString('de-De')}}</span>
+        <span>{{ new Date(item.sessiondate).toISOString().slice(0,10)  }}</span>
       </template>
 
       <template v-slot:item.show="{ item }">
@@ -25,7 +25,7 @@
           <v-toolbar-title
               color="white"
           >
-          {{ $t('formName') }}
+            {{ $t('formName') }}
           </v-toolbar-title>
           <v-divider
               class="mx-4"
@@ -43,12 +43,13 @@
                 v-on="on"
                 @click="setFormMode(true)"
               >
-                Add Date
+                {{ $t('addButtonText') }}
               </v-btn>
             </template>
 
             <DatesForm
-              :info="editedsession"
+              :editedSession="editedsession"
+              :formatedDate="formatedDate"
               :editMode="editFormMode"
               :titleForm="titleForm"
               @dialogIsOpen="closeDialog"
@@ -60,20 +61,20 @@
       </template>
 
       <template v-slot:item.actions="{ item }">
-          <v-icon
+        <v-icon
           small
-          class="mr-2"
+          class="mr-5"
           color="#999"
           @click="editItem(item); setFormMode(false)"
-          >
+        >
           mdi-pencil
-          </v-icon>
-          <v-icon
+        </v-icon>
+        <v-icon
           small
           @click="readThenDelete(item)"
-          >
+        >
           mdi-delete
-          </v-icon>
+        </v-icon>
       </template>
     </v-data-table>
 </template>
@@ -117,6 +118,7 @@ export default {
         { text: 'Ref', value: 'name' },
         { text: 'Type', value: 'type' },
         { text: 'Location', value: 'location' },
+        { text: 'Attending', value: 'attendance' },
         { text: 'Comments', value: 'comments', sortable: false },
         { text: 'Editable', value: 'show', sortable: false },
         { text: 'Actions', value: 'actions', sortable: false },
@@ -126,9 +128,11 @@ export default {
     };
   },
   methods: {
+
     closeDialog() {
       this.dialog = false;
     },
+
     delete(deldate) {
       deldate.destroy().then(() => {
         console.log(`Date ${deldate.get('sessiondate')} erased successfully`);
@@ -137,12 +141,13 @@ export default {
         console.log(`Error: ${error.message}`);
       });
     },
+
     editItem(item) {
       this.editedsession = { ...item };
-      console.log(item.sessiondate);
       this.setFormMode(false);
       this.dialog = true;
     },
+
     readThenDelete(item) {
       console.log(item.sessiondate);
       const toDelete = item.sessiondate;
@@ -159,6 +164,7 @@ export default {
         console.log(`Error: ${error.code} + ${error.message}`);
       });
     },
+
     setFormMode(mode) {
       this.editFormMode = mode;
       if (this.editFormMode) {
@@ -168,10 +174,21 @@ export default {
         this.titleForm = 'Edit Date';
       }
     },
+
     updateList() {
       this.$emit('updateDates', true);
     },
   },
+
+  computed: {
+    formatedDate() {
+      if (this.editedsession.sessiondate) {
+        return this.editedsession.sessiondate.toISOString().slice(0, 10);
+      }
+      return null;
+    },
+  },
+
   watch: {
     propDates() {
       this.dates = this.propDates;
@@ -190,8 +207,11 @@ export default {
 <i18n>
   en:
     formName: 'Rehearsals'
+    addButtonText: 'Add Date'
   de:
     formName: 'Proben'
+    addButtonText: 'Datum hinzufügen'
   cat:
     formName: 'Assajos'
+    addButtonText: 'Afegir Data'
 </i18n>

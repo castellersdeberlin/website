@@ -1,91 +1,84 @@
 <template>
-    <v-form class="form-adddate"
-      dense
-      >
-      <h1 class="h3 mb-3 font-weight-normal">{{ this.titleForm }}</h1>
-      <v-menu
-        v-model="menu2"
-        :close-on-content-click="false"
-        :nudge-right="40"
-        transition="scale-transition"
-        offset-y
-        min-width="290px"
-      >
+  <v-form class="form-adddate"
+    dense
+    >
+    <h1 class="h3 mb-3 font-weight-normal">{{ this.titleForm }}</h1>
+    <v-menu
+      v-model="menu2"
+      :close-on-content-click="false"
+      :nudge-right="40"
+      transition="scale-transition"
+      offset-y
+      min-width="290px"
+    >
 
-        <template v-slot:activator="{ on }">
-          <v-text-field
-            v-model="added.sessiondate"
-            label="Date"
-            prepend-icon="event"
-            hint="DD/MM/YYYY"
-            persistent-hint
-            readonly
-            v-on="on"
-          ></v-text-field>
-        </template>
-        <v-date-picker
-          v-model="added.sessiondate"
-          @input="menu2 = false"
+      <template v-slot:activator="{ on }">
+        <v-text-field
+          v-model="date"
+          label="Date"
+          prepend-icon="event"
+          hint="DD/MM/YYYY"
+          persistent-hint
+          readonly
+          v-on="on"
+        />
+      </template>
+      <v-date-picker
+        v-model="date"
+        @input="menu2 = false"
+      >
+      </v-date-picker>
+    </v-menu>
+
+    <v-text-field v-model="session.name"
+      type="text"
+      label="Ref"
+      required>
+    </v-text-field>
+    <v-text-field v-model="session.type"
+      type="text"
+      label="Type"
+      required>
+    </v-text-field>
+    <v-text-field v-model="session.comments"
+      type="text"
+      label="Comments"
+      required>
+    </v-text-field>
+    <v-checkbox v-model="session.show"
+      type="text"
+      label="Edit"
+      required>
+    </v-checkbox>
+
+    <v-row>
+      <v-col cols="12" md="4" v-if="this.editMode">
+        <v-btn v-on:click="this.savePost"
+          class="btn btn-lg btn-primary mb-2"
+          block
+          type="button">
+              Add
+        </v-btn>
+      </v-col>
+      <v-col cols="12" md="4" v-if="!this.editMode">
+        <v-btn v-on:click="this.readThenUpdate"
+            class="btn btn-lg btn-secondary mb-2"
+            block
+            type="button">
+                Update
+        </v-btn>
+      </v-col>
+      <v-col cols="12" md="4">
+        <v-btn
+          @click="this.close"
+          block
+          class="btn btn-lg btn-primary mb-2"
         >
-        </v-date-picker>
-      </v-menu>
-
-        <v-text-field v-model="added.name"
-            type="text"
-            label="Ref"
-            required>
-        </v-text-field>
-        <v-text-field v-model="added.type"
-            type="text"
-            label="Type"
-            required>
-        </v-text-field>
-        <v-text-field v-model="added.comments"
-            type="text"
-            label="Comments"
-            required>
-        </v-text-field>
-        <v-checkbox v-model="added.show"
-            type="text"
-            label="Edit"
-            required>
-        </v-checkbox>
-
-        <template class="baux" v-slot:added.sessiondate="{ item }">
-          <div class="baux">
-            {{ item.toLocaleString('de-De') }}
-          </div>
-        </template>
-
-        <v-row>
-          <v-col cols="12" md="4" v-if="this.editMode">
-            <v-btn v-on:click="this.savePost"
-                class="btn btn-lg btn-primary mb-2"
-                block
-                type="button">
-                    Add
-            </v-btn>
-          </v-col>
-          <v-col cols="12" md="4" v-if="!this.editMode">
-            <v-btn v-on:click="this.readThenUpdate"
-                class="btn btn-lg btn-secondary mb-2"
-                block
-                type="button">
-                    Update
-            </v-btn>
-          </v-col>
-          <v-col cols="12" md="4">
-            <v-btn
-              @click="this.close"
-              block
-              class="btn btn-lg btn-primary mb-2"
-            >
-                Cancel
-              </v-btn>
-          </v-col>
-        </v-row>
-    </v-form>
-
+          Cancel
+        </v-btn>
+      </v-col>
+    </v-row>
+  </v-form>
 </template>
 
 <script>
@@ -94,8 +87,11 @@ import Parse from 'parse';
 export default {
   name: 'DatesForm',
   props: {
-    info: {
+    editedSession: {
       type: Object,
+    },
+    formatedDate: {
+      type: String,
     },
     titleForm: {
       type: String,
@@ -107,7 +103,9 @@ export default {
   },
   data() {
     return {
-      added: this.info,
+      session: this.editedSession,
+      date: this.formatedDate,
+      startName: this.editedSession.name,
       modal: false,
       menu: false,
       menu2: false,
@@ -118,38 +116,46 @@ export default {
       },
     };
   },
+
   methods: {
+
     close() {
       this.$emit('dialogIsOpen', false);
       setTimeout(() => {
-        this.added = this.defaultItem;
+        this.session = this.defaultItem;
         this.editedIndex = -1;
       }, 300);
     },
+
     editItem(item) {
       this.editedIndex = this.tableItems.indexOf(item);
-      this.added = item;
+      this.session = item;
     },
+
     savePost() {
       const CdbS = Parse.Object.extend('CdbSession');
       const sessionDate = new CdbS();
+      sessionDate.set(this.session);
+      sessionDate.set('sessiondate', new Date(this.date));
 
-      sessionDate.set(this.added);
-      sessionDate.set('sessiondate', new Date(this.added.sessiondate));
-
-      sessionDate.save()
-        .then((res) => {
-          console.log(`New object created with objectId: ${res.id}`);
-        }, (error) => {
-          console.log(`Failed to create new object, with error code: ${error.message}`);
-        });
-      this.$set(this.added, this.defaultItem);
-      this.close();
-      this.siblingUpdateList();
+      if (sessionDate.get('name')) {
+        sessionDate.save()
+          .then((res) => {
+            console.log(`New object created with objectId: ${res.id}`);
+          }, (error) => {
+            console.log(`Failed to create new object, with error code: ${error.message}`);
+          });
+        this.$set(this.session, this.defaultItem);
+        this.close();
+        this.siblingUpdateList();
+      } else {
+        console.log('The field ref is needed');
+      }
     },
+
     readThenUpdate() {
       const query = new Parse.Query('CdbSession');
-      query.equalTo('sessiondate', this.added.sessiondate);
+      query.equalTo('name', this.startName);
       query.first().then((sess) => {
         if (sess) {
           console.log(`Date found with name: ${sess.get('name')}`);
@@ -161,11 +167,14 @@ export default {
         console.log(`Error: ${error.code} + ${error.message}`);
       });
     },
+
     siblingUpdateList() {
       this.$emit('updateDates', true);
     },
+
     update(sessFound) {
-      sessFound.set(this.added);
+      sessFound.set(this.session);
+      sessFound.set('sessiondate', new Date(this.date));
 
       sessFound.save().then(() => {
         console.log('Date updated!');
@@ -177,8 +186,11 @@ export default {
     },
   },
   watch: {
-    info() {
-      this.added = this.info;
+    editedSession() {
+      this.session = this.editedSession;
+    },
+    formatedDate() {
+      this.date = this.formatedDate;
     },
   },
 };

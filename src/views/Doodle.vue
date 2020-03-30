@@ -59,7 +59,7 @@ export default {
   data: () => ({
     dates: [],
     members: [],
-    tab: 0,
+    tab: 1,
     tabItems: [
       { index: 0, name: 'Attendance' },
       { index: 1, name: 'Dates' },
@@ -89,14 +89,14 @@ export default {
           console.log('Nothing found, please try again');
         }
       }).then(() => {
-        this.datesToTable();
+        console.log('Dates updated');
+        // this.datesToTable();
       }).catch((error) => {
         console.log(`Error ${error.code} with message: ${error.message}`);
       });
     },
 
     getMembers() {
-      console.log('update triggered in doodle update');
       const query = new Parse.Query('CdbMember');
       query.find().then((items) => {
         if (items) {
