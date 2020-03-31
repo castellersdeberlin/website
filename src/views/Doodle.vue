@@ -161,9 +161,6 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
-
 <i18n>
 en:
   tabTitle0: 'Attendance'

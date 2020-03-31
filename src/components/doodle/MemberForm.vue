@@ -3,7 +3,7 @@
       <v-container>
         <v-row>
           <v-col>
-            <h1 class="h3 mb-3 font-weight-normal">{{ this.titleForm }}</h1>
+            <h1 class="mb-3 amber--text">{{ $t('formTitle') }}</h1>
           </v-col>
         </v-row>
         <v-row>
@@ -77,27 +77,27 @@
             </v-row>
 
             <v-row>
-              <v-col cols="12" md="4" v-if="this.editMode">
+              <v-col cols="12" md="6" v-if="this.editMode">
                 <v-btn v-on:click="this.savePost"
-                    class="btn btn-lg btn-primary mb-2"
+                    class="btn mb-2 amber darken-2 white--text"
                     block
                     type="button">
                         Add
                 </v-btn>
               </v-col>
-              <v-col cols="12" md="4" v-if="!this.editMode">
+              <v-col cols="12" md="6" v-if="!this.editMode">
                 <v-btn v-on:click="this.readThenUpdate"
-                    class="btn btn-lg btn-secondary mb-2"
+                    class="btn mb-2 amber lighten-2 white--text"
                     block
                     type="button">
                         Update
                 </v-btn>
               </v-col>
-              <v-col cols="12" md="4">
+              <v-col cols="12" md="6">
                 <v-btn
                   @click="close"
                   block
-                  class="btn btn-lg btn-primary mb-2"
+                  class="btn mb-2 white grey--text"
                 >
                     Cancel
                   </v-btn>
@@ -228,7 +228,7 @@ export default {
 
 <style scoped>
   .form-addcasteller {
-    font-size: .65rem;
+    /* font-size: .65rem; */
     background-color: #fff;
     font-weight: 400;
     max-width: 100%;
@@ -241,7 +241,19 @@ export default {
   }
   .form-addcasteller .v-label,
   .form-checkb {
-    font-size: .65rem;
-    font-weight: 400;
+    /* font-size: .65rem; */
+    /* font-weight: 400; */
   }
 </style>
+
+<i18n>
+en:
+  formTitle: 'Add Member'
+  addButtonText: 'Add'
+de:
+  formTitle: 'Mitglied hinzufügen'
+  addButtonText: 'Add'
+ca:
+  formTitle: 'Afegeix Membre'
+  addButtonText: 'Add'
+</i18n>

@@ -2,13 +2,48 @@
   <div>
    <v-data-table
       class="memberlist"
-      :headers="this.propNames"
+      :headers="this.colNames"
       :items="this.tableItems"
       :items-per-page="50"
       item-key="name"
       hide-default-footer
       :search="search"
     >
+
+      <template v-slot:top>
+        <v-toolbar flat>
+          <v-spacer></v-spacer>
+          <v-dialog v-model="dialog" max-width="500px"
+            elevation-10
+            overlay-color="amber"
+          >
+            <template v-slot:activator="{ on }">
+              <v-btn
+                class="amber darken-2 white--text"
+                v-on="on"
+                @click="setFormMode(true)"
+              >
+              <v-icon color="white">
+                  mdi-plus
+              </v-icon>
+              <v-icon color="white" class="ml-4">
+                  mdi-account
+              </v-icon>
+              </v-btn>
+            </template>
+
+              <MemberForm
+                :info="editedItem"
+                :editMode="editFormMode"
+                :titleForm="titleForm"
+                :memberList="memberList"
+                @dialogIsOpen="closeDialog"
+                @updateMemberList="updateMemberList"
+              />
+
+          </v-dialog>
+        </v-toolbar>
+      </template>
 
       <template v-slot:item.member="{ item }">
           <v-icon v-if="item.member" :color="getBkg(item.member)" class="center">
@@ -28,65 +63,25 @@
           </v-icon>
       </template>
 
-      <template v-slot:top>
-        <v-toolbar flat color="#fff">
-          <v-toolbar-title
-            color="white"
-          >
-            Members
-          </v-toolbar-title>
-          <v-divider
-            class="mx-4"
-            inset
-            vertical
-          />
-          <v-spacer></v-spacer>
-          <v-dialog v-model="dialog" max-width="500px"
-            elevation-10
-            overlay-color="yellow"
-          >
-            <template v-slot:activator="{ on }">
-              <v-btn color="secondary"
-                dark class="mb-2"
-                v-on="on"
-                @click="setFormMode(true)"
-              >
-                Add Member
-              </v-btn>
-            </template>
-
-              <MemberForm
-                :info="editedItem"
-                :editMode="editFormMode"
-                :titleForm="titleForm"
-                :memberList="memberList"
-                @dialogIsOpen="closeDialog"
-                @updateMemberList="updateMemberList"
-              />
-
-          </v-dialog>
-        </v-toolbar>
-      </template>
-
       <template v-slot:item.actions="{ item }">
         <v-icon
-          class="pr-5"
-          small
-          color="#999"
+          class="pl-5"
+          color="amber"
+          medium
           @click="editItem(item); setFormMode(false)"
         >
           mdi-pencil
         </v-icon>
         <v-icon
-          class="pr-4"
-          small
+          class="pl-5"
+          color="amber"
+          medium
           @click="readThenDelete(item)"
         >
           mdi-delete
         </v-icon>
       </template>
     </v-data-table>
-    <v-btn @click="updateMemberList"> Update </v-btn>
     </div>
 </template>
 
@@ -108,9 +103,10 @@ export default {
     return {
       dialog: false,
       tableItems: this.members,
-      propNames: [
+      colNames: [
         {
           text: 'name',
+          weight: '700',
           value: 'name',
           align: 'start',
           sortable: false,
@@ -118,10 +114,15 @@ export default {
         { text: 'sho.', value: 'shoulders' },
         { text: 'arm.', value: 'arm' },
         { text: 'wei.', value: 'weight' },
-        // { text: 'adu.', value: 'adult' },
+        { text: 'adu.', value: 'adult' },
         { text: 'mem.', value: 'member' },
         { text: 'act.', value: 'regular' },
-        { text: 'actions', value: 'actions', sortable: false },
+        {
+          text: 'actions',
+          value: 'actions',
+          sortable: false,
+          align: 'end',
+        },
       ],
       editedIndex: -1,
       editedItem: {
@@ -234,3 +235,15 @@ export default {
       text-transform: capitalize;
     }
 </style>
+
+<i18n>
+en:
+  addButtonText: '+'
+  tableTitle: 'Members'
+de:
+  addButtonText: '+'
+  tableTitle: 'Mitglieder'
+ca:
+  addButtonText: '+'
+  tableTitle: 'Membres'
+</i18n>

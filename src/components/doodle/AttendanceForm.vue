@@ -1,11 +1,13 @@
 <template>
   <v-form class="attendance-form p-5">
-    <v-container>
-      <h1 class="px-5">
-        {{ this.titleForm }}
-      </h1>
+    <v-container
+      fluid
+      >
       <v-row class="px-5">
         <v-col cols="4" md="3" xl="2">
+      <h1 class="amber--text">
+        {{ this.titleForm }}
+      </h1>
           <v-autocomplete
             v-if="editFormMode"
             v-model="memberToAdd"
@@ -30,20 +32,36 @@
             :member="editedItem.name"
             :memberToAdd="memberToAdd"
             :itemData="editedItem"
-            ref="attslot"
           />
         </v-col>
       </v-row>
-      <v-row>
-        <v-col cols="2">
+      <v-container
+        class="py-0"
+        fluid
+      >
+      <v-row class="px-5">
+        <v-col cols="12" md="6">
+        </v-col>
+        <v-col cols="12" md="3">
           <v-btn @click.prevent="saveForm"
             type="submit"
-            class="btn btn-lg btn-primary mb-2"
+            block
+            class="btn mb-2 amber darken-2 white--text"
           >
             Save
           </v-btn>
         </v-col>
+        <v-col cols="12" md="3">
+          <v-btn
+            type="submit"
+            block
+            class="btn mb-2 white grey--text"
+          >
+            Cancel
+          </v-btn>
+        </v-col>
       </v-row>
+      </v-container>
     </v-container>
   </v-form>
 </template>
@@ -100,23 +118,26 @@ export default {
     };
   },
   methods: {
+
     saveForm() {
       this.$refs.attslot.forEach((item) => item.readThenUpdate());
       this.close();
     },
+
     close() {
       this.$emit('dialogIsOpen', false);
       setTimeout(() => {
-        // this.editedItem = this.defaultItem;
-        // this.editedIndex = -1;
         this.$emit('updateDates', true);
       }, 300);
     },
+
   },
   computed: {
+
     memberList() {
       return this.members.map((m) => m.name);
     },
+
   },
 };
 </script>
@@ -128,3 +149,15 @@ export default {
     padding: 0;
   }
 </style>
+
+<i18n>
+  en:
+    formName: 'Attendance'
+    tableTitle: 'Attendance'
+  de:
+    formName: 'Anwesenheit'
+    tableTitle: 'Anwesenheit'
+  ca:
+    formName: 'Assistència'
+    tableTitle: 'Assistència'
+</i18n>

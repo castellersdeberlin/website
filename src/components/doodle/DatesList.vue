@@ -29,29 +29,24 @@
       </template>
 
       <template v-slot:top>
-        <v-toolbar flat color="#fff">
-          <v-toolbar-title
-              color="white"
-          >
-            {{ $t('formName') }}
-          </v-toolbar-title>
-          <v-divider
-              class="mx-4"
-              inset
-              vertical
-          />
+        <v-toolbar flat>
           <v-spacer></v-spacer>
           <v-dialog v-model="dialog" max-width="500px"
               elevation-10
               overlay-color="yellow"
           >
             <template v-slot:activator="{ on }">
-              <v-btn color="secondary"
-                dark class="mb-2"
+              <v-btn
                 v-on="on"
                 @click="setFormMode(true)"
+                class="amber darken-2 white--text"
               >
-                {{ $t('addButtonText') }}
+              <v-icon color="white">
+                  mdi-plus
+              </v-icon>
+              <v-icon color="white" class="ml-4">
+                  event
+              </v-icon>
               </v-btn>
             </template>
 
@@ -71,15 +66,16 @@
 
       <template v-slot:item.actions="{ item }">
         <v-icon
-          small
+          medium
           class="mr-5"
-          color="#999"
+          color="amber darken-2"
           @click="editItem(item); setFormMode(false)"
         >
           mdi-pencil
         </v-icon>
         <v-icon
-          small
+          medium
+          color="amber darken-2"
           @click="readThenDelete(item)"
         >
           mdi-delete
@@ -135,7 +131,12 @@ export default {
           sortable: false,
           align: 'center',
         },
-        { text: 'Actions', value: 'actions', sortable: false },
+        {
+          text: 'Actions',
+          value: 'actions',
+          sortable: false,
+          align: 'end',
+        },
       ],
       options: {
         'items-per-page': 2,
@@ -229,12 +230,9 @@ export default {
 
 <i18n>
   en:
-    formName: 'Rehearsals'
-    addButtonText: 'Add Date'
+    addButtonText: '+'
   de:
-    formName: 'Proben'
-    addButtonText: 'Datum hinzufügen'
-  cat:
-    formName: 'Assajos'
-    addButtonText: 'Afegir Data'
+    addButtonText: '+'
+  ca:
+    addButtonText: '+'
 </i18n>

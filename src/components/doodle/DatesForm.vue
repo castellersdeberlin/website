@@ -2,7 +2,7 @@
   <v-form class="form-adddate"
     dense
     >
-    <h1 class="h3 mb-3 font-weight-normal">{{ this.titleForm }}</h1>
+    <h1 class="mb-3 amber--text">{{ this.titleForm }}</h1>
 
     <v-row>
       <v-col>
@@ -92,27 +92,27 @@
     </v-checkbox>
 
     <v-row>
-      <v-col cols="12" md="4" v-if="this.editMode">
+      <v-col cols="12" md="6" v-if="this.editMode">
         <v-btn v-on:click="this.savePost"
-          class="btn btn-lg btn-primary mb-2"
+          class="btn mb-2 amber ligthen-2 white--text"
           block
           type="button">
               Add
         </v-btn>
       </v-col>
-      <v-col cols="12" md="4" v-if="!this.editMode">
+      <v-col cols="12" md="6" v-if="!this.editMode">
         <v-btn v-on:click="this.readThenUpdate"
-            class="btn btn-lg btn-secondary mb-2"
+            class="btn mb-2 amber ligthen-2 white--text"
             block
             type="button">
                 Update
         </v-btn>
       </v-col>
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="6">
         <v-btn
           @click="this.close"
           block
-          class="btn btn-lg btn-primary mb-2"
+          class="btn mb-2 white grey--text"
         >
           Cancel
         </v-btn>
@@ -257,12 +257,9 @@ export default {
 
 <style scoped>
   .form-adddate {
-    font-size: .65rem;
     background-color: #fff;
-    font-weight: 400;
     max-width: 100%;
     margin: 0 auto;
-    border-left: 1px solid gray;
     padding: 2rem;
   }
   input {
@@ -270,7 +267,7 @@ export default {
   }
   .form-adddate .v-label,
   .form-checkb {
-    font-size: .65rem;
+    /* font-size: .65rem; */
     font-weight: 400;
   }
   .baux {

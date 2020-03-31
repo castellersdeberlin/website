@@ -4,34 +4,32 @@
     :headers="this.tableHeaders"
     :items="this.tableAttendance"
     :dateCols="this.datesElements"
-    items-per-page="100"
+    items-per-page=1000
     hide-default-footer
     class="dates-table"
   >
     <template v-slot:top>
-      <v-toolbar flat color="#fff">
-        <v-toolbar-title
-          color="white"
-        >
-          {{ $t('tableTitle') }}
-        </v-toolbar-title>
-          <v-divider
-            class="mx-4"
-            inset
-            vertical
-          />
+      <v-toolbar flat>
           <v-spacer></v-spacer>
         <v-dialog v-model="dialog" max-width="90%"
           elevation-10
-          overlay-color="yellow"
+          overlay-color="amber"
         >
           <template v-slot:activator="{ on }">
-            <v-btn color="secondary"
-                class="mb-2"
+            <v-btn
+                class="amber darken-2 white--text"
                 v-on="on"
                 @click="setFormMode(true)"
             >
-              Add
+              <v-icon color="white">
+                mdi-plus
+              </v-icon>
+              <v-icon color="white" class="ml-4">
+                event
+              </v-icon>
+              <v-icon color="white" class="ml-4">
+                mdi-account-question
+              </v-icon>
             </v-btn>
           </template>
           <AttendanceForm
@@ -53,14 +51,28 @@
       v-for="(colmn, i) in this.datesElements"
       #[`item.${colmn.value}`]="{ item }">
       <div :key="i">
-        <v-icon v-if="item[`${colmn.value}`] === 0" color="red" class="center">
+        <v-icon
+          v-if="item[`${colmn.value}`] === 0"
+          color="red"
+          class="center">
           close
         </v-icon>
-        <v-icon v-if="item[`${colmn.value}`] === 1" color="green" class="center">
+        <v-icon
+          v-if="item[`${colmn.value}`] === 1"
+          color="green"
+          class="center">
           done
         </v-icon>
-        <v-icon v-if="item[`${colmn.value}`] === 2" color="#e2e2e2" class="center">
-          help
+        <v-icon
+          v-if="item[`${colmn.value}`] === 2"
+          class="center grey--text">
+          mdi-account-question
+        </v-icon>
+        <v-icon
+          v-if="item[`${colmn.value}`] === undefined"
+          color="#e2e2e2"
+          class="center">
+          mdi-minus
         </v-icon>
       </div>
     </template>
@@ -80,15 +92,17 @@
 
     <template v-slot:item.actions="{ item }">
       <v-icon
-        small
-        class="mr-5"
-        color="#999"
+        medium
+        color="amber darken-2"
+        class="ml-5"
         @click="editItem(item); setFormMode(false)"
       >
         mdi-pencil
       </v-icon>
       <v-icon
-        small
+        medium
+        color="amber darken-2"
+        class="ml-5"
         @click="readThenDelete(item)"
       >
         mdi-delete
@@ -265,9 +279,14 @@ export default {
 
     tableHeaders() {
       const ob = [];
-      ob[0] = { text: 'Name', value: 'name', width: '100' };
+      ob[0] = { text: '', value: 'name', width: '100' };
       const headerob = ob.concat(this.datesElements);
-      headerob.push({ text: 'Actions', value: 'actions' });
+      headerob.push({
+        text: '',
+        value: 'actions',
+        align: 'end',
+        width: '120',
+      });
       return headerob;
     },
 
@@ -314,9 +333,8 @@ export default {
     font-weight: 300;
   }
   .results-table {
-    /* background: #fcbf43; */
-    /* background: #efefef; */
     border-top: 4px #fcbf43 solid;
+    border-bottom: 4px #fcbf43 solid;
   }
   .center {
     display: flex;
@@ -328,12 +346,15 @@ export default {
   en:
     formName: 'Attendance'
     tableTitle: 'Attendance'
+    addButtonText: '+'
   de:
     formName: 'Anwesenheit'
     tableTitle: 'Anwesenheit'
-  cat:
+    addButtonText: '+'
+  ca:
     formName: 'Assistència'
     tableTitle: 'Assistència'
+    addButtonText: '+'
 </i18n>
 
 //TODO: v-slot convert number to icon
