@@ -13,9 +13,10 @@
         </span>
       </template>
 
+
       <template v-slot:item.sessiontime="{ item }">
-        <span>
-          {{ item.sessiontime }}
+        <span >
+          {{ item.sessiontime  }}
         </span>
       </template>
 
@@ -33,7 +34,7 @@
           <v-spacer></v-spacer>
           <v-dialog v-model="dialog" max-width="500px"
               elevation-10
-              overlay-color="yellow"
+              overlay-color="amber"
           >
             <template v-slot:activator="{ on }">
               <v-btn
@@ -236,3 +237,8 @@ export default {
   ca:
     addButtonText: '+'
 </i18n>
+
+//TODO: delete on two steps over form
+//TODO: time not updating correctly
+//TODO: location > dropdown with options?
+//TODO: refactor without ref(name) but parse object id

@@ -5,36 +5,57 @@
       >
       <v-row class="px-5">
         <v-col cols="4" md="3" xl="2">
-      <h1 class="amber--text">
-        {{ this.titleForm }}
-      </h1>
-          <v-autocomplete
-            v-if="editFormMode"
-            v-model="memberToAdd"
-            :items="this.memberList"
-            placeholder="Select Member"
+          <h1 class="amber--text mb-5">
+            {{ this.titleForm }}
+          </h1>
+            <v-autocomplete
+              v-if="editFormMode"
+              v-model="memberToAdd"
+              :items="this.memberList"
+              placeholder="Select Member"
+            >
+            </v-autocomplete>
+            <h3 v-if="!editFormMode">
+              {{ this.editedItem.name }}
+            </h3>
+        </v-col>
+      </v-row>
+
+      <div v-if="this.delFormMode">
+        <v-row class="px-5">
+          <v-col>
+            <div>
+              {{ $t('deleteMessage')}}
+            </div>
+          </v-col>
+        </v-row>
+        <v-row class="px-5">
+          <v-col>
+            <div v-for="(date, i) in this.dates" :key="i">
+              {{ date.sessiondate.toISOString().slice(0, 10) }}
+            </div>
+          </v-col>
+        </v-row>
+
+      </div>
+
+      <div>
+        <v-row class="px-5 my-0">
+          <v-col v-for="(colName, i) in this.headers"
+          :key="i"
           >
-          </v-autocomplete>
-          <h3 v-if="!editFormMode">
-            {{ this.editedItem.name }}
-          </h3>
-        </v-col>
-      </v-row>
-      <v-row class="px-5 my-0">
-        <v-col v-for="(colName, i) in this.headers"
-        :key="i"
-        >
-          <div>
-            {{ colName.text }}
-          </div>
-          <AttendanceSlot
-            :dataProps="colName"
-            :member="editedItem.name"
-            :memberToAdd="memberToAdd"
-            :itemData="editedItem"
-          />
-        </v-col>
-      </v-row>
+            <AttendanceSlot
+              ref="attslot"
+              :date="colName.text"
+              :dataProps="colName"
+              :member="editedItem.name"
+              :memberToAdd="memberToAdd"
+              :itemData="editedItem"
+              :delSlotMode="delFormMode"
+            />
+          </v-col>
+        </v-row>
+        </div>
       <v-container
         class="py-0"
         fluid
@@ -42,8 +63,19 @@
       <v-row class="px-5">
         <v-col cols="12" md="6">
         </v-col>
-        <v-col cols="12" md="3">
-          <v-btn @click.prevent="saveForm"
+        <v-col v-if="this.delFormMode" cols="12" md="3">
+          <v-btn
+            type="submit"
+            block
+            class="btn mb-2 red darken-2 white--text"
+            @click.prevent="saveForm"
+            >
+            Delete
+          </v-btn>
+        </v-col>
+        <v-col v-else cols="12" md="3">
+          <v-btn
+            @click.prevent="saveForm"
             type="submit"
             block
             class="btn mb-2 amber darken-2 white--text"
@@ -53,6 +85,7 @@
         </v-col>
         <v-col cols="12" md="3">
           <v-btn
+            @click.prevent="close"
             type="submit"
             block
             class="btn mb-2 white grey--text"
@@ -91,6 +124,11 @@ export default {
       required: true,
       default: () => false,
     },
+    delFormMode: {
+      type: Boolean,
+      required: true,
+      default: () => false,
+    },
     headers: {
       type: Array,
       required: true,
@@ -114,7 +152,7 @@ export default {
       isOpen: false,
       memberToAdd: this.editedItem.name,
       singleDate: undefined,
-      options: ['no', 'yes', 'maybe', undefined],
+      // options: ['no', 'yes', 'maybe', undefined],
     };
   },
   methods: {
@@ -154,10 +192,13 @@ export default {
   en:
     formName: 'Attendance'
     tableTitle: 'Attendance'
+    deleteMessage: 'You are trying to delete the information for this entries. Are you sure?'
   de:
     formName: 'Anwesenheit'
     tableTitle: 'Anwesenheit'
+    deleteMessage: 'Du wirst die Informationen für diese Tage löschen. Willst du weitermachen?'
   ca:
     formName: 'Assistència'
     tableTitle: 'Assistència'
+    deleteMessage: 'Estàs a punt deliminar la informació pels següents dies. Vols continuar?'
 </i18n>

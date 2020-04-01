@@ -60,7 +60,7 @@
                 <v-checkbox v-model="added.regular"
                     class="form-checkb"
                     type="checkbox"
-                    label="Regular"
+                    label="Active"
                     dense
                 >
                 </v-checkbox>
@@ -228,7 +228,6 @@ export default {
 
 <style scoped>
   .form-addcasteller {
-    /* font-size: .65rem; */
     background-color: #fff;
     font-weight: 400;
     max-width: 100%;
@@ -238,11 +237,6 @@ export default {
   }
   input {
     padding: .25rem .5rem .25rem 2rem;
-  }
-  .form-addcasteller .v-label,
-  .form-checkb {
-    /* font-size: .65rem; */
-    /* font-weight: 400; */
   }
 </style>
 
@@ -257,3 +251,5 @@ ca:
   formTitle: 'Afegeix Membre'
   addButtonText: 'Add'
 </i18n>
+
+//TODO: adult field not working

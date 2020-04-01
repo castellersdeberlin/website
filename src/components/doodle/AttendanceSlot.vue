@@ -1,14 +1,28 @@
 <template>
     <v-container class="my-0">
+        <h3 class="amber--text">
+          {{ this.date }}
+        </h3>
         <v-radio-group
           v-model="radioGroup"
-          @change="activate">
+          @change="activate"
+          >
             <v-radio
                 v-for="(item, i) in this.options"
                 :key="i"
                 :label="item.text"
                 :value="item.value"
-            ></v-radio>
+                color="amber"
+            >
+
+        <v-icon
+          v-if="this.radioGroup === 0"
+          color="red"
+          class="center">
+          close
+        </v-icon>
+
+            </v-radio>
         </v-radio-group>
     </v-container>
 </template>
@@ -22,6 +36,12 @@ export default {
   props: {
     dataProps: {
       type: Object,
+    },
+    date: {
+      type: String,
+    },
+    delSlotMode: {
+      type: Boolean,
     },
     itemData: {},
     memberToAdd: {
@@ -49,26 +69,37 @@ export default {
 
     readThenUpdate() {
       if (this.modified && this.itemData.name !== 'none') {
-        const query = new Parse.Query('CdbSession');
-        query.equalTo('name', this.dataProps.value.split('.')[0]);
-        query.first().then((sess) => {
-          if (sess) {
-            console.log(`Session found with name: ${sess.get('name')}`);
-            this.update(sess);
-          } else {
-            console.log('Nothing found, please try again');
-          }
-        }).catch((error) => {
-          console.log(`Error: ${error.code} + ${error.message}`);
-        });
+        this.beforeUpdate();
+      }
+      if (this.delSlotMode && this.itemData.name !== 'none') {
+        this.beforeUpdate();
       }
       return null;
+    },
+
+    beforeUpdate() {
+      const query = new Parse.Query('CdbSession');
+      query.equalTo('name', this.dataProps.value.split('.')[0]);
+      query.first().then((sess) => {
+        if (sess) {
+          console.log(`Session found with name: ${sess.get('name')}`);
+          this.update(sess);
+        } else {
+          console.log('Nothing found, please try again');
+        }
+      }).catch((error) => {
+        console.log(`Error: ${error.code} + ${error.message}`);
+      });
     },
 
     update(sess) {
       const att = sess.get('attendancelist');
       const existing = att.map((item) => item.name);
+
       if (existing.indexOf(this.itemData.name) === -1) {
+        if (this.delSlotMode) {
+          return;
+        }
         const nw = {
           name: this.memberToAdd,
           value: this.radioGroup,
@@ -77,9 +108,13 @@ export default {
       } else {
         att.map((item, i) => {
           if (item.name === this.itemData.name) {
-            att[i].value = this.radioGroup;
+            if (this.delSlotMode) {
+              att.splice(i, 1);
+            } else {
+              att[i].value = this.radioGroup;
+            }
           }
-          return null;
+          return att;
         });
       }
       sess.set('attendancelist', att);

@@ -28,6 +28,7 @@
           </template>
           <v-date-picker
             v-model="date"
+            format="24hr"
             @input="menu = false"
           >
           </v-date-picker>
@@ -37,29 +38,27 @@
       <v-col>
         <v-menu
           v-model="menu2"
-          :close-on-content-click="false"
           :nudge-right="40"
           transition="scale-transition"
           offset-y
           min-width="290px"
         >
-
           <template v-slot:activator="{ on }">
             <v-text-field
               v-model="time"
               label="Time"
+            :close-on-content-click="false"
               prepend-icon="mdi-clock-outline"
               hint="hh:mm"
-              persistent-hint
               readonly
               v-on="on"
             />
           </template>
           <v-time-picker
             v-model="time"
+            :allowed-minutes="this.allowedMinutes"
             @input="menu2 = false"
-          >
-          </v-time-picker>
+          />
         </v-menu>
       </v-col>
     </v-row>
@@ -80,10 +79,17 @@
         </v-text-field>
       </v-col>
     </v-row>
+    <v-text-field v-model="session.location"
+      type="text"
+      label="Location"
+      class="mb-2"
+      >
+    </v-text-field>
     <v-text-field v-model="session.comments"
       type="text"
       label="Comments"
-      required>
+      class="mb-2"
+      >
     </v-text-field>
     <v-checkbox v-model="session.show"
       type="text"
@@ -93,7 +99,7 @@
 
     <v-row>
       <v-col cols="12" md="6" v-if="this.editMode">
-        <v-btn v-on:click="this.savePost"
+        <v-btn v-on:click="this.saveDate"
           class="btn mb-2 amber ligthen-2 white--text"
           block
           type="button">
@@ -136,7 +142,7 @@ export default {
     formatedTime: {
       type: String,
       required: true,
-      default: () => '18:00',
+      default: () => '',
     },
     titleForm: {
       type: String,
@@ -167,6 +173,8 @@ export default {
 
   methods: {
 
+    allowedMinutes: (v) => v % 5 === 0,
+
     close() {
       this.$emit('dialogIsOpen', false);
       setTimeout(() => {
@@ -180,13 +188,16 @@ export default {
       this.session = item;
     },
 
-    savePost() {
+    saveDate() {
       const CdbS = Parse.Object.extend('CdbSession');
       const sessionDate = new CdbS();
       sessionDate.set(this.session);
       sessionDate.set('sessiondate', new Date(this.date));
+      sessionDate.set('sessiontime', this.stringToTime(this.time));
+      // sessionDate.set('sessiontime', this.time);
 
       if (sessionDate.get('name')) {
+        console.log(sessionDate.get('sessiontime'));
         sessionDate.save()
           .then((res) => {
             console.log(`New object created with objectId: ${res.id}`);
@@ -216,30 +227,33 @@ export default {
       });
     },
 
+    update(sess) {
+      sess.set(this.session);
+      sess.set('sessiondate', new Date(this.date));
+      sess.set('sessiontime', this.stringToTime(this.time));
+
+      sess.save().then(() => {
+        console.log('Date updated!');
+        this.close();
+        this.siblingUpdateList();
+      }).catch((error) => {
+        console.log(`Error: ${error.message}`);
+      });
+    },
+
     siblingUpdateList() {
       this.$emit('updateDates', true);
     },
 
     stringToTime(timestr) {
       const dat = new Date();
-      const time = timestr.split(/:|-/g);
+      const time = timestr.split(':');
       dat.setHours(time[0]);
       dat.setMinutes(time[1]);
+      console.log('dat: ', dat);
       return dat;
     },
 
-    update(sessFound) {
-      sessFound.set(this.session);
-      sessFound.set('sessiondate', new Date(this.date));
-
-      sessFound.save().then(() => {
-        console.log('Date updated!');
-      }).catch((error) => {
-        console.log(`Error: ${error.message}`);
-      });
-      this.close();
-      this.siblingUpdateList();
-    },
   },
   watch: {
     editedSession() {
@@ -275,3 +289,5 @@ export default {
     border: 3px gray dashed;
   }
 </style>
+
+//TODO: fix date picker closes when selecting only hours or minutes

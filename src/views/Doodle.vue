@@ -59,7 +59,7 @@ export default {
   data: () => ({
     dates: [],
     members: [],
-    tab: 1,
+    tab: 0,
     tabItems: [
       { index: 0, name: 'Attendance' },
       { index: 1, name: 'Dates' },
@@ -120,10 +120,10 @@ export default {
         ob.sessiondate = item.get('sessiondate');
         ob.year = item.get('sessiondate').toISOString().slice(0, 4);
         ob.month = item.get('sessiondate').toISOString().slice(5, 2);
-        if (item.get('sessionTime') !== undefined) {
-          ob.sessiontime = new Date().toISOString().slice(11, 15);
+        if (item.get('sessiontime') !== undefined) {
+          ob.sessiontime = new Date().toISOString().slice(11, 16);
         } else {
-          ob.sessiontime = '00:00';
+          ob.sessiontime = '18:35';
         }
         ob.type = item.get('type');
         ob.name = item.get('name');
@@ -175,6 +175,3 @@ ca:
   tabTitle1: 'Dates'
   tabTitle2: 'Membres'
 </i18n>
-
-//TODO: date format on input field in DatesForm >> on edit
-//TODO: update lists when adding or updating member

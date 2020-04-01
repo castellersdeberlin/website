@@ -4,7 +4,7 @@
     :headers="this.tableHeaders"
     :items="this.tableAttendance"
     :dateCols="this.datesElements"
-    items-per-page=1000
+    :items-per-page=1000
     hide-default-footer
     class="dates-table"
   >
@@ -37,6 +37,7 @@
             :members="members"
             :dates="itemsDates"
             :editFormMode="editFormMode"
+            :delFormMode="delFormMode"
             :titleForm="titleForm"
             :editedItem="editedItem"
             @dialogIsOpen="closeDialog"
@@ -103,7 +104,7 @@
         medium
         color="amber darken-2"
         class="ml-5"
-        @click="readThenDelete(item)"
+        @click="editItem(item); setDelMode(true)"
       >
         mdi-delete
       </v-icon>
@@ -164,22 +165,28 @@ export default {
       editedItem: {},
       defaultItem: {},
       editFormMode: false,
+      delFormMode: false,
       titleForm: 'Add Item',
       attendance: [],
     };
   },
   methods: {
+
     closeDialog() {
       this.dialog = false;
+      this.setDelMode(false);
     },
+
     editItem(item) {
       this.editedItem = { ...item };
       this.setFormMode(false);
       this.dialog = true;
     },
+
     getDates() {
       this.$emit('updateDates', true);
     },
+
     setFormMode(mode) {
       this.editFormMode = mode;
       if (this.editFormMode) {
@@ -189,6 +196,11 @@ export default {
         this.titleForm = 'Edit';
       }
     },
+
+    setDelMode(mode) {
+      this.delFormMode = mode;
+    },
+
     getTotals() {
       const attendanceLoop = [];
 
@@ -356,5 +368,3 @@ export default {
     tableTitle: 'Assistència'
     addButtonText: '+'
 </i18n>
-
-//TODO: v-slot convert number to icon
