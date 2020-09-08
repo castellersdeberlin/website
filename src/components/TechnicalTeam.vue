@@ -35,7 +35,6 @@ export default {
         role: 'canalla',
         who: [
           { name: 'Berta C.', label: 'headf' },
-          { name: 'Marina M.', label: 'headf' },
           { name: 'Míriam P.', label: 'headf' },
         ],
       },

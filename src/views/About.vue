@@ -35,6 +35,7 @@
         <v-row>
           <v-col>
             <BoardTeam/>
+            <SocialMediaTeam class="my-4"/>
           </v-col>
           <v-col>
             <TechnicalTeam/>
@@ -49,16 +50,17 @@
 import BoardTeam from '../components/BoardTeam.vue';
 import TechnicalTeam from '../components/TechnicalTeam.vue';
 import Timeline from '../components/Timeline.vue';
+import SocialMediaTeam from '../components/SocialMediaTeam.vue';
 
 export default {
   components: {
+    SocialMediaTeam,
     Timeline,
     BoardTeam,
     TechnicalTeam,
   },
 };
 </script>
-
 
 <i18n>
 en:
