@@ -38,7 +38,7 @@ export default {
 en:
   socialmedia: "Social Media team"
 de:
-  socialmedia: "Social Media team"
+  socialmedia: "Social Media Team"
 ca:
   socialmedia: "Equip de Xarxes Socials"
 </i18n>
