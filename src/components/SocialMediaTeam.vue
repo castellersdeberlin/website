@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-title class="primary">
-      {{ $t('junta') }}
+      {{ $t('socialmedia') }}
     </v-card-title>
     <v-card-text>
       <v-list disabled>
@@ -28,9 +28,7 @@
 export default {
   data: () => ({
     items: [
-      { role: 'presidenta', who: ['Mercè A.'] },
-      { role: 'vicepresidenta', who: ['Laura L.'] },
-      { role: 'tresorer', who: ['Mariona P.'] },
+      { role: '', who: ['Dennis B.', 'Míriam P.', 'Héctor B.'] },
     ],
   }),
 };
@@ -38,21 +36,9 @@ export default {
 
 <i18n>
 en:
-  junta: "Board"
-  presidenta: "President"
-  vicepresidenta: "Vice-President"
-  tresorer: "Treasury"
-  secretari: "Secretary"
+  socialmedia: "Social Media team"
 de:
-  junta: "Vorstand"
-  presidenta: "Vorsitzende"
-  vicepresidenta: "Stellvertretende Vorsitzende"
-  tresorer: "Schatzmeister"
-  secretari: "Geschäftsführerin"
+  socialmedia: "Social Media team"
 ca:
-  junta: "Junta"
-  presidenta: "Presidenta"
-  vicepresidenta: "Vicepresidenta"
-  tresorer: "Tresorer"
-  secretari: "Secretària"
+  socialmedia: "Equip de Xarxes Socials"
 </i18n>
