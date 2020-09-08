@@ -30,7 +30,7 @@ export default {
     items: [
       { role: 'presidenta', who: ['Mercè A.'] },
       { role: 'vicepresidenta', who: ['Laura L.'] },
-      { role: 'tresorer', who: ['Róman D.'] },
+      { role: 'tresorer', who: ['Mariona P.'] },
     ],
   }),
 };
