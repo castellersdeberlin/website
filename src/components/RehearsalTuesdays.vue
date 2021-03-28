@@ -18,7 +18,7 @@ export default {
 <i18n>
 en:
   title: Every Tuesday
-  text: "Cross the parking area and turn to the right, to where the football fields are.
+  text: "Don't cross the parking area and turn to the right, to where the football fields are.
     Then find the big door to the sports hall on your right and knock. We'll open as soon as
     we hear you."
 de:
