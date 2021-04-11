@@ -1,0 +1,104 @@
+<template>
+    <div>
+      <v-container id="info">
+        <v-row>
+          <v-col>
+            <v-card v-for="n in items"
+                  :key="n"
+                  class="card-container"
+                  outlined
+                  color="rgb(252, 191, 67)"
+                  >
+                  <v-row>
+                    <v-col cols="2">
+                      <v-icon
+                        color="black"
+                        center
+                        class="v-icon"
+                        x-large
+                        >
+                        mdi-information-outline
+                      </v-icon>
+                    </v-col>
+                    <v-col cols="10" class="card-content">
+                        <v-card-title class="font-weight-bold" color="white">
+                          {{ $t(`info[${n}].title`) }}
+                        </v-card-title>
+                        <v-card-text>
+                          {{ $t(`info[${n}].date`) }}
+                        </v-card-text>
+                    </v-col>
+                    <v-col cols="2">
+                    </v-col>
+                    <v-col cols="10">
+                        <v-card-text>
+                          {{ $t(`info[${n}].body`) }}
+                        </v-card-text>
+                    </v-col>
+                </v-row>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-container>
+    </div>
+</template>
+
+<script>
+export default {
+  name: 'Info',
+  data: () => ({
+    // control the number of posts to display
+    items: 1,
+  }),
+};
+</script>
+
+<style lang="scss">
+  .card-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+    text-transform: initial;
+    margin-bottom: 2rem;
+  }
+  .card-container:last-child {
+    margin-bottom: 0;
+  }
+  .card-content {
+    padding: .5rem;
+  }
+  i.v-icon {
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+<i18n>
+en:
+  header: Information about the activities during Covid-19
+  info:
+    1:
+      date: 29th March 2021
+      title: Information about the activities during Covid-19
+      body: >
+        Degut a les restriccions degudes a la Covid-19, actualment Castellers de Berlin no realitza
+        activitats presencials. Aquí trobareu la informació de les properes activitats segons la
+        situació ho permeti.
+de:
+  header: Informationen zu den Aktivitäten während Covid-19
+  info:
+    1:
+      date: 29. März 2021
+      title: Informationen zu den Aktivitäten während Covid-19
+      body: >
+        Long text german
+ca:
+  header: Informació sobre les activitats durant la Covid-19
+  info:
+    1:
+      date: 29 de març de 2021
+      title: Informació sobre les activitats durant la Covid-19
+      body: >
+        Degut a les restriccions degudes a la Covid-19, actualment Castellers de Berlin no realitza
+        activitats presencials. Aquí podreu trobar informació de
+</i18n>
