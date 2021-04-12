@@ -2,6 +2,7 @@
   <div>
     <Banner/>
     <div>
+      <Info/>
       <v-container>
         <v-row class="section-title">
           <v-col>
@@ -83,6 +84,7 @@ import Twitter from '../components/Twitter.vue';
 import Facebook from '../components/Facebook.vue';
 import RehearsalTuesdays from '../components/RehearsalTuesdays.vue';
 import RehearsalFridays from '../components/RehearsalFridays.vue';
+import Info from '../components/Info.vue';
 
 export default {
   components: {
@@ -92,6 +94,7 @@ export default {
     Twitter,
     Instagram,
     Facebook,
+    Info,
   },
 
   data: () => ({
