@@ -81,9 +81,7 @@ en:
       date: 29th March 2021
       title: Information about the activities during Covid-19
       body: >
-        Degut a les restriccions degudes a la Covid-19, actualment Castellers de Berlin no realitza
-        activitats presencials. Aquí trobareu la informació de les properes activitats segons la
-        situació ho permeti.
+        Due to current restrictions imposed by COVID-19, Castellers de Berlin is not carrying out face-to-face activities at the moment. We will inform you in due course about upcoming activities.
 de:
   header: Informationen zu den Aktivitäten während Covid-19
   info:
@@ -91,7 +89,7 @@ de:
       date: 29. März 2021
       title: Informationen zu den Aktivitäten während Covid-19
       body: >
-        Long text german
+        Aufgrund der derzeitigen Beschränkungen in der COVID-19-Pandemie führt Castellers de Berlin im Moment keine Vor-Ort-Aktivitäten durch. Wir werden euch hier rechtzeitig über wieder stattfindende Veranstaltungen informieren.
 ca:
   header: Informació sobre les activitats durant la Covid-19
   info:
@@ -99,6 +97,5 @@ ca:
       date: 29 de març de 2021
       title: Informació sobre les activitats durant la Covid-19
       body: >
-        Degut a les restriccions degudes a la Covid-19, actualment Castellers de Berlin no realitza
-        activitats presencials. Aquí podreu trobar informació de
+        A causa de les restriccions imposades actualment per la covid-19, Castellers de Berlin no duu a terme activitats presencials en aquests moments. Us informarem sobre properes activitats quan la situació ho permeti.
 </i18n>
