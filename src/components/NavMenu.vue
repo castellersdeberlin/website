@@ -125,11 +125,11 @@ en:
   about: "About us"
   calendar: "Calendar"
 de:
-  home: "Home"
+  home: "Startseite"
   about: "Über uns"
   calendar: "Kalender"
 ca:
-  home: "Home"
+  home: "Inici"
   about: "Qui som"
   calendar: "Calendari"
 </i18n>
