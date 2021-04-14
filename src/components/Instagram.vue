@@ -2,10 +2,7 @@
   <SocialMedia name="Instagram"
                url="https://www.instagram.com/castellersdeberlin/"
                icon="mdi-instagram">
-    //not working at the moment
-    //<instagram-embed :url="`https://www.instagram.com/p/${randomPic}/`"/>
-    //mercedes arena post
-    <instagram-embed :url="`https://www.instagram.com/p/CEpVR7gIlTq/`"/>
+    <instagram-embed :url="'https://www.instagram.com/p/${randomPic}/'"/>
   </SocialMedia>
 </template>
 
@@ -19,10 +16,10 @@ export default {
     InstagramEmbed,
   },
 
-//TODO: make this work since it displays nothing like this
-/*
+//TODO: make this really automatised
   data: () => ({
     pics: [
+      'CEpVR7gIlTq',
       'B4k5Q_lHDH4',
       'B366yzdo9l4',
       'B2PjyhlItrJ',
@@ -57,6 +54,5 @@ export default {
       return this.pics[Math.floor(Math.random() * this.pics.length)];
     },
   },
-*/
 };
 </script>
