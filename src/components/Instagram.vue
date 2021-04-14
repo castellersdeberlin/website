@@ -2,7 +2,7 @@
   <SocialMedia name="Instagram"
                url="https://www.instagram.com/castellersdeberlin/"
                icon="mdi-instagram">
-    <instagram-embed :url="`https://www.instagram.com/p/${randomPic}/`"/>
+    <instagram-embed :url="'https://www.instagram.com/p/${randomPic}/'"/>
   </SocialMedia>
 </template>
 
@@ -16,8 +16,10 @@ export default {
     InstagramEmbed,
   },
 
+//TODO: make this more automatised with new instagram posts
   data: () => ({
     pics: [
+      'CEpVR7gIlTq',
       'B4k5Q_lHDH4',
       'B366yzdo9l4',
       'B2PjyhlItrJ',
