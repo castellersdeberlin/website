@@ -25,8 +25,8 @@
                           {{ $t(`info[${n}].title`) }}
                         </v-card-title>
                         <v-card-text class="pt-0">
-                          <span class="text-with-break-lines">
-                          {{ $t(`info[${n}].date`) }}
+                          <span class="text-with-break-lines t-bold">
+                          {{ $t(`info[${n}].subtitle`) }}
                           </span>
                         </v-card-text>
                     </v-col>
@@ -37,6 +37,19 @@
                           <span class="text-with-break-lines">
                             {{ $t(`info[${n}].body`) }}
                           </span>
+                          <a
+                            v-if="link(n).length > 0"
+                            v-bind:href="link(n)"
+                            target="_blank"
+                            class="info-link"
+                            >
+                            <v-icon
+                              color="black"
+                              x-large
+                            >
+                              mdi-file-document-outline
+                            </v-icon>
+                          </a>
                         </v-card-text>
                     </v-col>
                 </v-row>
@@ -73,6 +86,14 @@ export default {
         default: return 'mdi-information-outline';
       }
     },
+    link(i) {
+      switch (i % 3) {
+        case 1: return '';
+        // eslint-disable-next-line
+        case 2: return 'https://docs.google.com/forms/d/e/1FAIpQLSfT5KuVsbqG5OS4wodK6inxyBd71GgRsyJjlaSCDEP72JyD_w/viewform';
+        default: return '';
+      }
+    },
   },
 };
 </script>
@@ -84,6 +105,7 @@ export default {
     text-align: left;
     text-transform: initial;
     margin-bottom: 2rem;
+    padding-right: 24px;
   }
   .card-container:last-child {
     margin-bottom: 0;
@@ -91,6 +113,11 @@ export default {
   i.v-icon {
     width: 100%;
     height: 100%;
+  }
+  .info-link {
+    max-width: 48px;
+    display: block;
+    margin-bottom: 24px;
   }
   .pb-0 {
     padding-bottom: 0;
@@ -101,6 +128,9 @@ export default {
   .text-with-break-lines {
     white-space: pre-line;
   }
+  .t-bold {
+    font-weight: 700;
+  }
 </style>
 
 <i18n>
@@ -108,14 +138,14 @@ en:
   header: Information about the activities during Covid-19
   info:
     1:
-      date: 21th March 2021
+      subtitle: 21th March 2021
       title: Information about the activities during Covid-19
       body: >
         Due to current restrictions imposed by COVID-19, Castellers de
         Berlin is not carrying out face-to-face activities at the moment.
         We will inform you in due course about upcoming activities.
     2:
-      date: >
+      subtitle: >
         Next Meeting: Friday 23rd April
 
         History and importance of the castells
@@ -147,7 +177,7 @@ en:
 
 
         Everything will take place in the 3rd week of the month, either tuesday or friday, on Zoom.
-        We will update the calender: https://castellers.berlin/calendar
+        We will upsubtitle the calender: https://castellers.berlin/calendar
 
 
         Since the meetings are open for everyone, feel free to invite more people!
@@ -160,23 +190,20 @@ en:
         19:30 - We finish and go to the online Späti
 
 
-        If you are interested in participating but are not member of Castellers de Berlin, fill
+        If you are interested in participating but are not a member of Castellers de Berlin, fill
         in and send us the following form:
-
-
-        https://docs.google.com/forms/d/e/1FAIpQLSfT5KuVsbqG5OS4wodK6inxyBd71GgRsyJjlaSCDEP72JyD_w/viewform?
 de:
   header: Informationen zu den Aktivitäten während Covid-19
   info:
     1:
-      date: 29. März 2021
+      subtitle: 29. März 2021
       title: Informationen zu den Aktivitäten während Covid-19
       body: >
         Aufgrund der derzeitigen Beschränkungen in der COVID-19-Pandemie
         führt Castellers de Berlin im Moment keine Vor-Ort-Aktivitäten durch.
         Wir werden euch hier rechtzeitig über wieder stattfindende Veranstaltungen informieren.
     2:
-      date: >
+      subtitle: >
         Nächstes Treffen: Freitag 23. April
 
         Geschichte und Bedeutung der Castells
@@ -224,22 +251,18 @@ de:
 
         Wenn Du dich für eine Veranstaltung interessierst aber kein Mitglied von Castellers de
         Berlin bist, fülle bitte dieses Formular aus und sende es an uns:
-
-
-        https://docs.google.com/forms/d/e/1FAIpQLSfT5KuVsbqG5OS4wodK6inxyBd71GgRsyJjlaS
-        CDEP72JyD_w/viewform?
 ca:
   header: Informació sobre les activitats durant la Covid-19
   info:
     1:
-      date: 29 de març de 2021
+      subtitle: 29 de març de 2021
       title: Informació sobre les activitats durant la Covid-19
       body: >
         A causa de les restriccions imposades actualment per la covid-19,
         Castellers de Berlin no duu a terme activitats presencials en aquests moments.
         Us informarem sobre properes activitats quan la situació ho permeti.
     2:
-      date: >
+      subtitle: >
         Proper Meeting: 23 d'abril de 2021
 
         Història i significat dels castells
@@ -287,8 +310,4 @@ ca:
 
         Si esteu interessats a participar-hi però no formeu part de Castellers de Berlin,
         ompliu i envieu-nos el següent formulari:
-
-
-        https://docs.google.com/forms/d/e/1FAIpQLSfT5KuVsbqG5OS4wodK6inxyBd
-        71GgRsyJjlaSCDEP72JyD_w/viewform?
 </i18n>
