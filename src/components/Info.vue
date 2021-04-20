@@ -25,7 +25,9 @@
                           {{ $t(`info[${n}].title`) }}
                         </v-card-title>
                         <v-card-text class="pt-0">
+                          <span class="text-with-break-lines">
                           {{ $t(`info[${n}].date`) }}
+                          </span>
                         </v-card-text>
                     </v-col>
                     <v-col cols="2">
@@ -106,14 +108,17 @@ en:
   header: Information about the activities during Covid-19
   info:
     1:
-      date: 29th March 2021
+      date: 21th March 2021
       title: Information about the activities during Covid-19
       body: >
         Due to current restrictions imposed by COVID-19, Castellers de
         Berlin is not carrying out face-to-face activities at the moment.
         We will inform you in due course about upcoming activities.
     2:
-      date: 20th April 2021
+      date: >
+        Next Meeting: Friday 23rd April
+
+        History and importance of the castells
       title: CasTales | 3rd Week of Month | 18:30-19:30
       body: >
         Online CasTales is a series of monthly online meetings of 1 hour chaired by a member of
@@ -153,6 +158,13 @@ en:
         18:30 - start
 
         19:30 - We finish and go to the online Späti
+
+
+        If you are interested in participating but are not member of Castellers de Berlin, fill
+        in and send us the following form:
+
+
+        https://docs.google.com/forms/d/e/1FAIpQLSfT5KuVsbqG5OS4wodK6inxyBd71GgRsyJjlaSCDEP72JyD_w/viewform?
 de:
   header: Informationen zu den Aktivitäten während Covid-19
   info:
@@ -164,7 +176,11 @@ de:
         führt Castellers de Berlin im Moment keine Vor-Ort-Aktivitäten durch.
         Wir werden euch hier rechtzeitig über wieder stattfindende Veranstaltungen informieren.
     2:
-      date: 20. April 2021
+      date: >
+        Nächstes Treffen: Freitag 23. April
+
+        Geschichte und Bedeutung der Castells
+
       title: CasTales | 3. Woche im Monat | 18:30-19-30
       body: >
         CasTales ist eine Reihe monatlicher Treffen, die eine Stunde dauern und unter der
@@ -204,6 +220,14 @@ de:
         18:30 - CasTales beginnt.
 
         19:30 - Wir beenden das Treffen und gehen zum virtuellen Späti.
+
+
+        Wenn Du dich für eine Veranstaltung interessierst aber kein Mitglied von Castellers de
+        Berlin bist, fülle bitte dieses Formular aus und sende es an uns:
+
+
+        https://docs.google.com/forms/d/e/1FAIpQLSfT5KuVsbqG5OS4wodK6inxyBd71GgRsyJjlaS
+        CDEP72JyD_w/viewform?
 ca:
   header: Informació sobre les activitats durant la Covid-19
   info:
@@ -215,8 +239,12 @@ ca:
         Castellers de Berlin no duu a terme activitats presencials en aquests moments.
         Us informarem sobre properes activitats quan la situació ho permeti.
     2:
-      date: 20 d'Abril de 2021
-      title: CasTales | 3a setmana del mes | 18:30-19:30
+      date: >
+        Proper Meeting: 23 d'abril de 2021
+
+        Història i significat dels castells
+      title:
+        CasTales | 3a setmana del mes | 18:30-19:30
       body: >
         CasTales és una sèrie de trobades mensuals d'una hora de durada dirigides per
         membres de la junta o la tècnica sobre temes relacionats amb la tècnica i la
@@ -255,4 +283,12 @@ ca:
         18:30 - comencem
 
         19:30 - acabem i anem cap al späti virtual
+
+
+        Si esteu interessats a participar-hi però no formeu part de Castellers de Berlin,
+        ompliu i envieu-nos el següent formulari:
+
+
+        https://docs.google.com/forms/d/e/1FAIpQLSfT5KuVsbqG5OS4wodK6inxyBd
+        71GgRsyJjlaSCDEP72JyD_w/viewform?
 </i18n>
