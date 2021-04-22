@@ -2,21 +2,27 @@
   <SocialMedia name="Instagram"
                url="https://www.instagram.com/castellersdeberlin/"
                icon="mdi-instagram">
-    <instagram-embed :url="`https://www.instagram.com/p/${randomPic}/`"/>
+    <v-img
+      max-height="350"
+      max-width="340"
+      src="/img/mercedesArenaCdB.jpg">
+    </v-img>
   </SocialMedia>
 </template>
 
 <script>
-import InstagramEmbed from 'vue-instagram-embed';
+// import InstagramEmbed from 'vue-instagram-embed';
 import SocialMedia from './SocialMedia.vue';
 
 export default {
   components: {
     SocialMedia,
-    InstagramEmbed,
+    // InstagramEmbed,
   },
 
-  data: () => ({
+  // this cannot work due to insta api changes
+  // TODO: delete and find another dynamic option?
+/*   data: () => ({
     pics: [
       'B4k5Q_lHDH4',
       'B366yzdo9l4',
@@ -51,6 +57,6 @@ export default {
     randomPic() {
       return this.pics[Math.floor(Math.random() * this.pics.length)];
     },
-  },
+  }, */
 };
 </script>
