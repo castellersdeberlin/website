@@ -135,11 +135,11 @@ export default {
 
 <i18n>
 en:
-  header: Information about the activities during Covid-19
+  header: Information About Our Activities during COVID-19
   info:
     1:
-      subtitle: 21th March 2021
-      title: Information about the activities during Covid-19
+      subtitle: 21st March 2021
+      title: Information About Our Activities during COVID-19
       body: >
         Due to current restrictions imposed by COVID-19, Castellers de
         Berlin is not carrying out face-to-face activities at the moment.
@@ -148,46 +148,46 @@ en:
       subtitle: >
         Next Meeting: Friday 23rd April
 
-        History and importance of the castells
-      title: CasTales | 3rd Week of Month | 18:30-19:30
+        History and importance of Castells
+      title: CasTales | 3rd Week of Each Month | 18:30-19:30
       body: >
-        Online CasTales is a series of monthly online meetings of 1 hour chaired by a member of
-        Junta or Tècnica on various topics concerning Castells culture and techniques. The
-        languages will be English and German (alternating).
+        Online CasTales is a series of monthly, one-hour long, online meetings chaired by members of
+        Junta or Tècnica about different topics concerning the technique and culture of Castells. The
+        languages used will be English and German alternately.
 
 
-        What's up in the next month? Here the calender for CasTales:
+        What is coming in the next few months? This is the CasTales calendar:
 
 
-        MARCH: positions and security of the castells
+        MARCH: Positions and Security
 
-        APRIL: history and importance of the castells
+        APRIL: History and Importance of Castells
 
-        MAY: women in the castellers world
+        MAY: Women in the Castells World
 
-        JUNE: technique and security
+        JUNE: Technique and Security
 
-        JULY: University collas, festivities and und "folklore"
+        JULY: University Colles, Festivities and Folklore
 
-        AUGUST: canalla of the castells
+        AUGUST: Kids in Castells
 
-        SEPTEMBER: values of the castellers
+        SEPTEMBER: Castells Values
 
-        OCTOBER: values of the Castellers de Berlin
-
-
-        Everything will take place in the 3rd week of the month, either tuesday or friday, on Zoom.
-        We will upsubtitle the calender: https://castellers.berlin/calendar
+        OCTOBER: Castellers de Berlin Values
 
 
-        Since the meetings are open for everyone, feel free to invite more people!
+        Everything will take place during the 3rd week of the month, either on Tuesday or Friday, on Zoom.
+        We will be updating the website calendar accordingly.
 
 
-        18:15 - room opening
+        Since the meetings are open to everyone, feel free to invite more people!
 
-        18:30 - start
 
-        19:30 - We finish and go to the online Späti
+        18:15 - Opening
+
+        18:30 - CasTales
+
+        19:30 - End and virtual Späti
 
 
         If you are interested in participating but are not a member of Castellers de Berlin, fill
@@ -196,7 +196,7 @@ de:
   header: Informationen zu den Aktivitäten während Covid-19
   info:
     1:
-      subtitle: 29. März 2021
+      subtitle: 21. März 2021
       title: Informationen zu den Aktivitäten während Covid-19
       body: >
         Aufgrund der derzeitigen Beschränkungen in der COVID-19-Pandemie
@@ -255,7 +255,7 @@ ca:
   header: Informació sobre les activitats durant la Covid-19
   info:
     1:
-      subtitle: 29 de març de 2021
+      subtitle: 21 de març de 2021
       title: Informació sobre les activitats durant la Covid-19
       body: >
         A causa de les restriccions imposades actualment per la covid-19,
@@ -263,51 +263,51 @@ ca:
         Us informarem sobre properes activitats quan la situació ho permeti.
     2:
       subtitle: >
-        Proper Meeting: 23 d'abril de 2021
+        Propera trobada: 23 d'abril de 2021
 
         Història i significat dels castells
       title:
-        CasTales | 3a setmana del mes | 18:30-19:30
+        CasTales | 3a setmana del mes | 18.30-19.30
       body: >
         CasTales és una sèrie de trobades mensuals d'una hora de durada dirigides per
-        membres de la junta o la tècnica sobre temes relacionats amb la tècnica i la
-        cultura castellera. Les llengües seran alemany i anglès (en alternància).
+        membres de Junta o Tècnica sobre temes relacionats amb la tècnica i la
+        cultura castelleres. Les llengües seran l'alemany i l'anglès (en alternança).
 
 
         I què ens espera en els propers mesos? Aquí teniu el calendari de CasTales:
 
 
-        MARÇ: posicions i seguretat dels castells\n
+        MARÇ: Posicions i seguretat als castells
 
-        ABRIL: història i significat dels castells
+        ABRIL: Història i significat dels castells
 
-        MAIG: dones al món casteller
+        MAIG: Les dones al món casteller
 
-        JUNY: tècnica i seguretat
+        JUNY: Tècnica i seguretat
 
-        JULIOL: colles universitàries, festes i "folklore"
+        JULIOL: Colles universitàries, festes i "folklore"
 
-        AGOST: canalla castellera
+        AGOST: Canalla castellera
 
-        SETEMBRE: valors castellers
+        SETEMBRE: Valors castellers
 
-        OCTUBRE: valors dels Castellers de Berlín
-
-
-        Serà sempre a la tercera setmana del mes, o bé dimarts o bé divendres, a la plataforma
-        Zoom. Anirem actualitzant el calendari: https://castellers.berlin/calendar
+        OCTUBRE: Valors dels Castellers de Berlin
 
 
-        Com que les sessions són obertes a tothom, us podeu apuntar i convidar més gent!
+        La trobada tindrà lloc sempre la tercera setmana de mes, dimarts o divendres, a la plataforma
+        Zoom. Anirem actualitzant el calendari d'aquest lloc web amb noves dates.
 
 
-        18:15 - obrim
+        Com que les sessions són obertes a tothom, us hi podeu apuntar i convidar-hi més gent!
 
-        18:30 - comencem
 
-        19:30 - acabem i anem cap al späti virtual
+        18.15 - Obrim la sala
+
+        18:30 - CasTales
+
+        19:30 - Final i Späti virtual
 
 
         Si esteu interessats a participar-hi però no formeu part de Castellers de Berlin,
-        ompliu i envieu-nos el següent formulari:
+        ompliu i envieu-nos el formulari següent:
 </i18n>
