@@ -86,6 +86,7 @@ export default {
     links: [
       { path: 'about', name: 'about' },
       { path: 'calendar', name: 'calendar' },
+      { path: 'content', name: 'content' },
     ],
   }),
 
