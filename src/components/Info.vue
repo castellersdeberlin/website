@@ -152,8 +152,8 @@ en:
       title: CasTales | 3rd Week of Each Month | 18:30-19:30
       body: >
         Online CasTales is a series of monthly, one-hour long, online meetings chaired by members of
-        Junta or Tècnica about different topics concerning the technique and culture of Castells. The
-        languages used will be English and German alternately.
+        Junta or Tècnica about different topics concerning the technique and culture of Castells.
+        The languages used will be English and German alternately.
 
 
         What is coming in the next few months? This is the CasTales calendar:
@@ -176,8 +176,8 @@ en:
         OCTOBER: Castellers de Berlin Values
 
 
-        Everything will take place during the 3rd week of the month, either on Tuesday or Friday, on Zoom.
-        We will be updating the website calendar accordingly.
+        Everything will take place during the 3rd week of the month, either on Tuesday or
+        Friday, on Zoom. We will be updating the website calendar accordingly.
 
 
         Since the meetings are open to everyone, feel free to invite more people!
@@ -294,8 +294,8 @@ ca:
         OCTUBRE: Valors dels Castellers de Berlin
 
 
-        La trobada tindrà lloc sempre la tercera setmana de mes, dimarts o divendres, a la plataforma
-        Zoom. Anirem actualitzant el calendari d'aquest lloc web amb noves dates.
+        La trobada tindrà lloc sempre la tercera setmana de mes, dimarts o divendres, a la
+        plataforma Zoom. Anirem actualitzant el calendari d'aquest lloc web amb noves dates.
 
 
         Com que les sessions són obertes a tothom, us hi podeu apuntar i convidar-hi més gent!
