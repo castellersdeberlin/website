@@ -14,7 +14,7 @@
       </v-row>
     </v-parallax>
     <v-carousel v-else
-                height="100%"
+                height="700"
                 cycle
                 hide-delimiter-background
                 show-arrows-on-hover>
@@ -79,7 +79,6 @@ export default {
 
 <style lang="scss">
 #main-banner {
-  height: calc(100vh - 96px);
   .v-icon {
     color: white;
   }
