@@ -26,5 +26,10 @@ export default new Router({
       name: 'about',
       component: About,
     },
+    {
+    // catch all 404
+      path: '*',
+      component: Home,
+    },
   ],
 });

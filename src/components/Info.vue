@@ -146,18 +146,16 @@ en:
         We will inform you in due course about upcoming activities.
     2:
       subtitle: >
-        Next Meeting: Friday 23rd April
+        Next Meeting: Friday 21st May
 
-        History and importance of Castells
+        Women in the Castells World
       title: CasTales | 3rd Week of Each Month | 18:30-19:30
       body: >
         Online CasTales is a series of monthly, one-hour long, online meetings chaired by members of
-        Junta or Tècnica about different topics concerning the technique and culture of Castells. The
-        languages used will be English and German alternately.
-
+        Junta or Tècnica about different topics concerning the technique and culture of Castells.
+        The languages used will be English and German alternately.
 
         What is coming in the next few months? This is the CasTales calendar:
-
 
         MARCH: Positions and Security
 
@@ -175,20 +173,16 @@ en:
 
         OCTOBER: Castellers de Berlin Values
 
-
-        Everything will take place during the 3rd week of the month, either on Tuesday or Friday, on Zoom.
-        We will be updating the website calendar accordingly.
-
+        Everything will take place during the 3rd week of the month, either on Tuesday or Friday,
+        on Zoom. We will be updating the website calendar accordingly.
 
         Since the meetings are open to everyone, feel free to invite more people!
-
 
         18:15 - Opening
 
         18:30 - CasTales
 
         19:30 - End and virtual Späti
-
 
         If you are interested in participating but are not a member of Castellers de Berlin, fill
         in and send us the following form:
@@ -204,9 +198,9 @@ de:
         Wir werden euch hier rechtzeitig über wieder stattfindende Veranstaltungen informieren.
     2:
       subtitle: >
-        Nächstes Treffen: Freitag 23. April
+        Nächstes Treffen: Freitag 21. Mai
 
-        Geschichte und Bedeutung der Castells
+        Frauen in der Castells Welt
 
       title: CasTales | 3. Woche im Monat | 18:30-19-30
       body: >
@@ -214,9 +208,7 @@ de:
         Leitung von Mitgliedern des Vorstands oder der Tècnica Themen zu Technik und Kultur der
         Castells behandeln. Die Sprachen werden Deutsch und Englisch sein (abwechselnd).
 
-
         Was erwartet uns in den nächten Monaten? Hier findet ihr den Kalender für CasTales:
-
 
         MÄRZ: Positionen und Sicherheit der Castells
 
@@ -234,20 +226,16 @@ de:
 
         OKTOBER: Werte der Castellers de Berlin
 
-
         Es wird alles in der dritten Woche des Monats, entweder Dienstag oder Freitag, auf Zoom
-        stattfinden. Wir werden den Kalender aktualisieren: https://castellers.berlin/calendar
-
+        stattfinden. Wir werden den Kalender der Seite aktualisieren.
 
         Da die Treffen offen für alle sind, könnt ihr gerne mehr Menschen dazu einladen!
-
 
         18:15 - Raum öffnet.
 
         18:30 - CasTales beginnt.
 
         19:30 - Wir beenden das Treffen und gehen zum virtuellen Späti.
-
 
         Wenn Du dich für eine Veranstaltung interessierst aber kein Mitglied von Castellers de
         Berlin bist, fülle bitte dieses Formular aus und sende es an uns:
@@ -263,9 +251,9 @@ ca:
         Us informarem sobre properes activitats quan la situació ho permeti.
     2:
       subtitle: >
-        Propera trobada: 23 d'abril de 2021
+        Propera trobada: 21 de maig de 2021
 
-        Història i significat dels castells
+        Les dones al món casteller
       title:
         CasTales | 3a setmana del mes | 18.30-19.30
       body: >
@@ -273,9 +261,7 @@ ca:
         membres de Junta o Tècnica sobre temes relacionats amb la tècnica i la
         cultura castelleres. Les llengües seran l'alemany i l'anglès (en alternança).
 
-
         I què ens espera en els propers mesos? Aquí teniu el calendari de CasTales:
-
 
         MARÇ: Posicions i seguretat als castells
 
@@ -293,20 +279,16 @@ ca:
 
         OCTUBRE: Valors dels Castellers de Berlin
 
-
-        La trobada tindrà lloc sempre la tercera setmana de mes, dimarts o divendres, a la plataforma
-        Zoom. Anirem actualitzant el calendari d'aquest lloc web amb noves dates.
-
+        La trobada tindrà lloc sempre la tercera setmana de mes, dimarts o divendres,
+        a la plataforma Zoom. Anirem actualitzant el calendari d'aquest lloc web amb noves dates.
 
         Com que les sessions són obertes a tothom, us hi podeu apuntar i convidar-hi més gent!
-
 
         18.15 - Obrim la sala
 
         18:30 - CasTales
 
         19:30 - Final i Späti virtual
-
 
         Si esteu interessats a participar-hi però no formeu part de Castellers de Berlin,
         ompliu i envieu-nos el formulari següent:
