@@ -146,9 +146,9 @@ en:
         We will inform you in due course about upcoming activities.
     2:
       subtitle: >
-        Next Meeting: Friday 21st May
+        Next Meeting: Friday 25th June
 
-        Women in the Castells World
+        Technique and Security
       title: CasTales | 3rd Week of Each Month | 18:30-19:30
       body: >
         Online CasTales is a series of monthly, one-hour long, online meetings chaired by members of
@@ -198,9 +198,9 @@ de:
         Wir werden euch hier rechtzeitig über wieder stattfindende Veranstaltungen informieren.
     2:
       subtitle: >
-        Nächstes Treffen: Freitag 21. Mai
+        Nächstes Treffen: Freitag 25. Juni
 
-        Frauen in der Castells Welt
+        Technik und Sicherheit
 
       title: CasTales | 3. Woche im Monat | 18:30-19-30
       body: >
@@ -251,9 +251,9 @@ ca:
         Us informarem sobre properes activitats quan la situació ho permeti.
     2:
       subtitle: >
-        Propera trobada: 21 de maig de 2021
+        Propera trobada: 25 de juny de 2021
 
-        Les dones al món casteller
+        Tècnica i seguretat
       title:
         CasTales | 3a setmana del mes | 18.30-19.30
       body: >
