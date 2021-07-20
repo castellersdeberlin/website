@@ -145,15 +145,12 @@ en:
         Berlin is not carrying out face-to-face activities at the moment.
         We will inform you in due course about upcoming activities.
     2:
-      subtitle: >
-        Next Meeting: Friday 23rd April
-
-        History and importance of Castells
+      subtitle: Last meeting - Friday 25th of July
       title: CasTales | 3rd Week of Each Month | 18:30-19:30
       body: >
         Online CasTales is a series of monthly, one-hour long, online meetings chaired by members of
-        Junta or Tècnica about different topics concerning the technique and culture of Castells. The
-        languages used will be English and German alternately.
+        Junta or Tècnica about different topics concerning the technique and culture
+        of Castells. The languages used will be English and German alternately.
 
 
         What is coming in the next few months? This is the CasTales calendar:
@@ -167,17 +164,11 @@ en:
 
         JUNE: Technique and Security
 
-        JULY: University Colles, Festivities and Folklore
-
-        AUGUST: Kids in Castells
-
-        SEPTEMBER: Castells Values
-
-        OCTOBER: Castellers de Berlin Values
+        JULY: Values of the castellers world and our colla
 
 
-        Everything will take place during the 3rd week of the month, either on Tuesday or Friday, on Zoom.
-        We will be updating the website calendar accordingly.
+        Everything will take place during the 3rd week of the month, either on Tuesday or
+        Friday, on Zoom. We will be updating the website calendar accordingly.
 
 
         Since the meetings are open to everyone, feel free to invite more people!
@@ -204,7 +195,7 @@ de:
         Wir werden euch hier rechtzeitig über wieder stattfindende Veranstaltungen informieren.
     2:
       subtitle: >
-        Nächstes Treffen: Freitag 23. April
+        Letztes Treffen: Freitag 25. Juli
 
         Geschichte und Bedeutung der Castells
 
@@ -226,13 +217,7 @@ de:
 
         JUNI: Technik und Sicherheit
 
-        JULI: Universitäts-Collas, Feierlichkeiten und "Folklore"
-
-        AUGUST: Canalla der Castells
-
-        SEPTEMBER: Werte der Castellers
-
-        OKTOBER: Werte der Castellers de Berlin
+        JULI: Castellers-Werte und unsere Colla
 
 
         Es wird alles in der dritten Woche des Monats, entweder Dienstag oder Freitag, auf Zoom
@@ -262,10 +247,7 @@ ca:
         Castellers de Berlin no duu a terme activitats presencials en aquests moments.
         Us informarem sobre properes activitats quan la situació ho permeti.
     2:
-      subtitle: >
-        Propera trobada: 23 d'abril de 2021
-
-        Història i significat dels castells
+      subtitle: Última trobada - Divendres 25 de juliol
       title:
         CasTales | 3a setmana del mes | 18.30-19.30
       body: >
@@ -285,17 +267,12 @@ ca:
 
         JUNY: Tècnica i seguretat
 
-        JULIOL: Colles universitàries, festes i "folklore"
-
-        AGOST: Canalla castellera
-
-        SETEMBRE: Valors castellers
-
-        OCTUBRE: Valors dels Castellers de Berlin
+        JULIOL: Valors castellers i la nostra colla
 
 
-        La trobada tindrà lloc sempre la tercera setmana de mes, dimarts o divendres, a la plataforma
-        Zoom. Anirem actualitzant el calendari d'aquest lloc web amb noves dates.
+        La trobada tindrà lloc sempre la tercera setmana de mes, dimarts o
+        divendres, a la plataforma Zoom. Anirem actualitzant el calendari
+        d'aquest lloc web amb noves dates.
 
 
         Com que les sessions són obertes a tothom, us hi podeu apuntar i convidar-hi més gent!
