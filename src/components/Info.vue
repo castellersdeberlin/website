@@ -145,7 +145,7 @@ en:
         Berlin is not carrying out face-to-face activities at the moment.
         We will inform you in due course about upcoming activities.
     2:
-      subtitle: Last meeting - Friday 25th of July
+      subtitle: Last meeting - Friday 23rd of July
       title: CasTales | 3rd Week of Each Month | 18:30-19:30
       body: >
         Online CasTales is a series of monthly, one-hour long, online meetings chaired by members of
@@ -164,7 +164,7 @@ en:
 
         JUNE: Technique and Security
 
-        JULY: Values of the castellers world and our colla
+        JULY: Values of the Castellers World and Our Colla
 
 
         Everything will take place during the 3rd week of the month, either on Tuesday or
@@ -195,9 +195,9 @@ de:
         Wir werden euch hier rechtzeitig über wieder stattfindende Veranstaltungen informieren.
     2:
       subtitle: >
-        Letztes Treffen: Freitag 25. Juli
+        Letztes Treffen: Freitag 23. Juli
 
-        Geschichte und Bedeutung der Castells
+        Werte der Castellers und der Castellers de Berlin
 
       title: CasTales | 3. Woche im Monat | 18:30-19-30
       body: >
@@ -247,7 +247,7 @@ ca:
         Castellers de Berlin no duu a terme activitats presencials en aquests moments.
         Us informarem sobre properes activitats quan la situació ho permeti.
     2:
-      subtitle: Última trobada - Divendres 25 de juliol
+      subtitle: Última trobada - Divendres 23 de juliol
       title:
         CasTales | 3a setmana del mes | 18.30-19.30
       body: >
