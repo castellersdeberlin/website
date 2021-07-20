@@ -145,15 +145,13 @@ en:
         Berlin is not carrying out face-to-face activities at the moment.
         We will inform you in due course about upcoming activities.
     2:
-      subtitle: >
-        Next Meeting: Friday 25th June
-
-        Technique and Security
+      subtitle: Last meeting - Friday 23rd of July
       title: CasTales | 3rd Week of Each Month | 18:30-19:30
       body: >
         Online CasTales is a series of monthly, one-hour long, online meetings chaired by members of
-        Junta or Tècnica about different topics concerning the technique and culture of Castells.
-        The languages used will be English and German alternately.
+        Junta or Tècnica about different topics concerning the technique and culture
+        of Castells. The languages used will be English and German alternately.
+
 
         What is coming in the next few months? This is the CasTales calendar:
 
@@ -165,16 +163,10 @@ en:
 
         JUNE: Technique and Security
 
-        JULY: University Colles, Festivities and Folklore
+        JULY: Values of the Castellers World and Our Colla
 
-        AUGUST: Kids in Castells
-
-        SEPTEMBER: Castells Values
-
-        OCTOBER: Castellers de Berlin Values
-
-        Everything will take place during the 3rd week of the month, either on Tuesday or Friday,
-        on Zoom. We will be updating the website calendar accordingly.
+        Everything will take place during the 3rd week of the month, either on Tuesday or
+        Friday, on Zoom. We will be updating the website calendar accordingly.
 
         Since the meetings are open to everyone, feel free to invite more people!
 
@@ -198,10 +190,8 @@ de:
         Wir werden euch hier rechtzeitig über wieder stattfindende Veranstaltungen informieren.
     2:
       subtitle: >
-        Nächstes Treffen: Freitag 25. Juni
-
-        Technik und Sicherheit
-
+        Letztes Treffen: Freitag 23. Juli
+        Werte der Castellers und der Castellers de Berlin
       title: CasTales | 3. Woche im Monat | 18:30-19-30
       body: >
         CasTales ist eine Reihe monatlicher Treffen, die eine Stunde dauern und unter der
@@ -218,13 +208,7 @@ de:
 
         JUNI: Technik und Sicherheit
 
-        JULI: Universitäts-Collas, Feierlichkeiten und "Folklore"
-
-        AUGUST: Canalla der Castells
-
-        SEPTEMBER: Werte der Castellers
-
-        OKTOBER: Werte der Castellers de Berlin
+        JULI: Castellers-Werte und unsere Colla
 
         Es wird alles in der dritten Woche des Monats, entweder Dienstag oder Freitag, auf Zoom
         stattfinden. Wir werden den Kalender der Seite aktualisieren.
@@ -249,11 +233,9 @@ ca:
         A causa de les restriccions imposades actualment per la covid-19,
         Castellers de Berlin no duu a terme activitats presencials en aquests moments.
         Us informarem sobre properes activitats quan la situació ho permeti.
+    
     2:
-      subtitle: >
-        Propera trobada: 25 de juny de 2021
-
-        Tècnica i seguretat
+      subtitle: Última trobada - Divendres 23 de juliol
       title:
         CasTales | 3a setmana del mes | 18.30-19.30
       body: >
@@ -271,16 +253,11 @@ ca:
 
         JUNY: Tècnica i seguretat
 
-        JULIOL: Colles universitàries, festes i "folklore"
+        JULIOL: Valors castellers i la nostra colla
 
-        AGOST: Canalla castellera
-
-        SETEMBRE: Valors castellers
-
-        OCTUBRE: Valors dels Castellers de Berlin
-
-        La trobada tindrà lloc sempre la tercera setmana de mes, dimarts o divendres,
-        a la plataforma Zoom. Anirem actualitzant el calendari d'aquest lloc web amb noves dates.
+        La trobada tindrà lloc sempre la tercera setmana de mes, dimarts o
+        divendres, a la plataforma Zoom. Anirem actualitzant el calendari
+        d'aquest lloc web amb noves dates.
 
         Com que les sessions són obertes a tothom, us hi podeu apuntar i convidar-hi més gent!
 
